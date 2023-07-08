@@ -22,6 +22,26 @@ We solved the following key problems:
 		[32,'\u{1F0D8}'],[36,'\u{1F0D9}'],[40,'\u{1F0DA}'],[44,'\u{1F0DB}'],[48,'\u{1F0DD}'],[52,'\u{1F0DE}'],[0,''],]);
 ```
 ```
-5. Show the card in the div tag.
-6. Change the color of the card unicode.
-7. Remove each played card from the suit before the next round begins.
+5. Show the card in the div tag, with style change for red cards.
+```
+	document.getElementById('c1').innerHTML = cards.get(c1);
+	if(redCard1.includes(c1)){document.getElementById('c1').style.color='red';}
+	else if(redCard2.includes(c1)){document.getElementById('c1').style.color='red';}
+	else{document.getElementById('c1').style.color='black';}
+
+```
+   
+6. Remove each played card from the suit before the next round begins.
+```
+	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+			41,42,43,44,45,46,47,48,49,50,51,52];
+	var c1 = Math.floor(Math.random()*52)+1;
+
+	var c2C = allCards.indexOf(c1);
+		if(c2C >-1){allCards.splice(c2C, 1);}
+
+	var c2= allCards[(Math.random()*allCards.length)|0];
+
+```
+and more.
