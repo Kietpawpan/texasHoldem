@@ -505,12 +505,38 @@ function check() {
 		document.getElementById('a7').style.margin='10px 0px';}
 	else{;}
 
+//Three
 	if(a1V==a2V && a2V==a3V){
 		document.getElementById('a1').style.margin='10px 0px';
 		document.getElementById('a2').style.margin='10px 0px';
 		document.getElementById('a3').style.margin='10px 0px';}
 
 	else{;}
+
+	if(a2V==a3V && a3V==a4V){
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';}
+	else{;}
+
+	if(a3V==a4V && a4V==a5V){
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';}
+	else{;}
+
+	if(a4V==a5V && a4V==a6V){
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';}
+	else{;}
+
+	if(a5V==a5V && a6V==a7V){
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+		document.getElementById('a7').style.margin='10px 0px';}
+	else{;}
+
 
 //Four
 	if(a1V==a2V && a2V==a3V && a3V==a4V){
@@ -620,13 +646,14 @@ function check() {
 	checkHand(holdAV, sF5)==true || checkHand(holdAV, sF6)==true ||
 	checkHand(holdAV, sF7)==true || checkHand(holdAV, sF8)==true ||
 	checkHand(holdAV, sF9)==true || checkHand(holdAV, sF10)==true){
-		document.getElementById('a1').style.color='blue';
-		document.getElementById('a2').style.color='blue';
-		document.getElementById('a3').style.color='blue';
-		document.getElementById('a4').style.color='blue';
-		document.getElementById('a5').style.color='blue';
-		document.getElementById('a6').style.color='blue';
-		document.getElementById('a7').style.color='blue';}
+		document.getElementById('a1').style.color='green';
+		document.getElementById('a2').style.color='green';
+		document.getElementById('a3').style.color='green';
+		document.getElementById('a4').style.color='green';
+		document.getElementById('a5').style.color='green';
+		document.getElementById('a6').style.color='green';
+		document.getElementById('a7').style.color='green';
+		document.getElementById('a8').innerHTML='A: Straight!';}
 	else{;}
 
 //Flush Check
@@ -641,7 +668,8 @@ function check() {
 	document.getElementById('a4').style.color='blue';
 	document.getElementById('a5').style.color='blue';
 	document.getElementById('a6').style.color='blue';
-	document.getElementById('a7').style.color='blue';}
+	document.getElementById('a7').style.color='blue';
+	document.getElementById('a8').innerHTML='A: Flush!';}
 	else{;}
 
 	var b1V = cardsV.get(holdB[0]);
@@ -691,11 +719,36 @@ function check() {
 		document.getElementById('b7').style.margin='10px 0px';}
 	else{;}
 
-	if(b1V==b2V && a2V==b3V){
+//Three
+	if(b1V==b2V && b2V==b3V){
 		document.getElementById('b1').style.margin='10px 0px';
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';}
 
+	else{;}
+
+	if(b2V==b3V && b3V==b4V){
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';}
+	else{;}
+
+	if(b3V==b4V && b4V==b5V){
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';}
+	else{;}
+
+	if(b4V==b5V && b4V==b6V){
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';}
+	else{;}
+
+	if(b5V==b5V && b6V==b7V){
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+		document.getElementById('b7').style.margin='10px 0px';}
 	else{;}
 
 //Four
@@ -806,18 +859,19 @@ function check() {
 	checkHand(holdBV, sF5)==true || checkHand(holdBV, sF6)==true ||
 	checkHand(holdBV, sF7)==true || checkHand(holdBV, sF8)==true ||
 	checkHand(holdBV, sF9)==true || checkHand(holdBV, sF10)==true){
-		document.getElementById('b1').style.color='blue';
-		document.getElementById('b2').style.color='blue';
-		document.getElementById('b3').style.color='blue';
-		document.getElementById('b4').style.color='blue';
-		document.getElementById('b5').style.color='blue';
-		document.getElementById('b6').style.color='blue';
-		document.getElementById('b7').style.color='blue';}
+		document.getElementById('b1').style.color='green';
+		document.getElementById('b2').style.color='green';
+		document.getElementById('b3').style.color='green';
+		document.getElementById('b4').style.color='green';
+		document.getElementById('b5').style.color='green';
+		document.getElementById('b6').style.color='green';
+		document.getElementById('b7').style.color='green';
+		document.getElementById('b8').innerHTML='B: Straight!';}
 	else{;}
 
 	let bFlush = [flush.get(holdB[0]),flush.get(holdB[1]),flush.get(holdB[2]),
 			flush.get(holdB[3]),flush.get(holdB[4]),flush.get(holdB[5]), flush.get(holdB[6])];
-	let bFlushCheckA = bFlush.filter(x => x == 'b').length;
+	let bFlushCheckA = bFlush.filter(x => x == 'A').length;
 	let bFlushCheckB = bFlush.filter(x => x == 'B').length;
 	let bFlushCheckC = bFlush.filter(x => x == 'C').length;
 	let bFlushCheckD = bFlush.filter(x => x == 'D').length;
@@ -827,7 +881,8 @@ function check() {
 	document.getElementById('b4').style.color='blue';
 	document.getElementById('b5').style.color='blue';
 	document.getElementById('b6').style.color='blue';
-	document.getElementById('b7').style.color='blue';}
+	document.getElementById('b7').style.color='blue';
+	document.getElementById('b8').innerHTML='B: Flush!';}
 	else{;}
 
 }
