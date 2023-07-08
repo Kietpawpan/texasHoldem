@@ -533,6 +533,7 @@ function river() {
 	else{document.getElementById('b7').style.color='black';}
 
 //Straight Check
+	let sHanda='';
         if(checkHand(holdAV, sF1)==true || checkHand(holdAV, sF2)==true ||
 	checkHand(holdAV, sF3)==true || checkHand(holdAV, sF4)==true ||
 	checkHand(holdAV, sF5)==true || checkHand(holdAV, sF6)==true ||
@@ -545,10 +546,12 @@ function river() {
 		document.getElementById('a5').style.color='green';
 		document.getElementById('a6').style.color='green';
 		document.getElementById('a7').style.color='green';
-		document.getElementById('a8').innerHTML='Straight!';}
+		document.getElementById('a8').innerHTML='Straight!';
+		sHanda='y';}
 	else{;}
 
 //Flush Check
+	let fHanda ='';
 	let aFlush = [flush.get(holdA[0]),flush.get(holdA[1]),flush.get(holdA[2]),flush.get(holdA[3]),flush.get(holdA[4]),flush.get(holdA[5]), flush.get(holdA[6])];
 	let aFlushCheckA = aFlush.filter(x => x == 'A').length;
 	let aFlushCheckB = aFlush.filter(x => x == 'B').length;
@@ -561,8 +564,15 @@ function river() {
 	document.getElementById('a5').style.color='blue';
 	document.getElementById('a6').style.color='blue';
 	document.getElementById('a7').style.color='blue';
-	document.getElementById('a8').innerHTML='Flush!';}
+	document.getElementById('a8').innerHTML='Flush!';
+	fHanda='y';}
 	else{;}
+
+//Straight Flush Check
+	if(sHanda=='y' && fHanda=='y'){
+	document.getElementById('a8').innerHTML='Straight Flush!';}
+	else{;}
+
 
 	var b1V = cardsV.get(holdB[0]);
 	var b2V = cardsV.get(holdB[1]);
@@ -839,6 +849,7 @@ function river() {
 	else{document.getElementById('b7').style.color='black';}
 
 //Straight Check
+	var sHandb ='';
         if(checkHand(holdBV, sF1)==true || checkHand(holdBV, sF2)==true ||
 	checkHand(holdBV, sF3)==true || checkHand(holdBV, sF4)==true ||
 	checkHand(holdBV, sF5)==true || checkHand(holdBV, sF6)==true ||
@@ -851,9 +862,10 @@ function river() {
 		document.getElementById('b5').style.color='green';
 		document.getElementById('b6').style.color='green';
 		document.getElementById('b7').style.color='green';
-		document.getElementById('b8').innerHTML='Straight!';}
+		document.getElementById('b8').innerHTML='Straight!';
+		sHandb='y';}
 	else{;}
-
+	var fHandb ='';
 	let bFlush = [flush.get(holdB[0]),flush.get(holdB[1]),flush.get(holdB[2]),
 			flush.get(holdB[3]),flush.get(holdB[4]),flush.get(holdB[5]), flush.get(holdB[6])];
 	let bFlushCheckA = bFlush.filter(x => x == 'A').length;
@@ -867,7 +879,13 @@ function river() {
 	document.getElementById('b5').style.color='blue';
 	document.getElementById('b6').style.color='blue';
 	document.getElementById('b7').style.color='blue';
-	document.getElementById('b8').innerHTML='Flush!';}
+	document.getElementById('b8').innerHTML='Flush!';
+	fHandb='y';}
+	else{;}
+
+//Straight Flush Check
+	if(sHandb=='y' && fHandb=='y'){
+	document.getElementById('b8').innerHTML='Straight Flush!';}
 	else{;}
 
 }
