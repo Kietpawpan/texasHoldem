@@ -853,7 +853,7 @@ function check() {
 	   	document.getElementById('b8').innerHTML ='Full House!';}
 	else{;}
 
-	if(b2V==bb3V && b3V==b4V && b5V==b6V){
+	if(b2V==b3V && b3V==b4V && b5V==b6V){
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
