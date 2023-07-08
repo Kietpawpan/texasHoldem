@@ -2,7 +2,7 @@
 A popular poker game for fun: [Texas Hold'em](https://kietpawpan.github.io/texasHoldem/)
 
 We solved the following problems:
-1. Create a set of 52 plyaing cards, with id number (1-52) and associated card suits of Spades, Hearts, Diamonds, and Clubs.
+1. Create a set of 52 playing cards, with the id numbers of 1 to 52 and the associated card suits of Spades, Hearts, Diamonds, and Clubs.
 ```
 const cards = new Map([ 
 		[1,'\u{1F0A1}'],[5,'\u{1F0A2}'],[9,'\u{1F0A3}'],[13,'\u{1F0A4}'],[17,'\u{1F0A5}'],[21,'\u{1F0A6}'],[25,'\u{1F0A7}'],
