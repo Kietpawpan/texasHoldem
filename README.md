@@ -11,5 +11,4 @@ In Texas Hold'em, we know the rules of the game.
 5. Poker hands of each player are the best combinations of the five cards selected from each player's hole cards and the community cards.
 6. The higher hand beats the lower one.
 
-Fisrt, we need play the game on a table. Each card is placed in 
-’’’<div id='card name>’’’
+First, we create a game table on the computer screen. Each card is placed in the div tag, with uniquie id for each card.
