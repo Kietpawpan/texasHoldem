@@ -85,173 +85,8 @@ const flush = new Map([
 //Check if each hand is in the hold cards
 let checkHand = (hold, hand) => hand.every(v => hold.includes(v));
 
-let removeCard = (arr, value) => arr.indexOf(value)
+function hole() {
 
-//End of global variables
-
-function ar() {
-		var ac = document.getElementById('AC').innerHTML;
-		var aNum = Number(ac);
-		var pot = document.getElementById('pot').innerHTML;
-		var potNum = Number(pot);
-		var r = document.getElementById('AR').innerHTML;
-		var rNum = Number(r);
-		var Pot = potNum + 1;	
-		var coin = aNum - 1;
-		var R = rNum + 1;
-		document.getElementById('pot').innerHTML = Pot;
-		document.getElementById('AC').innerHTML = coin;
-		document.getElementById('AR').innerHTML = R;
-
-}
-
-function bc() {
-		var bc = document.getElementById('BC').innerHTML;
-		var bNum = Number(bc);
-		var pot = document.getElementById('pot').innerHTML;
-		var potNum = Number(pot);
-		var call = document.getElementById('AR').innerHTML;
-		var arNum = Number(call);
-		var Pot = potNum + arNum;	
-		var coin = bNum - arNum;
-		document.getElementById('pot').innerHTML = Pot;
-		document.getElementById('BC').innerHTML = coin;
-		document.getElementById('AR').innerHTML = 0;
-	
-}
-
-function br() {
-		var bc = document.getElementById('BC').innerHTML;
-		var bNum = Number(bc);
-		var pot = document.getElementById('pot').innerHTML;
-		var potNum = Number(pot);
-		var r = document.getElementById('BR').innerHTML;
-		var rNum = Number(r);
-		var Pot = potNum + 1;	
-		var coin = bNum - 1;
-		var R = rNum + 1;
-		document.getElementById('pot').innerHTML = Pot;
-		document.getElementById('BC').innerHTML = coin;
-		document.getElementById('BR').innerHTML = R;
-
-}
-
-function ac() {
-		var ac = document.getElementById('AC').innerHTML;
-		var aNum = Number(ac);
-		var pot = document.getElementById('pot').innerHTML;
-		var potNum = Number(pot);
-		var call = document.getElementById('BR').innerHTML;
-		var brNum = Number(call);
-		var Pot = potNum + brNum;	
-		var coin = aNum - brNum;
-		document.getElementById('pot').innerHTML = Pot;
-		document.getElementById('AC').innerHTML = coin;
-		document.getElementById('BR').innerHTML = 0;
-	
-}
-
-
-function aWin() {
-		var ac = document.getElementById('AC').innerHTML;
-		var aNum = Number(ac);
-		var pot = document.getElementById('pot').innerHTML;
-		var potNum = Number(pot);
-		var coin = aNum + potNum;
-		document.getElementById('pot').innerHTML = 0;
-		document.getElementById('AC').innerHTML = coin;
-	
-}
-
-function bWin() {
-		var bc = document.getElementById('BC').innerHTML;
-		var bNum = Number(bc);
-		var pot = document.getElementById('pot').innerHTML;
-		var potNum = Number(pot);
-		var coin = bNum + potNum;
-		document.getElementById('pot').innerHTML = 0;
-		document.getElementById('BC').innerHTML = coin;
-	
-}
-function start() {
-	document.getElementById('z1').innerHTML = '\u{1F0A0}';
-	document.getElementById('z1').style.color='blue';
-	document.getElementById('z2').innerHTML = '\u{1F0A0}';
-	document.getElementById('z2').style.color='blue';
-	document.getElementById('z3').innerHTML = '\u{1F0A0}';
-	document.getElementById('z3').style.color='blue';
-	document.getElementById('z4').innerHTML = '\u{1F0A0}';
-	document.getElementById('z4').style.color='blue';
-	document.getElementById('z5').innerHTML = '\u{1F0A0}';
-	document.getElementById('z5').style.color='blue';
-
-	document.getElementById('c1').innerHTML = '\u{1F0A0}';
-	document.getElementById('c1').style.color='blue';
-
-
-	document.getElementById('c2').innerHTML = '\u{1F0A0}';
-	document.getElementById('c2').style.color='blue';
-
-	document.getElementById('c3').innerHTML = cards.get(0);
-	document.getElementById('c4').innerHTML = cards.get(0);
-	document.getElementById('c5').innerHTML = cards.get(0);
-
-
-	document.getElementById('c6').innerHTML = '\u{1F0A0}';
-	document.getElementById('c6').style.color='blue';
-
-	document.getElementById('c7').innerHTML = '\u{1F0A0}';
-	document.getElementById('c7').style.color='blue';
-
-	document.getElementById('c8').innerHTML = cards.get(0);
-	document.getElementById('c9').innerHTML = cards.get(0);
-	document.getElementById('c10').innerHTML = cards.get(0);
-
-
-	document.getElementById('a1').innerHTML = cards.get(0);
-	document.getElementById('a2').innerHTML = cards.get(0);
-	document.getElementById('a3').innerHTML = cards.get(0);
-	document.getElementById('a4').innerHTML = cards.get(0);
-	document.getElementById('a5').innerHTML = cards.get(0);
-	document.getElementById('a6').innerHTML = cards.get(0);
-	document.getElementById('a7').innerHTML = cards.get(0);
-	document.getElementById('a8').innerHTML = '';
-
-	document.getElementById('b1').innerHTML = cards.get(0);
-	document.getElementById('b2').innerHTML = cards.get(0);
-	document.getElementById('b3').innerHTML = cards.get(0);
-	document.getElementById('b4').innerHTML = cards.get(0);
-	document.getElementById('b5').innerHTML = cards.get(0);
-	document.getElementById('b6').innerHTML = cards.get(0);
-	document.getElementById('b7').innerHTML = cards.get(0);
-	document.getElementById('b8').innerHTML = '';
-
-	document.getElementById('sf').innerHTML = cards.get(0);
-	document.getElementById('fo').innerHTML = cards.get(0);
-	document.getElementById('full').innerHTML = cards.get(0);
-	document.getElementById('flush').innerHTML = cards.get(0);
-	document.getElementById('st').innerHTML = cards.get(0);
-	
-	document.getElementById('a1').style.margin='0px 0px';
-	document.getElementById('a2').style.margin='0px 0px';
-	document.getElementById('a3').style.margin='0px 0px';
-	document.getElementById('a4').style.margin='0px 0px';
-	document.getElementById('a5').style.margin='0px 0px';
-	document.getElementById('a6').style.margin='0px 0px';
-	document.getElementById('a7').style.margin='0px 0px';
-
-	document.getElementById('b1').style.margin='0px 0px';
-	document.getElementById('b2').style.margin='0px 0px';
-	document.getElementById('b3').style.margin='0px 0px';
-	document.getElementById('b4').style.margin='0px 0px';
-	document.getElementById('b5').style.margin='0px 0px';
-	document.getElementById('b6').style.margin='0px 0px';
-	document.getElementById('b7').style.margin='0px 0px';
-
-	
-}
-
-function hole() { 
 	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
 			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
 			41,42,43,44,45,46,47,48,49,50,51,52];
@@ -278,7 +113,6 @@ function hole() {
 		return !openC6.includes(value)})
 
 	var c7 = c7C[(Math.random()*c7C.length)|0];
-	
 	
 	document.getElementById('c1').innerHTML = cards.get(c1);
 	if(redCard1.includes(c1)){document.getElementById('c1').style.color='red';}
@@ -419,29 +253,6 @@ function river() {
 	else if(redCard2.includes(z5)){document.getElementById('z5').style.color='red';}
 	else{document.getElementById('z5').style.color='black';}
 
-}   
-
-
-function check() {
-	var c1a = document.getElementById('c1').innerHTML;
-	var c1 = cardsF.get(c1a);
-	var c2a = document.getElementById('c2').innerHTML;
-	var c2 = cardsF.get(c2a);
-	var c6a = document.getElementById('c6').innerHTML;
-	var c6 = cardsF.get(c6a);
-	var c7a = document.getElementById('c7').innerHTML;
-	var c7 = cardsF.get(c7a);
-	var z1a = document.getElementById('z1').innerHTML;
-	var z1 = cardsF.get(z1a);
-	var z2a = document.getElementById('z2').innerHTML;
-	var z2 = cardsF.get(z2a);
-	var z3a = document.getElementById('z3').innerHTML;
-	var z3 = cardsF.get(z3a);
-	var z4a = document.getElementById('z4').innerHTML;
-	var z4 = cardsF.get(z4a);
-	var z5a = document.getElementById('z5').innerHTML;
-	var z5 = cardsF.get(z5a);
-
 //Hold the hole cards and the community cards.
 	var hold0a =[c1, c2, z1, z2, z3, z4, z5];
 	var hold0b =[c6, c7, z1, z2, z3, z4, z5];
@@ -501,32 +312,36 @@ function check() {
 	if(a1V==a2V && a2V==a3V){
 		document.getElementById('a1').style.margin='10px 0px';
 		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';}
-
+		document.getElementById('a3').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
 	else{;}
 
 	if(a2V==a3V && a3V==a4V){
 		document.getElementById('a2').style.margin='10px 0px';
 		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';}
+		document.getElementById('a4').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
 	else{;}
 
 	if(a3V==a4V && a4V==a5V){
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';}
+		document.getElementById('a5').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
 	else{;}
 
 	if(a4V==a5V && a5V==a6V){
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';}
+		document.getElementById('a6').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
 	else{;}
 
 	if(a5V==a6V && a6V==a7V){
 		document.getElementById('a5').style.margin='10px 0px';
 		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';}
+		document.getElementById('a7').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
 	else{;}
 //Full
 	if(a2V==a3V && a4V==a5V && a4V==a6V){
@@ -624,36 +439,32 @@ function check() {
 		document.getElementById('a1').style.margin='10px 0px';
 		document.getElementById('a2').style.margin='10px 0px';
 		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';}
-
-
+		document.getElementById('a4').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Four of Kind!';}
 	else{;}
 
 	if(a2V==a3V && a3V==a4V && a4V==a5V){
 		document.getElementById('a2').style.margin='10px 0px';
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';}
-
-
+		document.getElementById('a5').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Four of Kind!';}
 	else{;}
 
 	if(a3V==a4V && a4V==a5V && a5V==a6V){
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';}
-
-
+		document.getElementById('a6').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Four of Kind!';}
 	else{;}
 
 	if(a4V==a5V && a5V==a6V && a6V==a7V){
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
 		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';}
-
-
+		document.getElementById('a7').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Four of Kind!';}
 	else{;}
 
 	document.getElementById('a2').innerHTML = cards.get(holdA[1]);
@@ -734,7 +545,7 @@ function check() {
 		document.getElementById('a5').style.color='green';
 		document.getElementById('a6').style.color='green';
 		document.getElementById('a7').style.color='green';
-		document.getElementById('a8').innerHTML='A: Straight!';}
+		document.getElementById('a8').innerHTML='Straight!';}
 	else{;}
 
 //Flush Check
@@ -750,7 +561,7 @@ function check() {
 	document.getElementById('a5').style.color='blue';
 	document.getElementById('a6').style.color='blue';
 	document.getElementById('a7').style.color='blue';
-	document.getElementById('a8').innerHTML='A: Flush!';}
+	document.getElementById('a8').innerHTML='Flush!';}
 	else{;}
 
 	var b1V = cardsV.get(holdB[0]);
@@ -804,32 +615,37 @@ function check() {
 	if(b1V==b2V && b2V==b3V){
 		document.getElementById('b1').style.margin='10px 0px';
 		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';}
-
+		document.getElementById('b3').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
 	else{;}
 
 	if(b2V==b3V && b3V==b4V){
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';}
+		document.getElementById('b4').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
+
 	else{;}
 
 	if(b3V==b4V && b4V==b5V){
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';}
+		document.getElementById('b5').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
 	else{;}
 
 	if(b4V==b5V && b5V==b6V){
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';}
+		document.getElementById('b6').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
 	else{;}
 
 	if(b5V==b6V && b6V==b7V){
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';}
+		document.getElementById('b7').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
 	else{;}
 
 //Full
@@ -925,40 +741,36 @@ function check() {
 	else{;}
 
 //Four
-	if(b1V==b2V && a2V==b3V && a3V==b4V){
+	if(b1V==b2V && b2V==b3V && b3V==b4V){
 		document.getElementById('b1').style.margin='10px 0px';
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';}
-
-
+		document.getElementById('b4').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Four of Kind!';}
 	else{;}
 
-	if(b2V==b3V && a3V==b4V && a4V==b5V){
+	if(b2V==b3V && b3V==b4V && b4V==b5V){
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';}
-
-
+		document.getElementById('b5').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Four of Kind!';}
 	else{;}
 
-	if(b3V==b4V && a4V==b5V && a5V==b6V){
+	if(b3V==b4V && b4V==b5V && b5V==b6V){
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';}
-
-
+		document.getElementById('b6').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Four of Kind!';}
 	else{;}
 
-	if(b4V==b5V && a5V==b6V && a6V==b7V){
+	if(b4V==b5V && b5V==b6V && b6V==b7V){
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';}
-
-
+		document.getElementById('b7').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Four of Kind!';}
 	else{;}
 
 	document.getElementById('b2').innerHTML = cards.get(holdB[1]);
@@ -1039,7 +851,7 @@ function check() {
 		document.getElementById('b5').style.color='green';
 		document.getElementById('b6').style.color='green';
 		document.getElementById('b7').style.color='green';
-		document.getElementById('b8').innerHTML='B: Straight!';}
+		document.getElementById('b8').innerHTML='Straight!';}
 	else{;}
 
 	let bFlush = [flush.get(holdB[0]),flush.get(holdB[1]),flush.get(holdB[2]),
@@ -1055,87 +867,43 @@ function check() {
 	document.getElementById('b5').style.color='blue';
 	document.getElementById('b6').style.color='blue';
 	document.getElementById('b7').style.color='blue';
-	document.getElementById('b8').innerHTML='B: Flush!';}
+	document.getElementById('b8').innerHTML='Flush!';}
 	else{;}
 
 }
 
 function help() {
-	document.getElementById('sf').innerHTML = 'Straight Flush';
-	document.getElementById('c1').innerHTML = cards.get(37);
-	document.getElementById('c1').style.color='black';
-	document.getElementById('c2').innerHTML = cards.get(41);
-	document.getElementById('c2').style.color='black';
-	document.getElementById('c3').innerHTML = cards.get(45);
-	document.getElementById('c3').style.color='black';
-	document.getElementById('c4').innerHTML = cards.get(49);
-	document.getElementById('c4').style.color='black';
-	document.getElementById('c5').innerHTML = cards.get(1);
-	document.getElementById('c5').style.color='black';
-
-	document.getElementById('fo').innerHTML = 'Four of Kind';
-	document.getElementById('z1').innerHTML = cards.get(1);
-	document.getElementById('z1').style.color='black';
-	document.getElementById('z2').innerHTML = cards.get(2);
-	document.getElementById('z2').style.color='red';
-	document.getElementById('z3').innerHTML = cards.get(3);
-	document.getElementById('z3').style.color='red';
-	document.getElementById('z4').innerHTML = cards.get(4);
-	document.getElementById('z4').style.color='black';
-	document.getElementById('z5').innerHTML = cards.get(37);
-	document.getElementById('z5').style.color='black';
-
-	document.getElementById('full').innerHTML = 'Full House';
-	document.getElementById('c6').innerHTML = cards.get(49);
-	document.getElementById('c6').style.color='black';
-	document.getElementById('c7').innerHTML = cards.get(50);
-	document.getElementById('c7').style.color='red';
-	document.getElementById('c8').innerHTML = cards.get(51);
-	document.getElementById('c8').style.color='red';
-	document.getElementById('c9').innerHTML = cards.get(37);
-	document.getElementById('c9').style.color='black';
-	document.getElementById('c10').innerHTML = cards.get(38);
-	document.getElementById('c10').style.color='red';
-
-	document.getElementById('flush').innerHTML = 'Flush';
-	document.getElementById('a1').innerHTML = cards.get(5);
-	document.getElementById('a1').style.color='black';
-	document.getElementById('a2').innerHTML = cards.get(13);
-	document.getElementById('a2').style.color='black';
-	document.getElementById('a3').innerHTML = cards.get(25);
-	document.getElementById('a3').style.color='black';
-	document.getElementById('a4').innerHTML = cards.get(29);
-	document.getElementById('a4').style.color='black';
-	document.getElementById('a5').innerHTML = cards.get(49);
-	document.getElementById('a5').style.color='black';
-
-	document.getElementById('st').innerHTML = 'Straight';
-	document.getElementById('b1').innerHTML = cards.get(1);
-	document.getElementById('b1').style.color='black';
-	document.getElementById('b2').innerHTML = cards.get(6);
-	document.getElementById('b2').style.color='red';
-	document.getElementById('b3').innerHTML = cards.get(11);
-	document.getElementById('b3').style.color='red';
-	document.getElementById('b4').innerHTML = cards.get(16);
-	document.getElementById('b4').style.color='black';
-	document.getElementById('b5').innerHTML = cards.get(17);
-	document.getElementById('b5').style.color='black';}
-
+	alert('Straight Flush > Four of Kind >  Full House > Flush > Straight > Three of Kind > Two Pairs > Pair > High Card');
+}
+ 
 function reload() {
-	document.getElementById('c1').innerHTML = cards.get(0);
-	document.getElementById('c2').innerHTML = cards.get(0);
+	document.getElementById('z1').innerHTML = '\u{1F0A0}';
+	document.getElementById('z1').style.color='blue';
+	document.getElementById('z2').innerHTML = '\u{1F0A0}';
+	document.getElementById('z2').style.color='blue';
+	document.getElementById('z3').innerHTML = '\u{1F0A0}';
+	document.getElementById('z3').style.color='blue';
+	document.getElementById('z4').innerHTML = '\u{1F0A0}';
+	document.getElementById('z4').style.color='blue';
+	document.getElementById('z5').innerHTML = '\u{1F0A0}';
+	document.getElementById('z5').style.color='blue';
+
+	document.getElementById('c1').innerHTML = '\u{1F0A0}';
+	document.getElementById('c1').style.color='blue';
+
+	document.getElementById('c2').innerHTML = '\u{1F0A0}';
+	document.getElementById('c2').style.color='blue';
+
 	document.getElementById('c3').innerHTML = cards.get(0);
 	document.getElementById('c4').innerHTML = cards.get(0);
 	document.getElementById('c5').innerHTML = cards.get(0);
 
-	document.getElementById('z1').innerHTML = cards.get(0);
-	document.getElementById('z2').innerHTML = cards.get(0);
-	document.getElementById('z3').innerHTML = cards.get(0);
-	document.getElementById('z4').innerHTML = cards.get(0);
-	document.getElementById('z5').innerHTML = cards.get(0);
+	document.getElementById('c6').innerHTML = '\u{1F0A0}';
+	document.getElementById('c6').style.color='blue';
 
-	document.getElementById('c6').innerHTML = cards.get(0);
-	document.getElementById('c7').innerHTML = cards.get(0);
+	document.getElementById('c7').innerHTML = '\u{1F0A0}';
+	document.getElementById('c7').style.color='blue';
+
 	document.getElementById('c8').innerHTML = cards.get(0);
 	document.getElementById('c9').innerHTML = cards.get(0);
 	document.getElementById('c10').innerHTML = cards.get(0);
@@ -1157,17 +925,22 @@ function reload() {
 	document.getElementById('b6').innerHTML = cards.get(0);
 	document.getElementById('b7').innerHTML = cards.get(0);
 	document.getElementById('b8').innerHTML = '';
+	
+	document.getElementById('a1').style.margin='0px 0px';
+	document.getElementById('a2').style.margin='0px 0px';
+	document.getElementById('a3').style.margin='0px 0px';
+	document.getElementById('a4').style.margin='0px 0px';
+	document.getElementById('a5').style.margin='0px 0px';
+	document.getElementById('a6').style.margin='0px 0px';
+	document.getElementById('a7').style.margin='0px 0px';
 
-	document.getElementById('AC').innerHTML = 0;
-	document.getElementById('BC').innerHTML = 0;
-	document.getElementById('pot').innerHTML = 0;
-
-	document.getElementById('sf').innerHTML = cards.get(0);
-	document.getElementById('fo').innerHTML = cards.get(0);
-	document.getElementById('full').innerHTML = cards.get(0);
-	document.getElementById('flush').innerHTML = cards.get(0);
-	document.getElementById('st').innerHTML = cards.get(0);
-
+	document.getElementById('b1').style.margin='0px 0px';
+	document.getElementById('b2').style.margin='0px 0px';
+	document.getElementById('b3').style.margin='0px 0px';
+	document.getElementById('b4').style.margin='0px 0px';
+	document.getElementById('b5').style.margin='0px 0px';
+	document.getElementById('b6').style.margin='0px 0px';
+	document.getElementById('b7').style.margin='0px 0px';
 
 }
 
