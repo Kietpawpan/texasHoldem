@@ -4,7 +4,7 @@ A popular poker game for fun: [Texas Hold'em](https://kietpawpan.github.io/texas
 We solved the following key problems:
 1. Refer to card unicode in HTML
    ```
-   \u{1F0C1}'
+   '\u{1F0C1}'
    ```
 3. Give strategic ID number to each card. 
 4. Show the card in the div tag.
