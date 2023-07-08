@@ -2,7 +2,7 @@
  * cards.js v1.0.1 | All rights reserved.
 */
 
-
+//Create a set of 52 playing cards, with the ID numbers of 1 to 52 and the associated card suits of Spades, Hearts, Diamonds, and Clubs.
 const cards = new Map([ 
 		[1,'\u{1F0A1}'],[5,'\u{1F0A2}'],[9,'\u{1F0A3}'],[13,'\u{1F0A4}'],[17,'\u{1F0A5}'],[21,'\u{1F0A6}'],[25,'\u{1F0A7}'],
 		[29,'\u{1F0A8}'],[33,'\u{1F0A9}'],[37,'\u{1F0AA}'],[41,'\u{1F0AB}'],[45,'\u{1F0AD}'],[49,'\u{1F0AE}'],
@@ -18,7 +18,7 @@ const cards = new Map([
 
 ]);
 
-
+//Let all card ID numbers have their card values (1 - 13).
 const cardsV = new Map([ 
 		[1,1],[5,2],[9,3],[13,4],[17,5],[21,6],[25,7],
 		[29,8],[33,9],[37,10],[41,11],[45,12],[49,13],
@@ -34,6 +34,7 @@ const cardsV = new Map([
 
 ]);
 
+//Let all card unicodes have their ID numbers
 const cardsF = new Map([ 
 		['\u{1F0A1}',1],['\u{1F0A2}',5],['\u{1F0A3}',9],['\u{1F0A4}',13],['\u{1F0A5}',17],['\u{1F0A6}',21],['\u{1F0A7}',25],
 		['\u{1F0A8}',29],['\u{1F0A9}',33],['\u{1F0AA}',37],['\u{1F0AB}',41],['\u{1F0AD}',45],['\u{1F0AE}',49],
@@ -48,9 +49,11 @@ const cardsF = new Map([
 		['\u{1F0D8}',32],['\u{1F0D9}',36],['\u{1F0DA}',40],['\u{1F0DB}',44],['\u{1F0DD}',48],['\u{1F0DE}',52],
 ]);
 
+
 const redCard1 = [2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50];
 const redCard2 = [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51];
 
+//Set of staright hands
 let sF1 = [1, 10, 11, 12, 13];
 let sF2 = [1, 2, 3, 4, 5];
 let sF3 = [2, 3, 4, 5, 6];
@@ -62,10 +65,29 @@ let sF8 = [7, 8, 9, 10, 11];
 let sF9 = [8, 9, 10, 11, 12];
 let sF10 = [9, 10, 11, 12, 13];
 
+//Flush hands
+const flush = new Map([ 
+		[1,'A'],[5,'A'],[9,'A'],[13,'A'],[17,'A'],[21,'A'],[25,'A'],
+		[29,'A'],[33,'A'],[37,'A'],[41,'A'],[45,'A'],[49,'A'],
 
+		[2,'B'],[6,'B'],[10,'B'],[14,'B'],[18,'B'],[22,'B'],[26,'B'],
+		[30,'B'],[34,'B'],[38,'B'],[42,'B'],[46,'B'],[50,'B'],
+
+		[3,'C'],[7,'C'],[11,'C'],[15,'C'],[19,'C'],[23,'C'],[27,'C'],
+		[31,'C'],[35,'C'],[39,'C'],[43,'C'],[47,'C'],[51,'C'],
+
+		[4,'D'],[8,'D'],[12,'D'],[16,'D'],[20,'D'],[24,'D'],[28,'D'],
+		[32,'D'],[36,'D'],[40,'D'],[44,'D'],[48,'D'],[52,'D'],[0,''],
+
+]);
+
+
+//Check if each hand is in the hold cards
 let checkHand = (hold, hand) => hand.every(v => hold.includes(v));
 
 let removeCard = (arr, value) => arr.indexOf(value)
+
+//End of global variables
 
 function ar() {
 		var ac = document.getElementById('AC').innerHTML;
@@ -607,6 +629,21 @@ function check() {
 		document.getElementById('a7').style.color='blue';}
 	else{;}
 
+//Flush Check
+	let aFlush = [flush.get(holdA[0]),flush.get(holdA[1]),flush.get(holdA[2]),flush.get(holdA[3]),flush.get(holdA[4]),flush.get(holdA[5]), flush.get(holdA[6])];
+	let aFlushCheckA = aFlush.filter(x => x == 'A').length;
+	let aFlushCheckB = aFlush.filter(x => x == 'B').length;
+	let aFlushCheckC = aFlush.filter(x => x == 'C').length;
+	let aFlushCheckD = aFlush.filter(x => x == 'D').length;
+	if(aFlushCheckA > 4 || aFlushCheckB > 4 || aFlushCheckC > 4  || aFlushCheckD > 4){		document.getElementById('a1').style.color='blue';
+	document.getElementById('a2').style.color='blue';
+	document.getElementById('a3').style.color='blue';
+	document.getElementById('a4').style.color='blue';
+	document.getElementById('a5').style.color='blue';
+	document.getElementById('a6').style.color='blue';
+	document.getElementById('a7').style.color='blue';}
+	else{;}
+
 	var b1V = cardsV.get(holdB[0]);
 	var b2V = cardsV.get(holdB[1]);
 	var b3V = cardsV.get(holdB[2]);
@@ -778,6 +815,20 @@ function check() {
 		document.getElementById('b7').style.color='blue';}
 	else{;}
 
+	let bFlush = [flush.get(holdB[0]),flush.get(holdB[1]),flush.get(holdB[2]),
+			flush.get(holdB[3]),flush.get(holdB[4]),flush.get(holdB[5]), flush.get(holdB[6])];
+	let bFlushCheckA = bFlush.filter(x => x == 'b').length;
+	let bFlushCheckB = bFlush.filter(x => x == 'B').length;
+	let bFlushCheckC = bFlush.filter(x => x == 'C').length;
+	let bFlushCheckD = bFlush.filter(x => x == 'D').length;
+	if(bFlushCheckA > 4 || bFlushCheckB > 4 || bFlushCheckC > 4  || bFlushCheckD > 4){		document.getElementById('b1').style.color='blue';
+	document.getElementById('b2').style.color='blue';
+	document.getElementById('b3').style.color='blue';
+	document.getElementById('b4').style.color='blue';
+	document.getElementById('b5').style.color='blue';
+	document.getElementById('b6').style.color='blue';
+	document.getElementById('b7').style.color='blue';}
+	else{;}
 
 }
 
