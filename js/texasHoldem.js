@@ -2,6 +2,7 @@
  * cards.js v1.0.1 | All rights reserved.
 */
 
+
 const cards = new Map([ 
 		[1,'\u{1F0A1}'],[5,'\u{1F0A2}'],[9,'\u{1F0A3}'],[13,'\u{1F0A4}'],[17,'\u{1F0A5}'],[21,'\u{1F0A6}'],[25,'\u{1F0A7}'],
 		[29,'\u{1F0A8}'],[33,'\u{1F0A9}'],[37,'\u{1F0AA}'],[41,'\u{1F0AB}'],[45,'\u{1F0AD}'],[49,'\u{1F0AE}'],
@@ -63,6 +64,8 @@ let sF10 = [9, 10, 11, 12, 13];
 
 
 let checkHand = (hold, hand) => hand.every(v => hold.includes(v));
+
+let removeCard = (arr, value) => arr.indexOf(value)
 
 function a500() {
 		var aScore = document.getElementById('AScore').innerHTML;
@@ -188,10 +191,27 @@ function start() {
 }
 
 function hole() { 
+	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+			41,42,43,44,45,46,47,48,49,50,51,52];
 	var c1 = Math.floor(Math.random()*52)+1;
-	var c2 = Math.floor(Math.random()*52)+1;
-	var c6 = Math.floor(Math.random()*52)+1;
-	var c7 = Math.floor(Math.random()*52)+1;
+
+	var c2C = allCards.indexOf(c1);
+		if(c2C >-1){allCards.splice(c2C, 1);}
+
+	var c2= allCards[(Math.random()*allCards.length)|0];
+
+	var c6C = allCards.indexOf(c2);
+		if(c6C >-1){allCards.splice(c6C, 1);}
+
+	var c6= allCards[(Math.random()*allCards.length)|0];
+	
+	var c7C = allCards.indexOf(c6);
+		if(c7C >-1){allCards.splice(c7C, 1);}
+
+	var c7= allCards[(Math.random()*allCards.length)|0];
+
+	
 	document.getElementById('c1').innerHTML = cards.get(c1);
 	if(redCard1.includes(c1)){document.getElementById('c1').style.color='red';}
 	else if(redCard2.includes(c1)){document.getElementById('c1').style.color='red';}
@@ -215,9 +235,36 @@ function hole() {
 }
 
 function flop() {
-	var z1 = Math.floor(Math.random()*52)+1;
-	var z2 = Math.floor(Math.random()*52)+1;
-	var z3 = Math.floor(Math.random()*52)+1;
+	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+			41,42,43,44,45,46,47,48,49,50,51,52];
+	var c1a = document.getElementById('c1').innerHTML;
+	var c1 = cardsF.get(c1a);
+	var c2a = document.getElementById('c2').innerHTML;
+	var c2 = cardsF.get(c2a);
+	var c6a = document.getElementById('c6').innerHTML;
+	var c6 = cardsF.get(c6a);
+	var c7a = document.getElementById('c7').innerHTML;
+	var c7 = cardsF.get(c7a);
+
+	var c2C = allCards.indexOf(c1);
+		if(c2C >-1){allCards.splice(c2C, 1);}
+	var c6C = allCards.indexOf(c2);
+		if(c6C >-1){allCards.splice(c6C, 1);}
+	var c7C = allCards.indexOf(c6);
+		if(c7C >-1){allCards.splice(c7C, 1);}
+	var z1C = allCards.indexOf(c7);
+		if(z1C >-1){allCards.splice(z1C, 1);}
+
+	var z1= allCards[(Math.random()*allCards.length)|0];
+
+	var z2C = allCards.indexOf(z1);
+		if(z2C >-1){allCards.splice(z2C, 1);}
+	var z2= allCards[(Math.random()*allCards.length)|0];
+
+	var z3C = allCards.indexOf(z2);
+		if(z3C >-1){allCards.splice(z3C, 1);}
+	var z3= allCards[(Math.random()*allCards.length)|0];
 
 	document.getElementById('z1').innerHTML = cards.get(z1);
 	if(redCard1.includes(z1)){document.getElementById('z1').style.color='red';}
@@ -237,7 +284,39 @@ function flop() {
 }
 
 function turn() {
-	var z4 = Math.floor(Math.random()*52)+1;
+	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+			41,42,43,44,45,46,47,48,49,50,51,52];
+	var c1a = document.getElementById('c1').innerHTML;
+	var c1 = cardsF.get(c1a);
+	var c2a = document.getElementById('c2').innerHTML;
+	var c2 = cardsF.get(c2a);
+	var c6a = document.getElementById('c6').innerHTML;
+	var c6 = cardsF.get(c6a);
+	var c7a = document.getElementById('c7').innerHTML;
+	var c7 = cardsF.get(c7a);
+	var z1a = document.getElementById('z1').innerHTML;
+	var z1 = cardsF.get(z1a);
+	var z2a = document.getElementById('z2').innerHTML;
+	var z2 = cardsF.get(z2a);
+	var z3a = document.getElementById('z3').innerHTML;
+	var z3 = cardsF.get(z3a);
+
+	var c2C = allCards.indexOf(c1);
+		if(c2C >-1){allCards.splice(c2C, 1);}
+	var c6C = allCards.indexOf(c2);
+		if(c6C >-1){allCards.splice(c6C, 1);}
+	var c7C = allCards.indexOf(c6);
+		if(c7C >-1){allCards.splice(c7C, 1);}
+	var z1C = allCards.indexOf(c7);
+		if(z1C >-1){allCards.splice(z1C, 1);}
+	var z2C = allCards.indexOf(z1);
+		if(z2C >-1){allCards.splice(z2C, 1);}
+	var z3C = allCards.indexOf(z2);
+		if(z3C >-1){allCards.splice(z3C, 1);}
+	var z4C = allCards.indexOf(z3);
+		if(z3C >-1){allCards.splice(z3C, 1);}
+	var z4= allCards[(Math.random()*allCards.length)|0];
 	document.getElementById('z4').innerHTML = cards.get(z4);
 	if(redCard1.includes(z4)){document.getElementById('z4').style.color='red';}
 	else if(redCard2.includes(z4)){document.getElementById('z4').style.color='red';}
@@ -246,7 +325,44 @@ function turn() {
 }
  
 function river() {
-	var z5 = Math.floor(Math.random()*52)+1;
+	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+			41,42,43,44,45,46,47,48,49,50,51,52];
+	var c1a = document.getElementById('c1').innerHTML;
+	var c1 = cardsF.get(c1a);
+	var c2a = document.getElementById('c2').innerHTML;
+	var c2 = cardsF.get(c2a);
+	var c6a = document.getElementById('c6').innerHTML;
+	var c6 = cardsF.get(c6a);
+	var c7a = document.getElementById('c7').innerHTML;
+	var c7 = cardsF.get(c7a);
+	var z1a = document.getElementById('z1').innerHTML;
+	var z1 = cardsF.get(z1a);
+	var z2a = document.getElementById('z2').innerHTML;
+	var z2 = cardsF.get(z2a);
+	var z3a = document.getElementById('z3').innerHTML;
+	var z3 = cardsF.get(z3a);
+	var z4a = document.getElementById('z4').innerHTML;
+	var z4 = cardsF.get(z4a);
+
+	var c2C = allCards.indexOf(c1);
+		if(c2C >-1){allCards.splice(c2C, 1);}
+	var c6C = allCards.indexOf(c2);
+		if(c6C >-1){allCards.splice(c6C, 1);}
+	var c7C = allCards.indexOf(c6);
+		if(c7C >-1){allCards.splice(c7C, 1);}
+	var z1C = allCards.indexOf(c7);
+		if(z1C >-1){allCards.splice(z1C, 1);}
+	var z2C = allCards.indexOf(z1);
+		if(z2C >-1){allCards.splice(z2C, 1);}
+	var z3C = allCards.indexOf(z2);
+		if(z3C >-1){allCards.splice(z3C, 1);}
+	var z4C = allCards.indexOf(z3);
+		if(z3C >-1){allCards.splice(z3C, 1);}
+	var z5C = allCards.indexOf(z4);
+		if(z5C >-1){allCards.splice(z5C, 1);}
+	var z5 = allCards[(Math.random()*allCards.length)|0];
+
 	document.getElementById('z5').innerHTML = cards.get(z5);
 	if(redCard1.includes(z5)){document.getElementById('z5').style.color='red';}
 	else if(redCard2.includes(z5)){document.getElementById('z5').style.color='red';}
