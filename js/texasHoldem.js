@@ -67,54 +67,90 @@ let checkHand = (hold, hand) => hand.every(v => hold.includes(v));
 
 let removeCard = (arr, value) => arr.indexOf(value)
 
-function a500() {
-		var aScore = document.getElementById('AScore').innerHTML;
-		var aNum = Number(aScore);
+function ar() {
+		var ac = document.getElementById('AC').innerHTML;
+		var aNum = Number(ac);
 		var pot = document.getElementById('pot').innerHTML;
 		var potNum = Number(pot);
-		var aToPot = potNum + 1000;	
-		var newScore = aNum - 1000;
-		document.getElementById('pot').innerHTML = aToPot;
-		document.getElementById('AScore').innerHTML = newScore;
+		var r = document.getElementById('AR').innerHTML;
+		var rNum = Number(r);
+		var Pot = potNum + 1;	
+		var coin = aNum - 1;
+		var R = rNum + 1;
+		document.getElementById('pot').innerHTML = Pot;
+		document.getElementById('AC').innerHTML = coin;
+		document.getElementById('AR').innerHTML = R;
+
+}
+
+function bc() {
+		var bc = document.getElementById('BC').innerHTML;
+		var bNum = Number(bc);
+		var pot = document.getElementById('pot').innerHTML;
+		var potNum = Number(pot);
+		var call = document.getElementById('AR').innerHTML;
+		var arNum = Number(call);
+		var Pot = potNum + arNum;	
+		var coin = bNum - arNum;
+		document.getElementById('pot').innerHTML = Pot;
+		document.getElementById('BC').innerHTML = coin;
+		document.getElementById('AR').innerHTML = 0;
 	
 }
 
-function b500() {
-		var bScore = document.getElementById('BScore').innerHTML;
-		var bNum = Number(bScore);
+function br() {
+		var bc = document.getElementById('BC').innerHTML;
+		var bNum = Number(bc);
 		var pot = document.getElementById('pot').innerHTML;
 		var potNum = Number(pot);
-		var bToPot = potNum * 2;	
-		var newScore = bNum - potNum;
-		document.getElementById('pot').innerHTML = bToPot;
-		document.getElementById('BScore').innerHTML = newScore;
+		var r = document.getElementById('BR').innerHTML;
+		var rNum = Number(r);
+		var Pot = potNum + 1;	
+		var coin = bNum - 1;
+		var R = rNum + 1;
+		document.getElementById('pot').innerHTML = Pot;
+		document.getElementById('BC').innerHTML = coin;
+		document.getElementById('BR').innerHTML = R;
+
+}
+
+function ac() {
+		var ac = document.getElementById('AC').innerHTML;
+		var aNum = Number(ac);
+		var pot = document.getElementById('pot').innerHTML;
+		var potNum = Number(pot);
+		var call = document.getElementById('BR').innerHTML;
+		var brNum = Number(call);
+		var Pot = potNum + brNum;	
+		var coin = aNum - brNum;
+		document.getElementById('pot').innerHTML = Pot;
+		document.getElementById('AC').innerHTML = coin;
+		document.getElementById('BR').innerHTML = 0;
 	
 }
+
 
 function aWin() {
-		var aScore = document.getElementById('AScore').innerHTML;
-		var aNum = Number(aScore);
+		var ac = document.getElementById('AC').innerHTML;
+		var aNum = Number(ac);
 		var pot = document.getElementById('pot').innerHTML;
 		var potNum = Number(pot);
-		var zeroPot = potNum - potNum;	
-		var newScore = aNum + potNum;
-		document.getElementById('pot').innerHTML = zeroPot;
-		document.getElementById('AScore').innerHTML = newScore;
+		var coin = aNum + potNum;
+		document.getElementById('pot').innerHTML = 0;
+		document.getElementById('AC').innerHTML = coin;
 	
 }
 
 function bWin() {
-		var bScore = document.getElementById('BScore').innerHTML;
-		var bNum = Number(bScore);
+		var bc = document.getElementById('BC').innerHTML;
+		var bNum = Number(bc);
 		var pot = document.getElementById('pot').innerHTML;
 		var potNum = Number(pot);
-		var zeroPot = potNum - potNum;	
-		var newScore = bNum + potNum;
-		document.getElementById('pot').innerHTML = zeroPot;
-		document.getElementById('BScore').innerHTML = newScore;
+		var coin = bNum + potNum;
+		document.getElementById('pot').innerHTML = 0;
+		document.getElementById('BC').innerHTML = coin;
 	
 }
-
 function start() {
 	document.getElementById('z1').innerHTML = '\u{1F0A0}';
 	document.getElementById('z1').style.color='blue';
@@ -841,8 +877,8 @@ function reload() {
 	document.getElementById('b6').innerHTML = cards.get(0);
 	document.getElementById('b7').innerHTML = cards.get(0);
 
-	document.getElementById('AScore').innerHTML = 0;
-	document.getElementById('BScore').innerHTML = 0;
+	document.getElementById('AC').innerHTML = 0;
+	document.getElementById('BC').innerHTML = 0;
 	document.getElementById('pot').innerHTML = 0;
 
 	document.getElementById('sf').innerHTML = cards.get(0);
