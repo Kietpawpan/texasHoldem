@@ -1,1 +1,135 @@
+<!Copyright (c) 2023 Montri Kiatphaophan All rights reserved.>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+<link href='https://fonts.googleapis.com/css?family=Orbitron'>
+
+</head>
+
+<body>
+
+
+
+<div id="showScroll" class="container">
+	<div class="receipt"><div class="logo">
+		<div class='companyName'>jTech</div>
+		<div class='slogan'>Texas Hold'em<br></div>
+
+		<button onclick='start()'>Play</button>
+		<button onclick='help()'>Help</button>
+		<button onclick='reload()'>Clear</button><br><br>
+		<button onclick='hole()'>Hole</button>
+		<button onclick='flop()'>Flop</button>
+		<button onclick='turn()'>Turn</button>
+		<button onclick='river()'>River</button>
+		<button onclick='check()'>Check</button><br><br>
+		<button onclick='ar()'>A-Raise</button>
+		<button onclick='bc()'>B-Call</button>
+		<button onclick='br()'>B-Raise</button>
+		<button onclick='ac()'>A-Call</button><br><br>
+
+	</div>
+		<div class="transactionDetails">
+
+		A:
+		<div class='transactionDetails' id='AC' style='font-size:14px'></div>
+		B:
+		<div class='transactionDetails' id='BC' style='font-size:14px'></div>
+
+		Pot: <div class='transactionDetails' id='pot'></div><br>
+		</div>	
+
+		<div class="transactionDetails">
+
+		A Raise:
+		<div class='transactionDetails' id='AR' style='font-size:14px'></div>
+		B Raise:
+		<div class='transactionDetails' id='BR' style='font-size:14px'></div>
+
+		</div>	
+	
+		<div class="transactionDetails" id='sf'></div>
+		<div class="transactionDetails">
+	
+			<div id='c1' type='text' style='font-size:80px'></div>
+			<div id='c2' type='text' style='font-size:80px'></div>
+			<div id='c3' type='text' style='font-size:80px'></div>
+			<div id='c4' type='text' style='font-size:80px'></div>
+			<div id='c5' type='text' style='font-size:80px'></div>
+
+		</div>
+		<div class="transactionDetails" id='fo'></div>
+		<div class="transactionDetails">
+			<div id='z1' type='text' style='font-size:80px'></div>
+			<div id='z2' type='text' style='font-size:80px'></div>
+			<div id='z3' style='font-size:80px'></div>
+			<div id='z4' style='font-size:80px'></div>
+			<div id='z5' style='font-size:80px'></div>
+		</div>
+
+		<div class="transactionDetails" id='full'></div>
+		<div class="transactionDetails">
+			<div id='c6' type='text' style='font-size:80px'></div>
+			<div id='c7' type='text' style='font-size:80px'></div>
+			<div id='c8' type='text' style='font-size:80px'></div>
+			<div id='c9' type='text' style='font-size:80px'></div>
+			<div id='c10' type='text' style='font-size:80px'></div>
+
+		</div>
+
+		<div class="transactionDetails" id='flush'></div>
+		<div class="transactionDetails">
+			<div id='a1' type='text' style='font-size:59px'></div>
+			<div id='a2' type='text' style='font-size:59px'></div>
+			<div id='a3' type='text' style='font-size:59px'></div>
+			<div id='a4' type='text' style='font-size:59px'></div>
+			<div id='a5' type='text' style='font-size:59px'></div>
+			<div id='a6' type='text' style='font-size:59px'></div>
+			<div id='a7' type='text' style='font-size:59px'></div>
+		</div>
+		<div class="transactionDetails">
+			<div id='a8' type='text' style='font-size:15px'></div>
+		</div>
+
+		<div class="transactionDetails" id='st'></div>
+		<div class="transactionDetails">
+			<div id='b1' type='text' style='font-size:59px'></div>
+			<div id='b2' type='text' style='font-size:59px'></div>
+			<div id='b3' type='text' style='font-size:59px'></div>
+			<div id='b4' type='text' style='font-size:59px'></div>
+			<div id='b5' type='text' style='font-size:59px'></div>
+			<div id='b6' type='text' style='font-size:59px'></div>
+			<div id='b7' type='text' style='font-size:59px'></div>
+		</div>
+		<div class="transactionDetails">
+			<div id='b8' type='text' style='font-size:15px'></div>
+		</div>
+
+		<button onclick='aWin()'>A Win</button>
+		<button onclick='bWin()'>B Win</button>
+		</div>
+
+	
+<p class="center">
+<br>
+
+		</div>
+
+		<div id="coupons" class="coupons">
+		</div>
+
+
+	</div>
+</div>
+
+<script src='js/texasHoldem.js'></script>
+
+</body>
+</html>
