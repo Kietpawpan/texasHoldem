@@ -255,23 +255,30 @@ function hole() {
 	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
 			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
 			41,42,43,44,45,46,47,48,49,50,51,52];
+
 	var c1 = Math.floor(Math.random()*52)+1;
 
-	var c2C = allCards.indexOf(c1);
-		if(c2C >-1){allCards.splice(c2C, 1);}
+	const openC1 = [c1, 0];
 
-	var c2= allCards[(Math.random()*allCards.length)|0];
+	const c2C = allCards.filter((value) => {
+		return !openC1.includes(value)})
 
-	var c6C = allCards.indexOf(c2);
-		if(c6C >-1){allCards.splice(c6C, 1);}
+	var c2= c2C[(Math.random()*c2C.length)|0];
 
-	var c6= allCards[(Math.random()*allCards.length)|0];
+	const openC2 = [c1, c2];
+
+	const c6C = allCards.filter((value) => {
+		return !openC2.includes(value)})
+
+	var c6 = c6C[(Math.random()*c6C.length)|0];
+
+	const openC6 = [c1, c2, c6];
+
+	const c7C = allCards.filter((value) => {
+		return !openC6.includes(value)})
+
+	var c7 = c7C[(Math.random()*c7C.length)|0];
 	
-	var c7C = allCards.indexOf(c6);
-		if(c7C >-1){allCards.splice(c7C, 1);}
-
-	var c7= allCards[(Math.random()*allCards.length)|0];
-
 	
 	document.getElementById('c1').innerHTML = cards.get(c1);
 	if(redCard1.includes(c1)){document.getElementById('c1').style.color='red';}
@@ -308,24 +315,26 @@ function flop() {
 	var c7a = document.getElementById('c7').innerHTML;
 	var c7 = cardsF.get(c7a);
 
-	var c2C = allCards.indexOf(c1);
-		if(c2C >-1){allCards.splice(c2C, 1);}
-	var c6C = allCards.indexOf(c2);
-		if(c6C >-1){allCards.splice(c6C, 1);}
-	var c7C = allCards.indexOf(c6);
-		if(c7C >-1){allCards.splice(c7C, 1);}
-	var z1C = allCards.indexOf(c7);
-		if(z1C >-1){allCards.splice(z1C, 1);}
+	const openC7 = [c1, c2, c6, c7];
 
-	var z1= allCards[(Math.random()*allCards.length)|0];
+	const z1C = allCards.filter((value) => {
+		return !openC7.includes(value)})
 
-	var z2C = allCards.indexOf(z1);
-		if(z2C >-1){allCards.splice(z2C, 1);}
-	var z2= allCards[(Math.random()*allCards.length)|0];
+	var z1 = z1C[(Math.random()*z1C.length)|0];
 
-	var z3C = allCards.indexOf(z2);
-		if(z3C >-1){allCards.splice(z3C, 1);}
-	var z3= allCards[(Math.random()*allCards.length)|0];
+	const openZ1 = [c1, c2, c6, c7, z1];
+
+	const z2C = allCards.filter((value) => {
+		return !openZ1.includes(value)})
+
+	var z2 = z2C[(Math.random()*z2C.length)|0];
+
+	const openZ2 = [c1, c2, c6, c7, z1, z2];
+
+	const z3C = allCards.filter((value) => {
+		return !openZ2.includes(value)})
+
+	var z3 = z3C[(Math.random()*z3C.length)|0];
 
 	document.getElementById('z1').innerHTML = cards.get(z1);
 	if(redCard1.includes(z1)){document.getElementById('z1').style.color='red';}
@@ -363,21 +372,13 @@ function turn() {
 	var z3a = document.getElementById('z3').innerHTML;
 	var z3 = cardsF.get(z3a);
 
-	var c2C = allCards.indexOf(c1);
-		if(c2C >-1){allCards.splice(c2C, 1);}
-	var c6C = allCards.indexOf(c2);
-		if(c6C >-1){allCards.splice(c6C, 1);}
-	var c7C = allCards.indexOf(c6);
-		if(c7C >-1){allCards.splice(c7C, 1);}
-	var z1C = allCards.indexOf(c7);
-		if(z1C >-1){allCards.splice(z1C, 1);}
-	var z2C = allCards.indexOf(z1);
-		if(z2C >-1){allCards.splice(z2C, 1);}
-	var z3C = allCards.indexOf(z2);
-		if(z3C >-1){allCards.splice(z3C, 1);}
-	var z4C = allCards.indexOf(z3);
-		if(z3C >-1){allCards.splice(z3C, 1);}
-	var z4= allCards[(Math.random()*allCards.length)|0];
+	const openZ3 = [c1, c2, c6, c7, z1, z2, z3];
+
+	const z4C = allCards.filter((value) => {
+		return !openZ3.includes(value)})
+
+	var z4 = z4C[(Math.random()*z4C.length)|0];
+
 	document.getElementById('z4').innerHTML = cards.get(z4);
 	if(redCard1.includes(z4)){document.getElementById('z4').style.color='red';}
 	else if(redCard2.includes(z4)){document.getElementById('z4').style.color='red';}
@@ -406,29 +407,17 @@ function river() {
 	var z4a = document.getElementById('z4').innerHTML;
 	var z4 = cardsF.get(z4a);
 
-	var c2C = allCards.indexOf(c1);
-		if(c2C >-1){allCards.splice(c2C, 1);}
-	var c6C = allCards.indexOf(c2);
-		if(c6C >-1){allCards.splice(c6C, 1);}
-	var c7C = allCards.indexOf(c6);
-		if(c7C >-1){allCards.splice(c7C, 1);}
-	var z1C = allCards.indexOf(c7);
-		if(z1C >-1){allCards.splice(z1C, 1);}
-	var z2C = allCards.indexOf(z1);
-		if(z2C >-1){allCards.splice(z2C, 1);}
-	var z3C = allCards.indexOf(z2);
-		if(z3C >-1){allCards.splice(z3C, 1);}
-	var z4C = allCards.indexOf(z3);
-		if(z3C >-1){allCards.splice(z3C, 1);}
-	var z5C = allCards.indexOf(z4);
-		if(z5C >-1){allCards.splice(z5C, 1);}
-	var z5 = allCards[(Math.random()*allCards.length)|0];
+	const openZ4 = [c1, c2, c6, c7, z1, z2, z3, z4];
+
+	const z5C = allCards.filter((value) => {
+		return !openZ4.includes(value)})
+
+	var z5 = z5C[(Math.random()*z5C.length)|0];
 
 	document.getElementById('z5').innerHTML = cards.get(z5);
 	if(redCard1.includes(z5)){document.getElementById('z5').style.color='red';}
 	else if(redCard2.includes(z5)){document.getElementById('z5').style.color='red';}
 	else{document.getElementById('z5').style.color='black';}
-
 
 }   
 
