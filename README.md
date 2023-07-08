@@ -22,7 +22,9 @@ We solved the following key problems:
 		[32,'\u{1F0D8}'],[36,'\u{1F0D9}'],[40,'\u{1F0DA}'],[44,'\u{1F0DB}'],[48,'\u{1F0DD}'],[52,'\u{1F0DE}'],[0,''],
 
 ]);
+
 ```
+
 5. Show the card in the div tag.
 6. Change the color of the card unicode.
 7. Remove each played card from the suit before the next round begins.
