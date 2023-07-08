@@ -528,13 +528,13 @@ function check() {
 		document.getElementById('a5').style.margin='10px 0px';}
 	else{;}
 
-	if(a4V==a5V && a4V==a6V){
+	if(a4V==a5V && a5V==a6V){
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
 		document.getElementById('a6').style.margin='10px 0px';}
 	else{;}
 
-	if(a5V==a5V && a6V==a7V){
+	if(a5V==a6V && a6V==a7V){
 		document.getElementById('a5').style.margin='10px 0px';
 		document.getElementById('a6').style.margin='10px 0px';
 		document.getElementById('a7').style.margin='10px 0px';}
@@ -831,13 +831,13 @@ function check() {
 		document.getElementById('b5').style.margin='10px 0px';}
 	else{;}
 
-	if(b4V==b5V && b4V==b6V){
+	if(b4V==b5V && b5V==b6V){
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';}
 	else{;}
 
-	if(b5V==b5V && b6V==b7V){
+	if(b5V==b6V && b6V==b7V){
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';
 		document.getElementById('b7').style.margin='10px 0px';}
