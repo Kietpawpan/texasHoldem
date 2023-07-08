@@ -215,6 +215,8 @@ function start() {
 	document.getElementById('a5').innerHTML = cards.get(0);
 	document.getElementById('a6').innerHTML = cards.get(0);
 	document.getElementById('a7').innerHTML = cards.get(0);
+	document.getElementById('a8').innerHTML = '';
+
 	document.getElementById('b1').innerHTML = cards.get(0);
 	document.getElementById('b2').innerHTML = cards.get(0);
 	document.getElementById('b3').innerHTML = cards.get(0);
@@ -222,6 +224,7 @@ function start() {
 	document.getElementById('b5').innerHTML = cards.get(0);
 	document.getElementById('b6').innerHTML = cards.get(0);
 	document.getElementById('b7').innerHTML = cards.get(0);
+	document.getElementById('b8').innerHTML = '';
 
 	document.getElementById('sf').innerHTML = cards.get(0);
 	document.getElementById('fo').innerHTML = cards.get(0);
@@ -536,7 +539,96 @@ function check() {
 		document.getElementById('a6').style.margin='10px 0px';
 		document.getElementById('a7').style.margin='10px 0px';}
 	else{;}
+//Full
+	if(a2V==a3V && a4V==a5V && a4V==a6V){
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
 
+	if(a2V==a3V && a3V==a4V && a5V==a6V){
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
+
+	if(a3V==a4V && a5V==a6V && a5V==a7V){
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+		document.getElementById('a7').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
+
+	if(a3V==a4V && a3V==a5V && a6V==a7V){
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+		document.getElementById('a7').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
+
+	if(a1V==a2V && a5V==a6V && a6V==a7V){
+		document.getElementById('a1').style.margin='10px 0px';
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+		document.getElementById('a7').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
+
+	if(a1V==a2V && a4V==a5V && a5V==a6V){
+		document.getElementById('a1').style.margin='10px 0px';
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
+
+	if(a1V==a2V && a3V==a4V && a4V==a5V){
+		document.getElementById('a1').style.margin='10px 0px';
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
+
+	if(a1V==a2V && a2V==a3V && a5V==a6V){
+		document.getElementById('a1').style.margin='10px 0px';
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
+
+	if(a1V==a2V && a2V==a3V && a4V==a5V){
+		document.getElementById('a1').style.margin='10px 0px';
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
+
+	if(a1V==a2V && a2V==a3V && a6V==a7V){
+		document.getElementById('a1').style.margin='10px 0px';
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+		document.getElementById('a7').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='Full House!';}
+	else{;}
 
 //Four
 	if(a1V==a2V && a2V==a3V && a3V==a4V){
@@ -749,6 +841,98 @@ function check() {
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';
 		document.getElementById('b7').style.margin='10px 0px';}
+	else{;}
+
+//Full
+	if(b2V==b3V && b4V==b5V && b4V==b6V){
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
+	else{;}
+
+	if(b2V==bb3V && b3V==b4V && b5V==b6V){
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
+	else{;}
+
+
+	if(b3V==b4V && b5V==b6V && b5V==b7V){
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+		document.getElementById('b7').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
+	else{;}
+
+	if(b3V==b4V && b3V==b5V && b6V==b7V){
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+		document.getElementById('b7').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
+	else{;}
+
+	if(b1V==b2V && b5V==b6V && b6V==b7V){
+		document.getElementById('b1').style.margin='10px 0px';
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+		document.getElementById('b7').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
+	else{;}
+
+	if(b1V==b2V && b4V==b5V && b5V==b6V){
+		document.getElementById('b1').style.margin='10px 0px';
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
+	else{;}
+
+	if(b1V==b2V && b3V==b4V && b4V==b5V){
+		document.getElementById('b1').style.margin='10px 0px';
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
+	else{;}
+
+	if(b1V==b2V && b2V==b3V && b5V==b6V){
+		document.getElementById('b1').style.margin='10px 0px';
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
+	else{;}
+
+	if(b1V==b2V && b2V==b3V && b4V==b5V){
+		document.getElementById('b1').style.margin='10px 0px';
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
+	else{;}
+
+	if(b1V==b2V && b2V==b3V && b6V==b7V){
+		document.getElementById('b1').style.margin='10px 0px';
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+		document.getElementById('b7').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full House!';}
 	else{;}
 
 //Four
@@ -974,6 +1158,7 @@ function reload() {
 	document.getElementById('a5').innerHTML = cards.get(0);
 	document.getElementById('a6').innerHTML = cards.get(0);
 	document.getElementById('a7').innerHTML = cards.get(0);
+	document.getElementById('a8').innerHTML = '';
 
 	document.getElementById('b1').innerHTML = cards.get(0);
 	document.getElementById('b2').innerHTML = cards.get(0);
@@ -982,6 +1167,7 @@ function reload() {
 	document.getElementById('b5').innerHTML = cards.get(0);
 	document.getElementById('b6').innerHTML = cards.get(0);
 	document.getElementById('b7').innerHTML = cards.get(0);
+	document.getElementById('b8').innerHTML = '';
 
 	document.getElementById('AC').innerHTML = 0;
 	document.getElementById('BC').innerHTML = 0;
