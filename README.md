@@ -10,3 +10,5 @@ In Texas Hold'em, we know the rules of the game.
 4. Other five cards are community cards: three flops, the turn, and the river.
 5. Poker hands of each player are the best combinations of the five cards selected from each player's hole cards and the community cards.
 6. The higher hand beats the lower one.
+
+Fisrt, we need play the game on a table. Each card is placed in <div id='card name'>
