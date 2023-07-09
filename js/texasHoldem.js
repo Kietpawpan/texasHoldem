@@ -275,6 +275,8 @@ function river() {
 	document.getElementById('b7').style.margin='0px 0px';
 	document.getElementById('a8').innerHTML = '';
 	document.getElementById('b8').innerHTML = '';
+	document.getElementById('a8').style.color='black';
+	document.getElementById('b8').style.color='black';
 
 	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
 			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
@@ -680,6 +682,30 @@ function river() {
 		document.getElementById('a7').style.color='green';
 		document.getElementById('a8').innerHTML='Straight!';
 		sHanda='y';}
+	else{;}
+
+	if(a1V==a2V-1 && a2V==a3V-1 && a3V==a4V-1 && a4V==a5V-1){
+		document.getElementById('a1').style.margin='10px 0px';
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';}
+	else{;}
+
+	if(a2V==a3V-1 && a3V==a4V-1 && a4V==a5V-1 && a5V==a6V-1){
+		document.getElementById('a2').style.margin='10px 0px';
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';}
+	else{;}
+
+	if(a3V==a4V-1 && a4V==a5V-1 && a5V==a6V-1 && a6V==a7V-1){
+		document.getElementById('a3').style.margin='10px 0px';
+		document.getElementById('a4').style.margin='10px 0px';
+		document.getElementById('a5').style.margin='10px 0px';
+		document.getElementById('a6').style.margin='10px 0px';
+		document.getElementById('a7').style.margin='10px 0px';}
 	else{;}
 
 //Flush Check, to count the number of cards from any same suit.
@@ -1104,6 +1130,29 @@ function river() {
 		sHandb='y';}	
 	else{;}
 	
+	if(b1V==b2V-1 && b2V==b3V-1 && b3V==b4V-1 && b4V==b5V-1){
+		document.getElementById('b1').style.margin='10px 0px';
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';}
+	else{;}
+
+	if(b2V==b3V-1 && b3V==b4V-1 && b4V==b5V-1 && b5V==b6V-1){
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';}
+	else{;}
+
+	if(b3V==b4V-1 && b4V==b5V-1 && b5V==b6V-1 && b6V==b7V-1){
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b4').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+		document.getElementById('b7').style.margin='10px 0px';}
+	else{;}
 
 	var fHandb ='';
 	let bFlush = [flush.get(holdB[0]),flush.get(holdB[1]),flush.get(holdB[2]),
@@ -1171,6 +1220,8 @@ function help() {
 }
  
 function reload() {
+	document.getElementById('a8').style.color='black';
+	document.getElementById('b8').style.color='black';
 	document.getElementById('z1').innerHTML = '\u{1F0A0}';
 	document.getElementById('z1').style.color='blue';
 	document.getElementById('z2').innerHTML = '\u{1F0A0}';
