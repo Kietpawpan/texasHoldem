@@ -748,6 +748,99 @@ function river() {
 		fHanda='y';}
 		else{;}
 
+//Show flush cards
+	if(aFlushCheckA > 4 && a1F=='A'){
+		document.getElementById('a1').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckB > 4 && a1F=='B'){
+		document.getElementById('a1').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckC > 4 && a1F=='C'){
+		document.getElementById('a1').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckD > 4 && a1F=='D'){
+		document.getElementById('a1').style.margin='10px 0px';}
+	else{;}	
+
+	if(aFlushCheckA > 4 && a2F=='A'){
+		document.getElementById('a2').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckB > 4 && a2F=='B'){
+		document.getElementById('a2').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckC > 4 && a2F=='C'){
+		document.getElementById('a2').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckD > 4 && a2F=='D'){
+		document.getElementById('a2').style.margin='10px 0px';}
+	else{;}	
+
+	if(aFlushCheckA > 4 && a3F=='A'){
+		document.getElementById('a3').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckB > 4 && a3F=='B'){
+		document.getElementById('a3').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckC > 4 && a3F=='C'){
+		document.getElementById('a3').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckD > 4 && a3F=='D'){
+		document.getElementById('a3').style.margin='10px 0px';}
+
+	else{;}	
+	if(aFlushCheckA > 4 && a4F=='A'){
+		document.getElementById('a4').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckB > 4 && a4F=='B'){
+		document.getElementById('a4').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckC > 4 && a4F=='C'){
+		document.getElementById('a4').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckD > 4 && a4F=='D'){
+		document.getElementById('a4').style.margin='10px 0px';}
+	else{;}	
+
+	if(aFlushCheckA > 4 && a5F=='A'){
+		document.getElementById('a5').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckB > 4 && a5F=='B'){
+		document.getElementById('a5').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckC > 4 && a5F=='C'){
+		document.getElementById('a5').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckD > 4 && a5F=='D'){
+		document.getElementById('a5').style.margin='10px 0px';}
+	else{;}	
+
+	if(aFlushCheckA > 4 && a6F=='A'){
+		document.getElementById('a6').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckB > 4 && a6F=='B'){
+		document.getElementById('a6').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckC > 4 && a6F=='C'){
+		document.getElementById('a6').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckD > 4 && a6F=='D'){
+		document.getElementById('a6').style.margin='10px 0px';}
+	else{;}	
+
+
+	if(aFlushCheckA > 4 && a7F=='A'){
+		document.getElementById('a7').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckB > 4 && a7F=='B'){
+		document.getElementById('a7').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckC > 4 && a7F=='C'){
+		document.getElementById('a7').style.margin='10px 0px';}
+	else{;}	
+	if(aFlushCheckD > 4 && a7F=='D'){
+		document.getElementById('a7').style.margin='10px 0px';}
+	else{;}	
+
 //Straight Flush Check
 	var a1to5S='';
 	var a1to5F='';
@@ -1264,6 +1357,100 @@ function river() {
 		fHandb='y';}
 		else{;}
 
+//Show flush cards
+	if(bFlushCheckA > 4 && b1F=='A'){
+		document.getElementById('b1').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckB > 4 && b1F=='B'){
+		document.getElementById('b1').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckC > 4 && b1F=='C'){
+		document.getElementById('b1').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckD > 4 && b1F=='D'){
+		document.getElementById('b1').style.margin='10px 0px';}
+	else{;}	
+
+	if(bFlushCheckA > 4 && b2F=='A'){
+		document.getElementById('b2').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckB > 4 && b2F=='B'){
+		document.getElementById('b2').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckC > 4 && b2F=='C'){
+		document.getElementById('b2').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckD > 4 && b2F=='D'){
+		document.getElementById('b2').style.margin='10px 0px';}
+	else{;}	
+
+	if(bFlushCheckA > 4 && b3F=='A'){
+		document.getElementById('b3').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckB > 4 && b3F=='B'){
+		document.getElementById('b3').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckC > 4 && b3F=='C'){
+		document.getElementById('b3').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckD > 4 && b3F=='D'){
+		document.getElementById('b3').style.margin='10px 0px';}
+
+	else{;}	
+	if(bFlushCheckA > 4 && b4F=='A'){
+		document.getElementById('b4').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckB > 4 && b4F=='B'){
+		document.getElementById('b4').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckC > 4 && b4F=='C'){
+		document.getElementById('b4').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckD > 4 && b4F=='D'){
+		document.getElementById('b4').style.margin='10px 0px';}
+	else{;}	
+
+	if(bFlushCheckA > 4 && b5F=='A'){
+		document.getElementById('b5').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckB > 4 && b5F=='B'){
+		document.getElementById('b5').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckC > 4 && b5F=='C'){
+		document.getElementById('b5').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckD > 4 && b5F=='D'){
+		document.getElementById('b5').style.margin='10px 0px';}
+	else{;}	
+
+	if(bFlushCheckA > 4 && b6F=='A'){
+		document.getElementById('b6').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckB > 4 && b6F=='B'){
+		document.getElementById('b6').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckC > 4 && b6F=='C'){
+		document.getElementById('b6').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckD > 4 && b6F=='D'){
+		document.getElementById('b6').style.margin='10px 0px';}
+	else{;}	
+
+
+	if(bFlushCheckA > 4 && b7F=='A'){
+		document.getElementById('b7').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckB > 4 && b7F=='B'){
+		document.getElementById('b7').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckC > 4 && b7F=='C'){
+		document.getElementById('b7').style.margin='10px 0px';}
+	else{;}	
+	if(bFlushCheckD > 4 && b7F=='D'){
+		document.getElementById('b7').style.margin='10px 0px';}
+	else{;}	
+
+
 //Straight Flush Check
 	var b1to5S='';
 	var b1to5F='';
@@ -1427,4 +1614,3 @@ function reload() {
 	document.getElementById('b7').style.margin='0px 0px';
 
 }
-
