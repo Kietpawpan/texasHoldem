@@ -409,6 +409,9 @@ function river() {
 	   	document.getElementById('a8').innerHTML ='Two pair!';}
 	else{;}
 
+	if(a2V==a3V && a5V==a6V){
+	   	document.getElementById('a8').innerHTML ='Two pair!';}
+	else{;}
 
 //Three of a kind
 	if(a1V==a2V && a2V==a3V){
@@ -806,6 +809,11 @@ function river() {
 	if(b3V==b4V && b5V==b6V){
 	   	document.getElementById('b8').innerHTML ='Two pair!';}
 	else{;}
+
+	if(b2V==b3V && b5V==b6V){
+	   	document.getElementById('b8').innerHTML ='Two pair!';}
+	else{;}
+
 
 //Three
 	if(b1V==b2V && b2V==b3V){
