@@ -277,6 +277,8 @@ function river() {
 	document.getElementById('b8').innerHTML = '';
 	document.getElementById('a8').style.color='black';
 	document.getElementById('b8').style.color='black';
+	document.getElementById('a9').innerHTML = '';
+	document.getElementById('b9').innerHTML = '';
 
 	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
 			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
@@ -1538,7 +1540,25 @@ function river() {
 		document.getElementById('b8').style.color='blue';}
 	else{;}
 
-
+	var handOfA = document.getElementById('a8').innerHTML;
+	var handOfB = document.getElementById('b8').innerHTML;
+	var winner='';
+	if(handOfA=='Straight flush!' && handOfB!=='Straight flush!'){
+		document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='Four of a kind!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!'){
+		document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='Full house!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!'){
+		document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='Flush!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!'){document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='Straight!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!' && handOfB!=='Straight!'){document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='Three of a kind!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!' && handOfB!=='Straight!' && handOfB!=='Three of a kind!'){document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='Two pair!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!' && handOfB!=='Straight!' && handOfB!=='Three of a kind!' && handOfB!=='Two pair!'){document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='One pair!' && handOfB=='High card!'){document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='High card!' && handOfB=='High card!' && b1V!==1 && a7V > b7V){document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='High card!' && handOfB=='High card!' && a1V==1 && b1V!==1){document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='High card!' && handOfB=='High card!' && a1V==1 && b1V==1){document.getElementById('a9').innerHTML='';}
+	else if(handOfA==handOfB){document.getElementById('b9').innerHTML='Check';}
+	else{document.getElementById('b9').innerHTML='Win';}
 }
 
 function help() {
@@ -1546,6 +1566,8 @@ function help() {
 }
  
 function reload() {
+	document.getElementById('a9').innerHTML = '';
+	document.getElementById('b9').innerHTML = '';
 	document.getElementById('a8').style.color='black';
 	document.getElementById('b8').style.color='black';
 	document.getElementById('z1').innerHTML = '\u{1F0A0}';
