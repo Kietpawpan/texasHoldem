@@ -2,7 +2,28 @@
  * cards.js v1.0.1 | All rights reserved.
 */
 
-//Create a set of 52 playing cards, with the ID numbers of 1 to 52 and the associated card suits of Spades, Hearts, Diamonds, and Clubs.
+/*
+Let's have 52 playing cards, with the ID numbers from 1 to 52,
+and the relative card suits of Spades, Hearts, Diamonds, and Clubs.
+The ID numbers are given as follows:
+
+Suit 		A B C D (A:Spades, B:Hearts, C: Diamonds, and D: Clubs)
+Card ID No. 	1 2 3 4
+		5 6 7 8
+		9 10 11 12 
+		13 14 15 16
+		17 18 19 20
+		21 22 23 24
+		25 26 27 28
+		29 30 31 32
+		33 34 35 36
+		37 38 39 40
+		41 42 43 44 
+		45 46 47 48
+		49 50 51 51
+
+*/
+
 const cards = new Map([ 
 		[1,'\u{1F0A1}'],[5,'\u{1F0A2}'],[9,'\u{1F0A3}'],[13,'\u{1F0A4}'],[17,'\u{1F0A5}'],[21,'\u{1F0A6}'],[25,'\u{1F0A7}'],
 		[29,'\u{1F0A8}'],[33,'\u{1F0A9}'],[37,'\u{1F0AA}'],[41,'\u{1F0AB}'],[45,'\u{1F0AD}'],[49,'\u{1F0AE}'],
@@ -18,7 +39,7 @@ const cards = new Map([
 
 ]);
 
-//Let all card ID numbers have their card values (1 - 13).
+// All the card ID numbers have their values from 1 to 13 according to the face for each suit.
 const cardsV = new Map([ 
 		[1,1],[5,2],[9,3],[13,4],[17,5],[21,6],[25,7],
 		[29,8],[33,9],[37,10],[41,11],[45,12],[49,13],
@@ -34,7 +55,7 @@ const cardsV = new Map([
 
 ]);
 
-//Let all card unicodes have their ID numbers
+//Let all card unicodes have their ID numbers.
 const cardsF = new Map([ 
 		['\u{1F0A1}',1],['\u{1F0A2}',5],['\u{1F0A3}',9],['\u{1F0A4}',13],['\u{1F0A5}',17],['\u{1F0A6}',21],['\u{1F0A7}',25],
 		['\u{1F0A8}',29],['\u{1F0A9}',33],['\u{1F0AA}',37],['\u{1F0AB}',41],['\u{1F0AD}',45],['\u{1F0AE}',49],
@@ -49,11 +70,11 @@ const cardsF = new Map([
 		['\u{1F0D8}',32],['\u{1F0D9}',36],['\u{1F0DA}',40],['\u{1F0DB}',44],['\u{1F0DD}',48],['\u{1F0DE}',52],
 ]);
 
-
+//Classify the red cards, based on the ID No.
 const redCard1 = [2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50];
 const redCard2 = [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51];
 
-//Set of staright hands
+//Staright hands.
 let sF1 = [1, 10, 11, 12, 13];
 let sF2 = [1, 2, 3, 4, 5];
 let sF3 = [2, 3, 4, 5, 6];
@@ -66,6 +87,7 @@ let sF9 = [8, 9, 10, 11, 12];
 let sF10 = [9, 10, 11, 12, 13];
 
 //Flush hands
+
 const flush = new Map([ 
 		[1,'A'],[5,'A'],[9,'A'],[13,'A'],[17,'A'],[21,'A'],[25,'A'],
 		[29,'A'],[33,'A'],[37,'A'],[41,'A'],[45,'A'],[49,'A'],
@@ -82,38 +104,54 @@ const flush = new Map([
 ]);
 
 
-//Check if each hand is in the hold cards
+//Check if each hand is in the hold cards, or see if array A is a subset of array B.
+// hold is parent array. hand is child array.
+
 let checkHand = (hold, hand) => hand.every(v => hold.includes(v));
 
+
 function hole() {
+
+//All possible card numbers in the four suits.
 
 	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
 			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
 			41,42,43,44,45,46,47,48,49,50,51,52];
 
+//Randomly select the first hole card for player A, the output is an interger between 1 and 52.
+
 	var c1 = Math.floor(Math.random()*52)+1;
 
-	const openC1 = [c1, 0];
+//Create the array of opened cards after playing the first hole card.
 
-	const c2C = allCards.filter((value) => {
-		return !openC1.includes(value)})
+	const openC1 = [c1];
 
-	var c2= c2C[(Math.random()*c2C.length)|0];
-
-	const openC2 = [c1, c2];
+//Remove the opened card (in openC1) from the original card suits (allCards).
 
 	const c6C = allCards.filter((value) => {
-		return !openC2.includes(value)})
+		return !openC1.includes(value)})
 
-	var c6 = c6C[(Math.random()*c6C.length)|0];
+//Randomly select the first hole card for player B.
 
-	const openC6 = [c1, c2, c6];
+	var c6= c6C[(Math.random()*c6C.length)|0];
 
-	const c7C = allCards.filter((value) => {
+//Create the array of opened cards after playing the second hole card.
+
+	const openC6 = [c1, c6];
+
+	const c2C = allCards.filter((value) => {
 		return !openC6.includes(value)})
 
+	var c2 = c2C[(Math.random()*c2C.length)|0];
+
+	const openC2 = [c1, c6, c2];
+
+	const c7C = allCards.filter((value) => {
+		return !openC2.includes(value)})
+
 	var c7 = c7C[(Math.random()*c7C.length)|0];
-	
+
+//Show the red cards (if any)
 	document.getElementById('c1').innerHTML = cards.get(c1);
 	if(redCard1.includes(c1)){document.getElementById('c1').style.color='red';}
 	else if(redCard2.includes(c1)){document.getElementById('c1').style.color='red';}
@@ -253,7 +291,7 @@ function river() {
 	else if(redCard2.includes(z5)){document.getElementById('z5').style.color='red';}
 	else{document.getElementById('z5').style.color='black';}
 
-//Hold the hole cards and the community cards.
+//Combine the hole cards with the community cards.
 	var hold0a =[c1, c2, z1, z2, z3, z4, z5];
 	var hold0b =[c6, c7, z1, z2, z3, z4, z5];
 
@@ -261,6 +299,7 @@ function river() {
 	const holdA = hold0a.sort(function(a, b){return a - b});
 	const holdB = hold0b.sort(function(a, b){return a - b});
 
+//Get the card values
 	var a1V = cardsV.get(holdA[0]);
 	var a2V = cardsV.get(holdA[1]);
 	var a3V = cardsV.get(holdA[2]);
@@ -268,83 +307,124 @@ function river() {
 	var a5V = cardsV.get(holdA[4]);
 	var a6V = cardsV.get(holdA[5]);
 	var a7V = cardsV.get(holdA[6]);
+
+//Arrange the cards from A, 2, 3,..., J, Q, K
 	var holdAV =[a1V, a2V, a3V, a4V, a5V, a6V, a7V];
 
 
-//Show the card faces
-	document.getElementById('a1').innerHTML = cards.get(holdA[0]);
-	if(redCard1.includes(holdA[0])){document.getElementById('a1').style.color='red';}
-	else if(redCard2.includes(holdA[0])){document.getElementById('a1').style.color='red';}
-	else{document.getElementById('a1').style.color='black';}
+//Shift the cards down for 10px if the values are identical.
 
-
+//Pair
 	if(a1V==a2V){
 		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';}
+		document.getElementById('a2').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='One pair!';}
 	else{;}
 
 	if(a2V==a3V){
 		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';}
+		document.getElementById('a3').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='One pair!';}
 	else{;}
 
 	if(a3V==a4V){
 		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';}
+		document.getElementById('a4').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='One pair!';}
 	else{;}
 
 	if(a4V==a5V){
 		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';}
+		document.getElementById('a5').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='One pair!';}
 	else{;}
 
 	if(a5V==a6V){
 		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';}
+		document.getElementById('a6').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='One pair!';}
 	else{;}
 
 	if(a6V==a7V){
 		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';}
+		document.getElementById('a7').style.margin='10px 0px';
+	   	document.getElementById('a8').innerHTML ='One pair!';}
 	else{;}
 
-//Three
+//Two pairs
+	if(a1V==a2V && a3V==a4V){
+	   	document.getElementById('a8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(a1V==a2V && a4V==a5V){
+	   	document.getElementById('a8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(a1V==a2V && a5V==a6V){
+	   	document.getElementById('a8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(a1V==a2V && a6V==a7V){
+	   	document.getElementById('a8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(a4V==a5V && a6V==a7V){
+	   	document.getElementById('a8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(a3V==a4V && a6V==a7V){
+	   	document.getElementById('a8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(a2V==a3V && a6V==a7V){
+	   	document.getElementById('a8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(a2V==a3V && a4V==a5V){
+	   	document.getElementById('a8').innerHTML ='Two pair!';}
+	else{;}
+
+
+
+//Three of a kind
 	if(a1V==a2V && a2V==a3V){
 		document.getElementById('a1').style.margin='10px 0px';
 		document.getElementById('a2').style.margin='10px 0px';
 		document.getElementById('a3').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
 	else{;}
 
 	if(a2V==a3V && a3V==a4V){
 		document.getElementById('a2').style.margin='10px 0px';
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
 	else{;}
 
 	if(a3V==a4V && a4V==a5V){
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
 	else{;}
 
 	if(a4V==a5V && a5V==a6V){
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
 		document.getElementById('a6').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
 	else{;}
 
 	if(a5V==a6V && a6V==a7V){
 		document.getElementById('a5').style.margin='10px 0px';
 		document.getElementById('a6').style.margin='10px 0px';
 		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
 	else{;}
-//Full
-	if(a2V==a3V && a4V==a5V && a4V==a6V){
+
+//Full House
+
+	if(a2V==a3V && a4V==a5V && a5V==a6V){
 		document.getElementById('a2').style.margin='10px 0px';
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
@@ -362,7 +442,7 @@ function river() {
 	   	document.getElementById('a8').innerHTML ='Full House!';}
 	else{;}
 
-	if(a3V==a4V && a5V==a6V && a5V==a7V){
+	if(a3V==a4V && a5V==a6V && a6V==a7V){
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
@@ -371,7 +451,7 @@ function river() {
 	   	document.getElementById('a8').innerHTML ='Full House!';}
 	else{;}
 
-	if(a3V==a4V && a3V==a5V && a6V==a7V){
+	if(a3V==a4V && a4V==a5V && a6V==a7V){
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
@@ -434,13 +514,13 @@ function river() {
 	   	document.getElementById('a8').innerHTML ='Full House!';}
 	else{;}
 
-//Four
+//Four of a kind
 	if(a1V==a2V && a2V==a3V && a3V==a4V){
 		document.getElementById('a1').style.margin='10px 0px';
 		document.getElementById('a2').style.margin='10px 0px';
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Four of Kind!';}
+	   	document.getElementById('a8').innerHTML ='Four of a kind!';}
 	else{;}
 
 	if(a2V==a3V && a3V==a4V && a4V==a5V){
@@ -448,7 +528,7 @@ function river() {
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Four of Kind!';}
+	   	document.getElementById('a8').innerHTML ='Four of a kind!';}
 	else{;}
 
 	if(a3V==a4V && a4V==a5V && a5V==a6V){
@@ -456,7 +536,7 @@ function river() {
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
 		document.getElementById('a6').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Four of Kind!';}
+	   	document.getElementById('a8').innerHTML ='Four of a kind!';}
 	else{;}
 
 	if(a4V==a5V && a5V==a6V && a6V==a7V){
@@ -464,8 +544,15 @@ function river() {
 		document.getElementById('a5').style.margin='10px 0px';
 		document.getElementById('a6').style.margin='10px 0px';
 		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Four of Kind!';}
+	   	document.getElementById('a8').innerHTML ='Four of a kind!';}
 	else{;}
+
+//Show red cards (if any)
+	document.getElementById('a1').innerHTML = cards.get(holdA[0]);
+	if(redCard1.includes(holdA[0])){document.getElementById('a1').style.color='red';}
+	else if(redCard2.includes(holdA[0])){document.getElementById('a1').style.color='red';}
+	else{document.getElementById('a1').style.color='black';}
+
 
 	document.getElementById('a2').innerHTML = cards.get(holdA[1]);
 	if(redCard1.includes(holdA[1])){document.getElementById('a2').style.color='red';}
@@ -532,7 +619,7 @@ function river() {
 	else if(redCard2.includes(holdB[6])){document.getElementById('b7').style.color='red';}
 	else{document.getElementById('b7').style.color='black';}
 
-//Straight Check
+//Straight Check, to see if straight hand is the subset of the hold cards pf player A.
 	let sHanda='';
         if(checkHand(holdAV, sF1)==true || checkHand(holdAV, sF2)==true ||
 	checkHand(holdAV, sF3)==true || checkHand(holdAV, sF4)==true ||
@@ -550,7 +637,7 @@ function river() {
 		sHanda='y';}
 	else{;}
 
-//Flush Check
+//Flush Check, to count the number of cards from any same suit.
 	let fHanda ='';
 	let aFlush = [flush.get(holdA[0]),flush.get(holdA[1]),flush.get(holdA[2]),flush.get(holdA[3]),flush.get(holdA[4]),flush.get(holdA[5]), flush.get(holdA[6])];
 	let aFlushCheckA = aFlush.filter(x => x == 'A').length;
@@ -590,50 +677,89 @@ function river() {
 	else if(redCard2.includes(holdB[0])){document.getElementById('b1').style.color='red';}
 	else{document.getElementById('b1').style.color='black';}
 
-
 	if(b1V==b2V){
 		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';}
+		document.getElementById('b2').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='One pair!';}
 	else{;}
 
 	if(b2V==b3V){
 		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';}
+		document.getElementById('b3').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='One pair!';}
 	else{;}
 
 	if(b3V==b4V){
 		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';}
+		document.getElementById('b4').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='One pair!';}
 	else{;}
 
 	if(b4V==b5V){
 		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';}
+		document.getElementById('b5').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='One pair!';}
 	else{;}
 
 	if(b5V==b6V){
 		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';}
+		document.getElementById('b6').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='One pair!';}
 	else{;}
 
 	if(b6V==b7V){
 		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';}
+		document.getElementById('b7').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='One pair!';}
 	else{;}
+
+//Two pairs
+	if(b1V==b2V && b3V==b4V){
+	   	document.getElementById('b8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(b1V==b2V && b4V==b5V){
+	   	document.getElementById('b8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(b1V==b2V && b5V==b6V){
+	   	document.getElementById('b8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(b1V==b2V && b6V==b7V){
+	   	document.getElementById('b8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(b4V==b5V && b6V==b7V){
+	   	document.getElementById('b8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(b3V==b4V && b6V==b7V){
+	   	document.getElementById('b8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(b2V==b3V && b6V==b7V){
+	   	document.getElementById('b8').innerHTML ='Two pair!';}
+	else{;}
+
+	if(b2V==b3V && b4V==b5V){
+	   	document.getElementById('b8').innerHTML ='Two pair!';}
+	else{;}
+
 
 //Three
 	if(b1V==b2V && b2V==b3V){
 		document.getElementById('b1').style.margin='10px 0px';
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
 	else{;}
 
 	if(b2V==b3V && b3V==b4V){
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
 
 	else{;}
 
@@ -641,21 +767,21 @@ function river() {
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
 	else{;}
 
 	if(b4V==b5V && b5V==b6V){
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
 	else{;}
 
 	if(b5V==b6V && b6V==b7V){
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';
 		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of Kind!';}
+	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
 	else{;}
 
 //Full
@@ -756,7 +882,7 @@ function river() {
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Four of Kind!';}
+	   	document.getElementById('b8').innerHTML ='Four of a kind!';}
 	else{;}
 
 	if(b2V==b3V && b3V==b4V && b4V==b5V){
@@ -764,7 +890,7 @@ function river() {
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Four of Kind!';}
+	   	document.getElementById('b8').innerHTML ='Four of a kind!';}
 	else{;}
 
 	if(b3V==b4V && b4V==b5V && b5V==b6V){
@@ -772,7 +898,7 @@ function river() {
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Four of Kind!';}
+	   	document.getElementById('b8').innerHTML ='Four of a kind!';}
 	else{;}
 
 	if(b4V==b5V && b5V==b6V && b6V==b7V){
@@ -780,7 +906,7 @@ function river() {
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';
 		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Four of Kind!';}
+	   	document.getElementById('b8').innerHTML ='Four of a kind!';}
 	else{;}
 
 	document.getElementById('b2').innerHTML = cards.get(holdB[1]);
@@ -888,10 +1014,20 @@ function river() {
 	document.getElementById('b8').innerHTML='Straight Flush!';}
 	else{;}
 
+	if(document.getElementById('b8').innerHTML=='' && b1V==1){
+	document.getElementById('b8').innerHTML='High card!';
+	document.getElementById('b1').style.margin='10px 0px';}
+	else{;}
+
+	if(document.getElementById('b8').innerHTML=='' && b1V!==1){
+	document.getElementById('b8').innerHTML='High card!';
+	document.getElementById('b7').style.margin='10px 0px';}
+	else{;}
+
 }
 
 function help() {
-	alert('Straight Flush > Four of Kind >  Full House > Flush > Straight > Three of Kind > Two Pairs > Pair > High Card');
+	alert('Straight Flush > Four of a kind >  Full House > Flush > Straight > Three of a kind > Two Pairs > Pair > High Card');
 }
  
 function reload() {
