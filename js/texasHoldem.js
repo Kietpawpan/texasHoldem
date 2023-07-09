@@ -1542,7 +1542,7 @@ function river() {
 }
 
 function help() {
-	alert('Straight Flush > Four of a kind >  Full house > Flush > Straight > Three of a kind > Two Pairs > Pair > High Card');
+	alert('Straight flush > Four of a kind >  Full house > Flush > Straight > Three of a kind > Two pair > One pair > High card');
 }
  
 function reload() {
