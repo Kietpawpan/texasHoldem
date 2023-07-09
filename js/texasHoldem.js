@@ -710,6 +710,7 @@ function river() {
 	else{;}
 
 	if(a2V==a3V-1 && a3V==a4V-1 && a4V==a5V-1 && a5V==a6V-1){
+		document.getElementById('a1').style.margin='0px 0px';
 		document.getElementById('a2').style.margin='10px 0px';
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
@@ -718,6 +719,8 @@ function river() {
 	else{;}
 
 	if(a3V==a4V-1 && a4V==a5V-1 && a5V==a6V-1 && a6V==a7V-1){
+		document.getElementById('a1').style.margin='0px 0px';
+		document.getElementById('a2').style.margin='0px 0px';
 		document.getElementById('a3').style.margin='10px 0px';
 		document.getElementById('a4').style.margin='10px 0px';
 		document.getElementById('a5').style.margin='10px 0px';
@@ -770,7 +773,7 @@ function river() {
 	else{;}
 
 	if(a1to5S=='y' && a1to5F=='y'){
-	document.getElementById('a8').innerHTML='Straight Flush!';}
+	document.getElementById('a8').innerHTML='Straight flush!';}
 	else{;}
 
 	var a2to6S='';
@@ -790,7 +793,7 @@ function river() {
 	else{;}
 
 	if(a2to6S=='y' && a2to6F=='y'){
-	document.getElementById('a8').innerHTML='Straight Flush!';}
+	document.getElementById('a8').innerHTML='Straight flush!';}
 	else{;}
 
 	var a3to7S='';
@@ -1212,6 +1215,7 @@ function river() {
 	else{;}
 
 	if(b2V==b3V-1 && b3V==b4V-1 && b4V==b5V-1 && b5V==b6V-1){
+		document.getElementById('b1').style.margin='0px 0px';
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
@@ -1220,6 +1224,8 @@ function river() {
 	else{;}
 
 	if(b3V==b4V-1 && b4V==b5V-1 && b5V==b6V-1 && b6V==b7V-1){
+		document.getElementById('b1').style.margin='0px 0px';
+		document.getElementById('b2').style.margin='0px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
@@ -1292,7 +1298,7 @@ function river() {
 	else{;}
 
 	if(b2to6S=='y' && b2to6F=='y'){
-	document.getElementById('b8').innerHTML='Straight Flush!';}
+	document.getElementById('b8').innerHTML='Straight flush!';}
 	else{;}
 
 	var a3to7S='';
@@ -1312,8 +1318,9 @@ function river() {
 	else{;}
 
 	if(b3to7S=='y' && b3to7F=='y'){
-	document.getElementById('b8').innerHTML='Straight Flush!';}
+	document.getElementById('b8').innerHTML='Straight flush!';}
 	else{;}
+
 //High card
 	if(document.getElementById('b8').innerHTML=='' && b1V==1){
 	document.getElementById('b8').innerHTML='High card!';
@@ -1322,9 +1329,10 @@ function river() {
 
 	if(document.getElementById('b8').innerHTML=='' && b1V!==1){
 	document.getElementById('b8').innerHTML='High card!';
-	document.getElementById('b7').style.margin='10px 0px';}
+	document.getElementById('b7').style.margin='10px 0px';alert('hi')}
 	else{;}
-
+       
+        
 //Four of a kind color
 	if(document.getElementById('b8').innerHTML=='Four of a kind!'){
 		document.getElementById('b8').style.color='blue';}
