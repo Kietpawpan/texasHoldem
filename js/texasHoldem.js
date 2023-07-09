@@ -318,6 +318,7 @@ function river() {
 	const holdA = hold0a.sort(function(a, b){return a - b});
 	const holdB = hold0b.sort(function(a, b){return a - b});
 
+// Player A
 //Get the card values
 	var a1V = cardsV.get(holdA[0]);
 	var a2V = cardsV.get(holdA[1]);
@@ -335,14 +336,6 @@ function river() {
 	var a5F = flush.get(holdA[4]);
 	var a6F = flush.get(holdA[5]);
 	var a7F = flush.get(holdA[6]);
-
-	var b1F = flush.get(holdB[0]);
-	var b2F = flush.get(holdB[1]);
-	var b3F = flush.get(holdB[2]);
-	var b4F = flush.get(holdB[3]);
-	var b5F = flush.get(holdB[4]);
-	var b6F = flush.get(holdB[5]);
-	var b7F = flush.get(holdB[6]);
 
 //Arrange the cards from A, 2, 3,..., J, Q, K
 	var holdAV =[a1V, a2V, a3V, a4V, a5V, a6V, a7V];
@@ -841,8 +834,8 @@ function river() {
 	if(document.getElementById('a8').innerHTML=='Straight Flush!'){
 		document.getElementById('a8').style.color='blue';}
 	else{;}
-
-//B player
+// Player B
+//Get the card values
 	var b1V = cardsV.get(holdB[0]);
 	var b2V = cardsV.get(holdB[1]);
 	var b3V = cardsV.get(holdB[2]);
@@ -851,6 +844,16 @@ function river() {
 	var b6V = cardsV.get(holdB[5]);
 	var b7V = cardsV.get(holdB[6]);
 
+//Get the card suits
+	var b1F = flush.get(holdB[0]);
+	var b2F = flush.get(holdB[1]);
+	var b3F = flush.get(holdB[2]);
+	var b4F = flush.get(holdB[3]);
+	var b5F = flush.get(holdB[4]);
+	var b6F = flush.get(holdB[5]);
+	var b7F = flush.get(holdB[6]);
+
+//Arrange the cards from A, 2, 3,..., J, Q, K
 	var holdBV =[b1V, b2V, b3V, b4V, b5V, b6V, b7V];
 
 //For Straight Check
@@ -858,13 +861,9 @@ function river() {
 	var holdBV2 =[b2V, b3V, b4V, b5V, b6V];
 	var holdBV3 =[b3V, b4V, b5V, b6V, b7V];
 
+//Shift the cards down for 10px if the values are identical.
 
-//Show the card faces
-	document.getElementById('b1').innerHTML = cards.get(holdB[0]);
-	if(redCard1.includes(holdB[0])){document.getElementById('b1').style.color='red';}
-	else if(redCard2.includes(holdB[0])){document.getElementById('b1').style.color='red';}
-	else{document.getElementById('b1').style.color='black';}
-
+//Pair
 	if(b1V==b2V){
 		document.getElementById('b1').style.margin='10px 0px';
 		document.getElementById('b2').style.margin='10px 0px';
@@ -942,8 +941,7 @@ function river() {
 	   	document.getElementById('b8').innerHTML ='Two pair!';}
 	else{;}
 
-
-//Three
+//Three of a kind
 	if(b1V==b2V && b2V==b3V){
 		document.getElementById('b1').style.margin='10px 0px';
 		document.getElementById('b2').style.margin='10px 0px';
@@ -956,7 +954,6 @@ function river() {
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
 	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
-
 	else{;}
 
 	if(b3V==b4V && b4V==b5V){
@@ -980,8 +977,9 @@ function river() {
 	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
 	else{;}
 
-//Full
-	if(b2V==b3V && b4V==b5V && b4V==b6V){
+//Full house
+
+	if(b2V==b3V && b4V==b5V && b5V==b6V){
 		document.getElementById('b2').style.margin='10px 0px';
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
@@ -999,8 +997,17 @@ function river() {
 	   	document.getElementById('b8').innerHTML ='Full house!';}
 	else{;}
 
+	if(b2V==b3V && b5V==b6V && b6V==b7V){
+		document.getElementById('b2').style.margin='10px 0px';
+		document.getElementById('b3').style.margin='10px 0px';
+		document.getElementById('b5').style.margin='10px 0px';
+		document.getElementById('b6').style.margin='10px 0px';
+		document.getElementById('b7').style.margin='10px 0px';
+	   	document.getElementById('b8').innerHTML ='Full house!';}
+	else{;}
 
-	if(b3V==b4V && b5V==b6V && b5V==b7V){
+
+	if(b3V==b4V && b5V==b6V && b6V==b7V){
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
@@ -1009,7 +1016,7 @@ function river() {
 	   	document.getElementById('b8').innerHTML ='Full house!';}
 	else{;}
 
-	if(b3V==b4V && b3V==b5V && b6V==b7V){
+	if(b3V==b4V && b4V==b5V && b6V==b7V){
 		document.getElementById('b3').style.margin='10px 0px';
 		document.getElementById('b4').style.margin='10px 0px';
 		document.getElementById('b5').style.margin='10px 0px';
@@ -1072,17 +1079,7 @@ function river() {
 	   	document.getElementById('b8').innerHTML ='Full house!';}
 	else{;}
 
-	if(b2V==b3V && b5V==b6V && b6V==b7V){
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-
-//Four
+//Four of a kind
 	if(b1V==b2V && b2V==b3V && b3V==b4V){
 		document.getElementById('b1').style.margin='10px 0px';
 		document.getElementById('b2').style.margin='10px 0px';
@@ -1114,6 +1111,13 @@ function river() {
 		document.getElementById('b7').style.margin='10px 0px';
 	   	document.getElementById('b8').innerHTML ='Four of a kind!';}
 	else{;}
+
+//Show red cards (if any)
+	document.getElementById('b1').innerHTML = cards.get(holdB[0]);
+	if(redCard1.includes(holdB[0])){document.getElementById('b1').style.color='red';}
+	else if(redCard2.includes(holdB[0])){document.getElementById('b1').style.color='red';}
+	else{document.getElementById('b1').style.color='black';}
+
 
 	document.getElementById('b2').innerHTML = cards.get(holdB[1]);
 	if(redCard1.includes(holdB[1])){document.getElementById('b2').style.color='red';}
@@ -1180,8 +1184,8 @@ function river() {
 	else if(redCard2.includes(holdB[6])){document.getElementById('b7').style.color='red';}
 	else{document.getElementById('b7').style.color='black';}
 
-//Straight Check
-	var sHandb ='';
+//Straight Check, to see if straight hand is the subset of the hold cards pf player A.
+	let sHandb='';
         if(checkHand(holdBV, sF1)==true || checkHand(holdBV, sF2)==true ||
 	checkHand(holdBV, sF3)==true || checkHand(holdBV, sF4)==true ||
 	checkHand(holdBV, sF5)==true || checkHand(holdBV, sF6)==true ||
@@ -1203,9 +1207,9 @@ function river() {
 		document.getElementById('b6').style.color='green';
 		document.getElementById('b7').style.color='green';
 		document.getElementById('b8').innerHTML='Straight!';
-		sHandb='y';}	
+		sHandb='y';}
 	else{;}
-	
+
 	if(b1V==b2V-1 && b2V==b3V-1 && b3V==b4V-1 && b4V==b5V-1){
 		document.getElementById('b1').style.margin='10px 0px';
 		document.getElementById('b2').style.margin='10px 0px';
@@ -1233,9 +1237,9 @@ function river() {
 		document.getElementById('b7').style.margin='10px 0px';}
 	else{;}
 
-	var fHandb ='';
-	let bFlush = [flush.get(holdB[0]),flush.get(holdB[1]),flush.get(holdB[2]),
-			flush.get(holdB[3]),flush.get(holdB[4]),flush.get(holdB[5]), flush.get(holdB[6])];
+//Flush Check, to count the number of cards from any same suit.
+	let fHandb ='';
+	let bFlush = [flush.get(holdB[0]),flush.get(holdB[1]),flush.get(holdB[2]),flush.get(holdB[3]),flush.get(holdB[4]),flush.get(holdB[5]), flush.get(holdB[6])];
 	let bFlushCheckA = bFlush.filter(x => x == 'A').length;
 	let bFlushCheckB = bFlush.filter(x => x == 'B').length;
 	let bFlushCheckC = bFlush.filter(x => x == 'C').length;
@@ -1278,7 +1282,7 @@ function river() {
 	else{;}
 
 	if(b1to5S=='y' && b1to5F=='y'){
-	document.getElementById('b8').innerHTML='Straight Flush!';}
+	document.getElementById('b8').innerHTML='Straight flush!';}
 	else{;}
 
 	var b2to6S='';
@@ -1301,8 +1305,8 @@ function river() {
 	document.getElementById('b8').innerHTML='Straight flush!';}
 	else{;}
 
-	var a3to7S='';
-	var a3to7F='';
+	var b3to7S='';
+	var b3to7F='';
 
 	if(b3V==b4V-1 && b4V==b5V-1 && b5V==b6V-1 && b6V==b7V-1){
 		document.getElementById('b3').style.margin='10px 0px';
@@ -1310,15 +1314,15 @@ function river() {
 		document.getElementById('b5').style.margin='10px 0px';
 		document.getElementById('b6').style.margin='10px 0px';
 		document.getElementById('b7').style.margin='10px 0px';
-		a3to7S='y';}
+		b3to7S='y';}
 	else{;}
 
 	if(b3F==b4F && b4F==b5F && b5F==b6F && b6F==b7F){
-	a3to7F='y';}
+	b3to7F='y';}
 	else{;}
 
 	if(b3to7S=='y' && b3to7F=='y'){
-	document.getElementById('b8').innerHTML='Straight flush!';}
+	document.getElementById('b8').innerHTML='Straight Flush!';}
 	else{;}
 
 //High card
@@ -1329,10 +1333,9 @@ function river() {
 
 	if(document.getElementById('b8').innerHTML=='' && b1V!==1){
 	document.getElementById('b8').innerHTML='High card!';
-	document.getElementById('b7').style.margin='10px 0px';alert('hi')}
+	document.getElementById('b7').style.margin='10px 0px';}
 	else{;}
-       
-        
+
 //Four of a kind color
 	if(document.getElementById('b8').innerHTML=='Four of a kind!'){
 		document.getElementById('b8').style.color='blue';}
