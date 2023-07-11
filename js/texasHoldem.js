@@ -1531,7 +1531,7 @@ function river() {
 	var handOfA = document.getElementById('a8').innerHTML;
 	var handOfB = document.getElementById('b8').innerHTML;
 	var winner='';
-	if(handOfA=='Straight flush!!' && handOfB==!'Straight flush!!' && handOfB==!'Royal flush!!!'){
+	if(handOfA=='Straight flush!!' && handOfB!=='Straight flush!!' && handOfB!=='Royal flush!!!'){
 		document.getElementById('a9').innerHTML='Win';}
 	else if(handOfA=='Royal flush!!!' && handOfB!=='Royal flush!!!'){
 		document.getElementById('a9').innerHTML='Win';}
