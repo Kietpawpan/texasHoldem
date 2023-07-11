@@ -20,7 +20,7 @@ Card ID No. 	1 2 3 4
 		37 38 39 40
 		41 42 43 44 
 		45 46 47 48
-		49 50 51 51
+		49 50 51 52
 
 */
 
@@ -103,11 +103,56 @@ const flush = new Map([
 
 ]);
 
+//Straight flush hand
+
+const stF1 = [1, 5, 9, 13, 17];
+const stF2 = [5, 9, 13, 17, 21];
+const stF3 = [9, 13, 17, 21, 25];
+const stF4 = [13, 17, 21, 25, 33];
+const stF5 = [17, 21, 25, 33, 37];
+const stF6 = [21, 25, 33, 37, 41];
+const stF7 = [25, 33, 37, 41, 45];
+const stF8 = [33, 37, 41, 45, 49];
+const stF9 = [2, 6, 10, 14, 18];
+const stF10 = [6, 10, 14, 18, 22]; 
+const stF11 = [10, 14, 18, 22, 26];
+const stF12 = [14, 18, 22, 26, 30];
+const stF13 = [18, 22, 26, 30, 34];
+const stF14 = [22, 26, 30, 34, 38];
+const stF15 = [26, 30, 34, 38, 42];
+const stF16 = [30, 34, 38, 42, 46];
+const stF17 = [34, 38, 42, 46, 50];
+const stF18 = [3, 7, 11, 15, 19];
+const stF19 = [7, 11, 15, 19, 23];
+const stF20 = [11, 15, 19, 23, 27];
+const stF21 = [15, 19, 23, 27, 31];
+const stF22 = [19, 23, 27, 31, 35];
+const stF23 = [23, 27, 31, 35, 39];
+const stF24 = [27, 31, 35, 39, 43];
+const stF25 = [31, 35, 39, 43, 47];
+const stF26 = [35, 39, 43, 47, 51];
+const stF27 = [4, 8, 12, 16, 20];
+const stF28 = [8, 12, 16, 20, 24];
+const stF29 = [12, 16, 20, 24, 28];
+const stF30 = [16, 20, 24, 28, 32];
+const stF31 = [20, 24, 28, 32, 36];
+const stF32 = [24, 28, 32, 36, 40];
+const stF33 = [28, 32, 36, 40, 44];
+const stF34 = [32, 36, 40, 44, 48];
+const stF35 = [36, 40, 44, 48, 52];
+
+//Royal flush hand
+const roF1 = [1, 37, 41, 45, 49];
+const roF2 = [2, 38, 42, 46, 50];
+const roF3 = [3, 39, 43, 47, 51];
+const roF4 = [4, 40, 44, 48, 52];
+
 
 //Check if each hand is in the hold cards, or see if array A is a subset of array B.
 // hold is parent array. hand is child array.
 
 let checkHand = (hold, hand) => hand.every(v => hold.includes(v));
+
 
 
 function hole() {
@@ -844,66 +889,37 @@ function river() {
 	else{;}	
 
 //Straight Flush Check
-	var a1to5S='';
-	var a1to5F='';
-
-	if(a1V==a2V-1 && a2V==a3V-1 && a3V==a4V-1 && a4V==a5V-1){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		a1to5S='y';}
+        if(checkHand(holdA, stF1)==true || checkHand(holdA, stF2)==true ||
+		checkHand(holdA, stF1)==true || checkHand(holdA, stF2)==true ||
+		checkHand(holdA, stF3)==true || checkHand(holdA, stF4)==true ||
+		checkHand(holdA, stF5)==true || checkHand(holdA, stF6)==true ||
+		checkHand(holdA, stF7)==true || checkHand(holdA, stF8)==true ||
+		checkHand(holdA, stF9)==true || checkHand(holdA, stF10)==true ||
+		checkHand(holdA, stF11)==true || checkHand(holdA, stF12)==true ||
+		checkHand(holdA, stF13)==true || checkHand(holdA, stF14)==true ||
+		checkHand(holdA, stF15)==true || checkHand(holdA, stF16)==true ||
+		checkHand(holdA, stF17)==true || checkHand(holdA, stF18)==true ||
+		checkHand(holdA, stF19)==true || checkHand(holdA, stF20)==true ||
+		checkHand(holdA, stF21)==true || checkHand(holdA, stF22)==true ||
+		checkHand(holdA, stF23)==true || checkHand(holdA, stF24)==true ||
+		checkHand(holdA, stF25)==true || checkHand(holdA, stF26)==true ||
+		checkHand(holdA, stF27)==true || checkHand(holdA, stF28)==true ||
+		checkHand(holdA, stF29)==true || checkHand(holdA, stF30)==true ||
+		checkHand(holdA, stF31)==true || checkHand(holdA, stF32)==true ||
+		checkHand(holdA, stF33)==true || checkHand(holdA, stF34)==true ||
+		checkHand(holdA, stF35)==true) {
+			document.getElementById('a8').style.color='blue';
+			document.getElementById('a8').innerHTML='Straight flush!!';}
 	else{;}
 
-	if(a1F==a2F && a2F==a3F && a3F==a4F && a4F==a5F){
-	a1to5F='y';}
+//Royal flush check
+        if(checkHand(holdA, roF1)==true || checkHand(holdA, roF2)==true ||
+		checkHand(holdA, roF3)==true || checkHand(holdA, roF4)==true) {
+			document.getElementById('a8').style.color='blue';
+			document.getElementById('a8').innerHTML='Royal flush!!!';}
 	else{;}
 
-	if(a1to5S=='y' && a1to5F=='y'){
-	document.getElementById('a8').innerHTML='Straight flush!';}
-	else{;}
-
-	var a2to6S='';
-	var a2to6F='';
-
-	if(a2V==a3V-1 && a3V==a4V-1 && a4V==a5V-1 && a5V==a6V-1 ){
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		a2to6S='y';}
-	else{;}
-
-	if(a2F==a3F && a3F==a4F && a4F==a5F && a5F==a6F){
-	a2to6F='y';}
-	else{;}
-
-	if(a2to6S=='y' && a2to6F=='y'){
-	document.getElementById('a8').innerHTML='Straight flush!';}
-	else{;}
-
-	var a3to7S='';
-	var a3to7F='';
-
-	if(a3V==a4V-1 && a4V==a5V-1 && a5V==a6V-1 && a6V==a7V-1){
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';
-		a3to7S='y';}
-	else{;}
-
-	if(a3F==a4F && a4F==a5F && a5F==a6F && a6F==a7F){
-	a3to7F='y';}
-	else{;}
-
-	if(a3to7S=='y' && a3to7F=='y'){
-	document.getElementById('a8').innerHTML='Straight Flush!';}
-	else{;}
-
+	
 //High card
 	if(document.getElementById('a8').innerHTML=='' && a1V==1){
 	document.getElementById('a8').innerHTML='High card!';
@@ -929,6 +945,9 @@ function river() {
 	if(document.getElementById('a8').innerHTML=='Straight Flush!'){
 		document.getElementById('a8').style.color='blue';}
 	else{;}
+
+
+
 // Player B
 //Get the card values
 	var b1V = cardsV.get(holdB[0]);
@@ -1452,66 +1471,35 @@ function river() {
 		document.getElementById('b7').style.margin='10px 0px';}
 	else{;}	
 
-
 //Straight Flush Check
-	var b1to5S='';
-	var b1to5F='';
-
-	if(b1V==b2V-1 && b2V==b3V-1 && b3V==b4V-1 && b4V==b5V-1){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		b1to5S='y';}
+        if(checkHand(holdB, stF1)==true || checkHand(holdB, stF2)==true ||
+		checkHand(holdB, stF1)==true || checkHand(holdB, stF2)==true ||
+		checkHand(holdB, stF3)==true || checkHand(holdB, stF4)==true ||
+		checkHand(holdB, stF5)==true || checkHand(holdB, stF6)==true ||
+		checkHand(holdB, stF7)==true || checkHand(holdB, stF8)==true ||
+		checkHand(holdB, stF9)==true || checkHand(holdB, stF10)==true ||
+		checkHand(holdB, stF11)==true || checkHand(holdB, stF12)==true ||
+		checkHand(holdB, stF13)==true || checkHand(holdB, stF14)==true ||
+		checkHand(holdB, stF15)==true || checkHand(holdB, stF16)==true ||
+		checkHand(holdB, stF17)==true || checkHand(holdB, stF18)==true ||
+		checkHand(holdB, stF19)==true || checkHand(holdB, stF20)==true ||
+		checkHand(holdB, stF21)==true || checkHand(holdB, stF22)==true ||
+		checkHand(holdB, stF23)==true || checkHand(holdB, stF24)==true ||
+		checkHand(holdB, stF25)==true || checkHand(holdB, stF26)==true ||
+		checkHand(holdB, stF27)==true || checkHand(holdB, stF28)==true ||
+		checkHand(holdB, stF29)==true || checkHand(holdB, stF30)==true ||
+		checkHand(holdB, stF31)==true || checkHand(holdB, stF32)==true ||
+		checkHand(holdB, stF33)==true || checkHand(holdB, stF34)==true ||
+		checkHand(holdB, stF35)==true) {
+			document.getElementById('b8').style.color='blue';
+			document.getElementById('b8').innerHTML='Straight flush!!';}
 	else{;}
 
-	if(b1F==b2F && b2F==b3F && b3F==b4F && b4F==b5F){
-	b1to5F='y';}
-	else{;}
-
-	if(b1to5S=='y' && b1to5F=='y'){
-	document.getElementById('b8').innerHTML='Straight flush!';}
-	else{;}
-
-	var b2to6S='';
-	var b2to6F='';
-
-	if(b2V==b3V-1 && b3V==b4V-1 && b4V==b5V-1 && b5V==b6V-1 ){
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		b2to6S='y';}
-	else{;}
-
-	if(b2F==b3F && b3F==b4F && b4F==b5F && b5F==b6F){
-	b2to6F='y';}
-	else{;}
-
-	if(b2to6S=='y' && b2to6F=='y'){
-	document.getElementById('b8').innerHTML='Straight flush!';}
-	else{;}
-
-	var b3to7S='';
-	var b3to7F='';
-
-	if(b3V==b4V-1 && b4V==b5V-1 && b5V==b6V-1 && b6V==b7V-1){
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-		b3to7S='y';}
-	else{;}
-
-	if(b3F==b4F && b4F==b5F && b5F==b6F && b6F==b7F){
-	b3to7F='y';}
-	else{;}
-
-	if(b3to7S=='y' && b3to7F=='y'){
-	document.getElementById('b8').innerHTML='Straight Flush!';}
+//Royal flush check
+        if(checkHand(holdB, roF1)==true || checkHand(holdB, roF2)==true ||
+		checkHand(holdB, roF3)==true || checkHand(holdB, roF4)==true) {
+			document.getElementById('b8').style.color='blue';
+			document.getElementById('b8').innerHTML='Royal flush!!!';}
 	else{;}
 
 //High card
@@ -1543,8 +1531,12 @@ function river() {
 	var handOfA = document.getElementById('a8').innerHTML;
 	var handOfB = document.getElementById('b8').innerHTML;
 	var winner='';
-	if(handOfA=='Straight flush!' && handOfB!=='Straight flush!'){
+	if(handOfA=='Straight flush!!' && handOfB==!'Straight flush!!' && handOfB==!'Royal flush!!!'){
 		document.getElementById('a9').innerHTML='Win';}
+	else if(handOfA=='Royal flush!!!' && handOfB!=='Royal flush!!!'){
+		document.getElementById('a9').innerHTML='Win';}
+	else if(handOfB=='Royal flush!!!' && handOfA!=='Royal flush!!!'){
+		document.getElementById('b9').innerHTML='Win';}
 	else if(handOfA=='Four of a kind!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!'){
 		document.getElementById('a9').innerHTML='Win';}
 	else if(handOfA=='Full house!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!'){
@@ -1554,9 +1546,10 @@ function river() {
 	else if(handOfA=='Three of a kind!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!' && handOfB!=='Straight!' && handOfB!=='Three of a kind!'){document.getElementById('a9').innerHTML='Win';}
 	else if(handOfA=='Two pair!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!' && handOfB!=='Straight!' && handOfB!=='Three of a kind!' && handOfB!=='Two pair!'){document.getElementById('a9').innerHTML='Win';}
 	else if(handOfA=='One pair!' && handOfB=='High card!'){document.getElementById('a9').innerHTML='Win';}
+
 	else if(handOfA=='High card!' && handOfB=='High card!' && b1V!==1 && a7V > b7V){document.getElementById('a9').innerHTML='Win';}
 	else if(handOfA=='High card!' && handOfB=='High card!' && a1V==1 && b1V!==1){document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='High card!' && handOfB=='High card!' && a1V==1 && b1V==1){document.getElementById('a9').innerHTML='';}
+	else if(handOfA=='High card!' && handOfB=='High card!' && a1V==1 && b1V==1){document.getElementById('a9').innerHTML='Check';}
 	else if(handOfA==handOfB){document.getElementById('b9').innerHTML='Check';}
 	else{document.getElementById('b9').innerHTML='Win';}
 }
