@@ -1555,7 +1555,7 @@ function river() {
 }
 
 function help() {
-	alert('Straight flush > Four of a kind >  Full house > Flush > Straight > Three of a kind > Two pair > One pair > High card');
+	alert('Royal flush > Straight flush > Four of a kind >  Full house > Flush > Straight > Three of a kind > Two pair > One pair > High card');
 }
  
 function reload() {
