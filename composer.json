@@ -1,0 +1,18 @@
+{
+    "name": "Kietpawpan/texasHoldem",
+    "type": "library",
+    "description": "A classic poker game for two players (offline).",
+    "keywords": ["Texas Holdem"],
+    "homepage": "https://github.com/Kietpawpan/texasHoldem/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Montri Kiatphaophan",
+            "email": "kietpawpan@gmail.com",
+            "role": "Programmer"
+        }
+    ],
+    "require": {
+    	"php": ">=5.5.9"
+	 },
+}
