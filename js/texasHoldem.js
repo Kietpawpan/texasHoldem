@@ -1,1631 +1,370 @@
 /* Copyright (c) 2023 Montri Kiatphaophan
- * cards.js v1.0.1 | All rights reserved.
-*/
+ * cards.js v1.1.0 | All rights reserved.
+ */
 
-/*
-Let's have 52 playing cards, with the ID numbers from 1 to 52,
-and the relative card suits of Spades, Hearts, Diamonds, and Clubs.
-The ID numbers are given as follows:
+const cards = new Map([
+  [1, '\u{1F0A1}'], [5, '\u{1F0A2}'], [9, '\u{1F0A3}'], [13, '\u{1F0A4}'], [17, '\u{1F0A5}'], [21, '\u{1F0A6}'], [25, '\u{1F0A7}'],
+  [29, '\u{1F0A8}'], [33, '\u{1F0A9}'], [37, '\u{1F0AA}'], [41, '\u{1F0AB}'], [45, '\u{1F0AD}'], [49, '\u{1F0AE}'],
 
-Suit 		A B C D (A:Spades, B:Hearts, C: Diamonds, and D: Clubs)
-Card ID No. 	1 2 3 4
-		5 6 7 8
-		9 10 11 12 
-		13 14 15 16
-		17 18 19 20
-		21 22 23 24
-		25 26 27 28
-		29 30 31 32
-		33 34 35 36
-		37 38 39 40
-		41 42 43 44 
-		45 46 47 48
-		49 50 51 52
+  [2, '\u{1F0B1}'], [6, '\u{1F0B2}'], [10, '\u{1F0B3}'], [14, '\u{1F0B4}'], [18, '\u{1F0B5}'], [22, '\u{1F0B6}'], [26, '\u{1F0B7}'],
+  [30, '\u{1F0B8}'], [34, '\u{1F0B9}'], [38, '\u{1F0BA}'], [42, '\u{1F0BB}'], [46, '\u{1F0BD}'], [50, '\u{1F0BE}'],
 
-*/
+  [3, '\u{1F0C1}'], [7, '\u{1F0C2}'], [11, '\u{1F0C3}'], [15, '\u{1F0C4}'], [19, '\u{1F0C5}'], [23, '\u{1F0C6}'], [27, '\u{1F0C7}'],
+  [31, '\u{1F0C8}'], [35, '\u{1F0C9}'], [39, '\u{1F0CA}'], [43, '\u{1F0CB}'], [47, '\u{1F0CD}'], [51, '\u{1F0CE}'],
 
-const cards = new Map([ 
-		[1,'\u{1F0A1}'],[5,'\u{1F0A2}'],[9,'\u{1F0A3}'],[13,'\u{1F0A4}'],[17,'\u{1F0A5}'],[21,'\u{1F0A6}'],[25,'\u{1F0A7}'],
-		[29,'\u{1F0A8}'],[33,'\u{1F0A9}'],[37,'\u{1F0AA}'],[41,'\u{1F0AB}'],[45,'\u{1F0AD}'],[49,'\u{1F0AE}'],
-
-		[2,'\u{1F0B1}'],[6,'\u{1F0B2}'],[10,'\u{1F0B3}'],[14,'\u{1F0B4}'],[18,'\u{1F0B5}'],[22,'\u{1F0B6}'],[26,'\u{1F0B7}'],
-		[30,'\u{1F0B8}'],[34,'\u{1F0B9}'],[38,'\u{1F0BA}'],[42,'\u{1F0BB}'],[46,'\u{1F0BD}'],[50,'\u{1F0BE}'],
-
-		[3,'\u{1F0C1}'],[7,'\u{1F0C2}'],[11,'\u{1F0C3}'],[15,'\u{1F0C4}'],[19,'\u{1F0C5}'],[23,'\u{1F0C6}'],[27,'\u{1F0C7}'],
-		[31,'\u{1F0C8}'],[35,'\u{1F0C9}'],[39,'\u{1F0CA}'],[43,'\u{1F0CB}'],[47,'\u{1F0CD}'],[51,'\u{1F0CE}'],
-
-		[4,'\u{1F0D1}'],[8,'\u{1F0D2}'],[12,'\u{1F0D3}'],[16,'\u{1F0D4}'],[20,'\u{1F0D5}'],[24,'\u{1F0D6}'],[28,'\u{1F0D7}'],
-		[32,'\u{1F0D8}'],[36,'\u{1F0D9}'],[40,'\u{1F0DA}'],[44,'\u{1F0DB}'],[48,'\u{1F0DD}'],[52,'\u{1F0DE}'],[0,''],
-
+  [4, '\u{1F0D1}'], [8, '\u{1F0D2}'], [12, '\u{1F0D3}'], [16, '\u{1F0D4}'], [20, '\u{1F0D5}'], [24, '\u{1F0D6}'], [28, '\u{1F0D7}'],
+  [32, '\u{1F0D8}'], [36, '\u{1F0D9}'], [40, '\u{1F0DA}'], [44, '\u{1F0DB}'], [48, '\u{1F0DD}'], [52, '\u{1F0DE}'], [0, '']
 ]);
 
-// All the card ID numbers have their values from 1 to 13 according to the face for each suit.
-const cardsV = new Map([ 
-		[1,1],[5,2],[9,3],[13,4],[17,5],[21,6],[25,7],
-		[29,8],[33,9],[37,10],[41,11],[45,12],[49,13],
+const cardsV = new Map([
+  [1, 1], [5, 2], [9, 3], [13, 4], [17, 5], [21, 6], [25, 7],
+  [29, 8], [33, 9], [37, 10], [41, 11], [45, 12], [49, 13],
 
-		[2,1],[6,2],[10,3],[14,4],[18,5],[22,6],[26,7],
-		[30,8],[34,9],[38,10],[42,11],[46,12],[50,13],
+  [2, 1], [6, 2], [10, 3], [14, 4], [18, 5], [22, 6], [26, 7],
+  [30, 8], [34, 9], [38, 10], [42, 11], [46, 12], [50, 13],
 
-		[3,1],[7,2],[11,3],[15,4],[19,5],[23,6],[27,7],
-		[31,8],[35,9],[39,10],[43,11],[47,12],[51,13],
+  [3, 1], [7, 2], [11, 3], [15, 4], [19, 5], [23, 6], [27, 7],
+  [31, 8], [35, 9], [39, 10], [43, 11], [47, 12], [51, 13],
 
-		[4,1],[8,2],[12,3],[16,4],[20,5],[24,6],[28,7],
-		[32,8],[36,9],[40,10],[44,11],[48,12],[52,13],[0,''],
-
+  [4, 1], [8, 2], [12, 3], [16, 4], [20, 5], [24, 6], [28, 7],
+  [32, 8], [36, 9], [40, 10], [44, 11], [48, 12], [52, 13], [0, 0]
 ]);
 
-//Let all card unicodes have their ID numbers.
-const cardsF = new Map([ 
-		['\u{1F0A1}',1],['\u{1F0A2}',5],['\u{1F0A3}',9],['\u{1F0A4}',13],['\u{1F0A5}',17],['\u{1F0A6}',21],['\u{1F0A7}',25],
-		['\u{1F0A8}',29],['\u{1F0A9}',33],['\u{1F0AA}',37],['\u{1F0AB}',41],['\u{1F0AD}',45],['\u{1F0AE}',49],
+const flush = new Map([
+  [1, 'A'], [5, 'A'], [9, 'A'], [13, 'A'], [17, 'A'], [21, 'A'], [25, 'A'],
+  [29, 'A'], [33, 'A'], [37, 'A'], [41, 'A'], [45, 'A'], [49, 'A'],
 
-		['\u{1F0B1}',2],['\u{1F0B2}',6],['\u{1F0B3}',10],['\u{1F0B4}',14],['\u{1F0B5}',18],['\u{1F0B6}',22],['\u{1F0B7}',26],
-		['\u{1F0B8}',30],['\u{1F0B9}',34],['\u{1F0BA}',38],['\u{1F0BB}',42],['\u{1F0BD}',46],['\u{1F0BE}',50],
+  [2, 'B'], [6, 'B'], [10, 'B'], [14, 'B'], [18, 'B'], [22, 'B'], [26, 'B'],
+  [30, 'B'], [34, 'B'], [38, 'B'], [42, 'B'], [46, 'B'], [50, 'B'],
 
-		['\u{1F0C1}',3],['\u{1F0C2}',7],['\u{1F0C3}',11],['\u{1F0C4}',15],['\u{1F0C5}',19],['\u{1F0C6}',23],['\u{1F0C7}',27],
-		['\u{1F0C8}',31],['\u{1F0C9}',35],['\u{1F0CA}',39],['\u{1F0CB}',43],['\u{1F0CD}',47],['\u{1F0CE}',51],
+  [3, 'C'], [7, 'C'], [11, 'C'], [15, 'C'], [19, 'C'], [23, 'C'], [27, 'C'],
+  [31, 'C'], [35, 'C'], [39, 'C'], [43, 'C'], [47, 'C'], [51, 'C'],
 
-		['\u{1F0D1}',4],['\u{1F0D2}',8],['\u{1F0D3}',12],['\u{1F0D4}',16],['\u{1F0D5}',20],['\u{1F0D6}',24],['\u{1F0D7}',28],
-		['\u{1F0D8}',32],['\u{1F0D9}',36],['\u{1F0DA}',40],['\u{1F0DB}',44],['\u{1F0DD}',48],['\u{1F0DE}',52],
+  [4, 'D'], [8, 'D'], [12, 'D'], [16, 'D'], [20, 'D'], [24, 'D'], [28, 'D'],
+  [32, 'D'], [36, 'D'], [40, 'D'], [44, 'D'], [48, 'D'], [52, 'D'], [0, '']
 ]);
 
-//Classify the red cards, based on the ID No.
 const redCard1 = [2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50];
 const redCard2 = [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51];
 
-//Staright hands.
-let sF1 = [1, 10, 11, 12, 13];
-let sF2 = [1, 2, 3, 4, 5];
-let sF3 = [2, 3, 4, 5, 6];
-let sF4 = [3, 4, 5, 6, 7];
-let sF5 = [4, 5, 6, 7, 8];
-let sF6 = [5, 6, 7, 8, 9];
-let sF7 = [6, 7, 8, 9, 10];
-let sF8 = [7, 8, 9, 10, 11];
-let sF9 = [8, 9, 10, 11, 12];
-let sF10 = [9, 10, 11, 12, 13];
+// Game state deck
+let currentDeck = [];
+let dealt = { c1: 0, c2: 0, c6: 0, c7: 0, z1: 0, z2: 0, z3: 0, z4: 0, z5: 0 };
 
-//Flush hands
+function isRed(cardId) {
+  return redCard1.includes(cardId) || redCard2.includes(cardId);
+}
 
-const flush = new Map([ 
-		[1,'A'],[5,'A'],[9,'A'],[13,'A'],[17,'A'],[21,'A'],[25,'A'],
-		[29,'A'],[33,'A'],[37,'A'],[41,'A'],[45,'A'],[49,'A'],
+function renderCard(elementId, cardId) {
+  const el = document.getElementById(elementId);
+  el.innerHTML = cards.get(cardId);
+  el.style.color = isRed(cardId) ? 'red' : 'black';
+}
 
-		[2,'B'],[6,'B'],[10,'B'],[14,'B'],[18,'B'],[22,'B'],[26,'B'],
-		[30,'B'],[34,'B'],[38,'B'],[42,'B'],[46,'B'],[50,'B'],
+function shuffleDeck() {
+  const deck = Array.from({ length: 52 }, (_, i) => i + 1);
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+  return deck;
+}
 
-		[3,'C'],[7,'C'],[11,'C'],[15,'C'],[19,'C'],[23,'C'],[27,'C'],
-		[31,'C'],[35,'C'],[39,'C'],[43,'C'],[47,'C'],[51,'C'],
-
-		[4,'D'],[8,'D'],[12,'D'],[16,'D'],[20,'D'],[24,'D'],[28,'D'],
-		[32,'D'],[36,'D'],[40,'D'],[44,'D'],[48,'D'],[52,'D'],[0,''],
-
-]);
-
-//Straight flush hand
-
-const stF1 = [1, 5, 9, 13, 17];
-const stF2 = [5, 9, 13, 17, 21];
-const stF3 = [9, 13, 17, 21, 25];
-const stF4 = [13, 17, 21, 25, 33];
-const stF5 = [17, 21, 25, 33, 37];
-const stF6 = [21, 25, 33, 37, 41];
-const stF7 = [25, 33, 37, 41, 45];
-const stF8 = [33, 37, 41, 45, 49];
-const stF9 = [2, 6, 10, 14, 18];
-const stF10 = [6, 10, 14, 18, 22]; 
-const stF11 = [10, 14, 18, 22, 26];
-const stF12 = [14, 18, 22, 26, 30];
-const stF13 = [18, 22, 26, 30, 34];
-const stF14 = [22, 26, 30, 34, 38];
-const stF15 = [26, 30, 34, 38, 42];
-const stF16 = [30, 34, 38, 42, 46];
-const stF17 = [34, 38, 42, 46, 50];
-const stF18 = [3, 7, 11, 15, 19];
-const stF19 = [7, 11, 15, 19, 23];
-const stF20 = [11, 15, 19, 23, 27];
-const stF21 = [15, 19, 23, 27, 31];
-const stF22 = [19, 23, 27, 31, 35];
-const stF23 = [23, 27, 31, 35, 39];
-const stF24 = [27, 31, 35, 39, 43];
-const stF25 = [31, 35, 39, 43, 47];
-const stF26 = [35, 39, 43, 47, 51];
-const stF27 = [4, 8, 12, 16, 20];
-const stF28 = [8, 12, 16, 20, 24];
-const stF29 = [12, 16, 20, 24, 28];
-const stF30 = [16, 20, 24, 28, 32];
-const stF31 = [20, 24, 28, 32, 36];
-const stF32 = [24, 28, 32, 36, 40];
-const stF33 = [28, 32, 36, 40, 44];
-const stF34 = [32, 36, 40, 44, 48];
-const stF35 = [36, 40, 44, 48, 52];
-
-//Royal flush hand
-const roF1 = [1, 37, 41, 45, 49];
-const roF2 = [2, 38, 42, 46, 50];
-const roF3 = [3, 39, 43, 47, 51];
-const roF4 = [4, 40, 44, 48, 52];
-
-
-//Check if each hand is in the hold cards, or see if array A is a subset of array B.
-// hold is parent array. hand is child array.
-
-let checkHand = (hold, hand) => hand.every(v => hold.includes(v));
-
-
+function setButtons(holeState, flopState, turnState, riverState) {
+  document.getElementById('btnHole').disabled = !holeState;
+  document.getElementById('btnFlop').disabled = !flopState;
+  document.getElementById('btnTurn').disabled = !turnState;
+  document.getElementById('btnRiver').disabled = !riverState;
+}
 
 function hole() {
+  reload();
+  currentDeck = shuffleDeck();
 
-//All possible card numbers in the four suits.
+  dealt.c1 = currentDeck.pop();
+  dealt.c6 = currentDeck.pop();
+  dealt.c2 = currentDeck.pop();
+  dealt.c7 = currentDeck.pop();
 
-	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-			41,42,43,44,45,46,47,48,49,50,51,52];
+  renderCard('c1', dealt.c1);
+  renderCard('c2', dealt.c2);
+  renderCard('c6', dealt.c6);
+  renderCard('c7', dealt.c7);
 
-//Randomly select the first hole card for player A, the output is an interger between 1 and 52.
-
-	var c1 = Math.floor(Math.random()*52)+1;
-
-//Create the array of opened cards after playing the first hole card.
-
-	const openC1 = [c1];
-
-//Remove the opened card (in openC1) from the original card suits (allCards).
-
-	const c6C = allCards.filter((value) => {
-		return !openC1.includes(value)})
-
-//Randomly select the first hole card for player B.
-
-	var c6= c6C[(Math.random()*c6C.length)|0];
-
-//Create the array of opened cards after playing the second hole card.
-
-	const openC6 = [c1, c6];
-
-	const c2C = allCards.filter((value) => {
-		return !openC6.includes(value)})
-
-	var c2 = c2C[(Math.random()*c2C.length)|0];
-
-	const openC2 = [c1, c6, c2];
-
-	const c7C = allCards.filter((value) => {
-		return !openC2.includes(value)})
-
-	var c7 = c7C[(Math.random()*c7C.length)|0];
-
-//Show the red cards (if any)
-	document.getElementById('c1').innerHTML = cards.get(c1);
-	if(redCard1.includes(c1)){document.getElementById('c1').style.color='red';}
-	else if(redCard2.includes(c1)){document.getElementById('c1').style.color='red';}
-	else{document.getElementById('c1').style.color='black';}
-
-	document.getElementById('c2').innerHTML = cards.get(c2);
-	if(redCard1.includes(c2)){document.getElementById('c2').style.color='red';}
-	else if(redCard2.includes(c2)){document.getElementById('c2').style.color='red';}
-	else{document.getElementById('c2').style.color='black';}
-
-	document.getElementById('c6').innerHTML = cards.get(c6);
-	if(redCard1.includes(c6)){document.getElementById('c6').style.color='red';}
-	else if(redCard2.includes(c6)){document.getElementById('c6').style.color='red';}
-	else{document.getElementById('c6').style.color='black';}
-
-	document.getElementById('c7').innerHTML = cards.get(c7);
-	if(redCard1.includes(c7)){document.getElementById('c7').style.color='red';}
-	else if(redCard2.includes(c7)){document.getElementById('c7').style.color='red';}
-	else{document.getElementById('c7').style.color='black';}
-	
+  setButtons(true, true, false, false);
 }
 
 function flop() {
-	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-			41,42,43,44,45,46,47,48,49,50,51,52];
-	var c1a = document.getElementById('c1').innerHTML;
-	var c1 = cardsF.get(c1a);
-	var c2a = document.getElementById('c2').innerHTML;
-	var c2 = cardsF.get(c2a);
-	var c6a = document.getElementById('c6').innerHTML;
-	var c6 = cardsF.get(c6a);
-	var c7a = document.getElementById('c7').innerHTML;
-	var c7 = cardsF.get(c7a);
+  dealt.z1 = currentDeck.pop();
+  dealt.z2 = currentDeck.pop();
+  dealt.z3 = currentDeck.pop();
 
-	const openC7 = [c1, c2, c6, c7];
+  renderCard('z1', dealt.z1);
+  renderCard('z2', dealt.z2);
+  renderCard('z3', dealt.z3);
 
-	const z1C = allCards.filter((value) => {
-		return !openC7.includes(value)})
-
-	var z1 = z1C[(Math.random()*z1C.length)|0];
-
-	const openZ1 = [c1, c2, c6, c7, z1];
-
-	const z2C = allCards.filter((value) => {
-		return !openZ1.includes(value)})
-
-	var z2 = z2C[(Math.random()*z2C.length)|0];
-
-	const openZ2 = [c1, c2, c6, c7, z1, z2];
-
-	const z3C = allCards.filter((value) => {
-		return !openZ2.includes(value)})
-
-	var z3 = z3C[(Math.random()*z3C.length)|0];
-
-	document.getElementById('z1').innerHTML = cards.get(z1);
-	if(redCard1.includes(z1)){document.getElementById('z1').style.color='red';}
-	else if(redCard2.includes(z1)){document.getElementById('z1').style.color='red';}
-	else{document.getElementById('z1').style.color='black';}
-
-	document.getElementById('z2').innerHTML = cards.get(z2);
-	if(redCard1.includes(z2)){document.getElementById('z2').style.color='red';}
-	else if(redCard2.includes(z2)){document.getElementById('z2').style.color='red';}
-	else{document.getElementById('z2').style.color='black';}
-
-	document.getElementById('z3').innerHTML = cards.get(z3);
-	if(redCard1.includes(z3)){document.getElementById('z3').style.color='red';}
-	else if(redCard2.includes(z3)){document.getElementById('z3').style.color='red';}
-	else{document.getElementById('z3').style.color='black';}
-
+  setButtons(true, false, true, false);
 }
 
 function turn() {
-	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-			41,42,43,44,45,46,47,48,49,50,51,52];
-	var c1a = document.getElementById('c1').innerHTML;
-	var c1 = cardsF.get(c1a);
-	var c2a = document.getElementById('c2').innerHTML;
-	var c2 = cardsF.get(c2a);
-	var c6a = document.getElementById('c6').innerHTML;
-	var c6 = cardsF.get(c6a);
-	var c7a = document.getElementById('c7').innerHTML;
-	var c7 = cardsF.get(c7a);
-	var z1a = document.getElementById('z1').innerHTML;
-	var z1 = cardsF.get(z1a);
-	var z2a = document.getElementById('z2').innerHTML;
-	var z2 = cardsF.get(z2a);
-	var z3a = document.getElementById('z3').innerHTML;
-	var z3 = cardsF.get(z3a);
+  dealt.z4 = currentDeck.pop();
+  renderCard('z4', dealt.z4);
 
-	const openZ3 = [c1, c2, c6, c7, z1, z2, z3];
-
-	const z4C = allCards.filter((value) => {
-		return !openZ3.includes(value)})
-
-	var z4 = z4C[(Math.random()*z4C.length)|0];
-
-	document.getElementById('z4').innerHTML = cards.get(z4);
-	if(redCard1.includes(z4)){document.getElementById('z4').style.color='red';}
-	else if(redCard2.includes(z4)){document.getElementById('z4').style.color='red';}
-	else{document.getElementById('z4').style.color='black';}
-
+  setButtons(true, false, false, true);
 }
- 
+
+// แปลงแต้มไพ่ (1..13) โดยให้ A มีค่าสูงสุดคือ 14
+function pokerRank(cardId) {
+  const v = cardsV.get(cardId);
+  return v === 1 ? 14 : v;
+}
+
+// แปลงดอกไพ่เป็นคะแนนความใหญ่: โพดำ (4) > โพธิ์แดง (3) > ข้าวหลามตัด (2) > ดอกจิก (1)
+function suitRank(cardId) {
+  return 4 - ((cardId - 1) % 4);
+}
+
+// ประเมินไพ่ 5 ใบพร้อมเก็บค่าแต้มและดอกไพ่เพื่อใช้ตัดสินกรณีแต้มเท่ากัน
+function evaluate5Cards(fiveIds) {
+  const sortedByRankSuit = [...fiveIds].sort((a, b) => pokerRank(b) - pokerRank(a) || suitRank(b) - suitRank(a));
+  const ranks = sortedByRankSuit.map(pokerRank);
+  const suits = sortedByRankSuit.map(id => flush.get(id));
+  const isFlush = suits.every(s => s === suits[0]);
+
+  const uniqueRanks = [...new Set(ranks)];
+  let isStraight = false;
+  let straightHigh = 0;
+  let orderedIdsForSuit = sortedByRankSuit;
+
+  if (uniqueRanks.length === 5) {
+    if (ranks[0] - ranks[4] === 4) {
+      isStraight = true;
+      straightHigh = ranks[0];
+    } else if (ranks[0] === 14 && ranks[1] === 5 && ranks[2] === 4 && ranks[3] === 3 && ranks[4] === 2) {
+      isStraight = true;
+      straightHigh = 5;
+      // กรณีเรียงต่ำ A-2-3-4-5 ให้เรียงลำดับความสำคัญจาก 5 ลงไปหา A
+      orderedIdsForSuit = [...sortedByRankSuit.slice(1), sortedByRankSuit[0]];
+    }
+  }
+
+  // จัดกลุ่มไพ่ตามแต้ม
+  const groupMap = new Map();
+  for (const id of sortedByRankSuit) {
+    const r = pokerRank(id);
+    if (!groupMap.has(r)) groupMap.set(r, []);
+    groupMap.get(r).push(id);
+  }
+
+  // เรียงกลุ่มตามจำนวนไพ่ที่ซ้ำกัน (มากไปน้อย) ตามด้วยแต้มไพ่ (มากไปน้อย)
+  const groups = [...groupMap.entries()].sort((a, b) => b[1].length - a[1].length || b[0] - a[0]);
+
+  // ลำดับดอกไพ่ตามความสำคัญของกลุ่มไพ่ (เช่น ดอกของไพ่คู่มาก่อนดอกของตัวคุม)
+  const groupOrderedIds = groups.flatMap(g => g[1]);
+  const groupSuitRanks = groupOrderedIds.map(suitRank);
+  const straightSuitRanks = orderedIdsForSuit.map(suitRank);
+
+  if (isFlush && isStraight) {
+    if (straightHigh === 14) {
+      return { category: 9, name: 'Royal flush!!!', tiebreaker: [14], suitTiebreaker: straightSuitRanks, highlightIds: fiveIds, color: 'blue' };
+    }
+    return { category: 8, name: 'Straight flush!!', tiebreaker: [straightHigh], suitTiebreaker: straightSuitRanks, highlightIds: fiveIds, color: 'blue' };
+  }
+
+  if (groups[0][1].length === 4) {
+    return { category: 7, name: 'Four of a kind!', tiebreaker: groups.map(g => g[0]), suitTiebreaker: groupSuitRanks, highlightIds: groups[0][1], color: 'blue' };
+  }
+
+  if (groups[0][1].length === 3 && groups[1][1].length === 2) {
+    return { category: 6, name: 'Full house!', tiebreaker: groups.map(g => g[0]), suitTiebreaker: groupSuitRanks, highlightIds: fiveIds, color: 'blue' };
+  }
+
+  if (isFlush) {
+    return { category: 5, name: 'Flush!', tiebreaker: ranks, suitTiebreaker: straightSuitRanks, highlightIds: fiveIds, color: 'blue' };
+  }
+
+  if (isStraight) {
+    return { category: 4, name: 'Straight!', tiebreaker: [straightHigh], suitTiebreaker: straightSuitRanks, highlightIds: fiveIds, color: 'green' };
+  }
+
+  if (groups[0][1].length === 3) {
+    return { category: 3, name: 'Three of a kind!', tiebreaker: groups.map(g => g[0]), suitTiebreaker: groupSuitRanks, highlightIds: groups[0][1], color: 'black' };
+  }
+
+  if (groups[0][1].length === 2 && groups[1][1].length === 2) {
+    const pairIds = [...groups[0][1], ...groups[1][1]];
+    return { category: 2, name: 'Two pair!', tiebreaker: groups.map(g => g[0]), suitTiebreaker: groupSuitRanks, highlightIds: pairIds, color: 'black' };
+  }
+
+  if (groups[0][1].length === 2) {
+    return { category: 1, name: 'One pair!', tiebreaker: groups.map(g => g[0]), suitTiebreaker: groupSuitRanks, highlightIds: groups[0][1], color: 'black' };
+  }
+
+  return { category: 0, name: 'High card!', tiebreaker: ranks, suitTiebreaker: groupSuitRanks, highlightIds: [sortedByRankSuit[0]], color: 'black' };
+}
+
+// เปรียบเทียบชุดไพ่: 1. ระดับไพ่ -> 2. แต้มไพ่ -> 3. ดอกไพ่
+function compareHands(evalA, evalB) {
+  if (evalA.category !== evalB.category) {
+    return evalA.category - evalB.category;
+  }
+
+  const len = Math.max(evalA.tiebreaker.length, evalB.tiebreaker.length);
+  for (let i = 0; i < len; i++) {
+    const diff = (evalA.tiebreaker[i] || 0) - (evalB.tiebreaker[i] || 0);
+    if (diff !== 0) return diff;
+  }
+
+  const sLen = Math.max(evalA.suitTiebreaker.length, evalB.suitTiebreaker.length);
+  for (let i = 0; i < sLen; i++) {
+    const sDiff = (evalA.suitTiebreaker[i] || 0) - (evalB.suitTiebreaker[i] || 0);
+    if (sDiff !== 0) return sDiff;
+  }
+
+  return 0;
+}
+
+// เปรียบเทียบไพ่ในมือ 2 ใบ (ใช้กรณีไพ่ 5 ใบที่ดีที่สุดมาจากกองกลางล้วนเหมือนกัน)
+function compareHoleCards(holeA, holeB) {
+  const sortedA = [...holeA].sort((a, b) => pokerRank(b) - pokerRank(a) || suitRank(b) - suitRank(a));
+  const sortedB = [...holeB].sort((a, b) => pokerRank(b) - pokerRank(a) || suitRank(b) - suitRank(a));
+
+  for (let i = 0; i < 2; i++) {
+    const rDiff = pokerRank(sortedA[i]) - pokerRank(sortedB[i]);
+    if (rDiff !== 0) return rDiff;
+    const sDiff = suitRank(sortedA[i]) - suitRank(sortedB[i]);
+    if (sDiff !== 0) return sDiff;
+  }
+  return 0;
+}
+
+// ค้นหาชุดไพ่ 5 ใบที่ดีที่สุดจาก 7 ใบ
+function evaluate7Cards(sevenIds) {
+  let bestEval = null;
+
+  for (let i = 0; i < 7; i++) {
+    for (let j = i + 1; j < 7; j++) {
+      const fiveIds = sevenIds.filter((_, idx) => idx !== i && idx !== j);
+      const currentEval = evaluate5Cards(fiveIds);
+      if (!bestEval || compareHands(currentEval, bestEval) > 0) {
+        bestEval = currentEval;
+      }
+    }
+  }
+  return bestEval;
+}
+
+function displayPlayerResult(prefix, sortedSevenIds, evaluation) {
+  for (let i = 0; i < 7; i++) {
+    const slotId = prefix + (i + 1);
+    const cardId = sortedSevenIds[i];
+    const el = document.getElementById(slotId);
+
+    renderCard(slotId, cardId);
+
+    if (evaluation.category === 4) {
+      el.style.color = 'green';
+    } else if (evaluation.category === 5 || evaluation.category === 8 || evaluation.category === 9) {
+      el.style.color = 'blue';
+    }
+
+    if (evaluation.highlightIds.includes(cardId)) {
+      el.style.margin = '10px 0px';
+    } else {
+      el.style.margin = '0px 0px';
+    }
+  }
+
+  const labelEl = document.getElementById(prefix + '8');
+  labelEl.innerHTML = evaluation.name;
+  labelEl.style.color = evaluation.color;
+}
+
 function river() {
-	document.getElementById('a1').style.margin='0px 0px';
-	document.getElementById('a2').style.margin='0px 0px';
-	document.getElementById('a3').style.margin='0px 0px';
-	document.getElementById('a4').style.margin='0px 0px';
-	document.getElementById('a5').style.margin='0px 0px';
-	document.getElementById('a6').style.margin='0px 0px';
-	document.getElementById('a7').style.margin='0px 0px';
-	document.getElementById('b1').style.margin='0px 0px';
-	document.getElementById('b2').style.margin='0px 0px';
-	document.getElementById('b3').style.margin='0px 0px';
-	document.getElementById('b4').style.margin='0px 0px';
-	document.getElementById('b5').style.margin='0px 0px';
-	document.getElementById('b6').style.margin='0px 0px';
-	document.getElementById('b7').style.margin='0px 0px';
-	document.getElementById('a8').innerHTML = '';
-	document.getElementById('b8').innerHTML = '';
-	document.getElementById('a8').style.color='black';
-	document.getElementById('b8').style.color='black';
-	document.getElementById('a9').innerHTML = '';
-	document.getElementById('b9').innerHTML = '';
-
-	const allCards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-			21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-			41,42,43,44,45,46,47,48,49,50,51,52];
-	var c1a = document.getElementById('c1').innerHTML;
-	var c1 = cardsF.get(c1a);
-	var c2a = document.getElementById('c2').innerHTML;
-	var c2 = cardsF.get(c2a);
-	var c6a = document.getElementById('c6').innerHTML;
-	var c6 = cardsF.get(c6a);
-	var c7a = document.getElementById('c7').innerHTML;
-	var c7 = cardsF.get(c7a);
-	var z1a = document.getElementById('z1').innerHTML;
-	var z1 = cardsF.get(z1a);
-	var z2a = document.getElementById('z2').innerHTML;
-	var z2 = cardsF.get(z2a);
-	var z3a = document.getElementById('z3').innerHTML;
-	var z3 = cardsF.get(z3a);
-	var z4a = document.getElementById('z4').innerHTML;
-	var z4 = cardsF.get(z4a);
-
-	const openZ4 = [c1, c2, c6, c7, z1, z2, z3, z4];
-
-	const z5C = allCards.filter((value) => {
-		return !openZ4.includes(value)})
-
-	var z5 = z5C[(Math.random()*z5C.length)|0];
-
-	document.getElementById('z5').innerHTML = cards.get(z5);
-	if(redCard1.includes(z5)){document.getElementById('z5').style.color='red';}
-	else if(redCard2.includes(z5)){document.getElementById('z5').style.color='red';}
-	else{document.getElementById('z5').style.color='black';}
-
-//Combine the hole cards with the community cards.
-	var hold0a =[c1, c2, z1, z2, z3, z4, z5];
-	var hold0b =[c6, c7, z1, z2, z3, z4, z5];
-
-//Sort the card ID numbers, from min to max.
-	const holdA = hold0a.sort(function(a, b){return a - b});
-	const holdB = hold0b.sort(function(a, b){return a - b});
-
-// Player A
-//Get the card values
-	var a1V = cardsV.get(holdA[0]);
-	var a2V = cardsV.get(holdA[1]);
-	var a3V = cardsV.get(holdA[2]);
-	var a4V = cardsV.get(holdA[3]);
-	var a5V = cardsV.get(holdA[4]);
-	var a6V = cardsV.get(holdA[5]);
-	var a7V = cardsV.get(holdA[6]);
-
-//Get the card suits
-	var a1F = flush.get(holdA[0]);
-	var a2F = flush.get(holdA[1]);
-	var a3F = flush.get(holdA[2]);
-	var a4F = flush.get(holdA[3]);
-	var a5F = flush.get(holdA[4]);
-	var a6F = flush.get(holdA[5]);
-	var a7F = flush.get(holdA[6]);
-
-//Arrange the cards from A, 2, 3,..., J, Q, K
-	var holdAV =[a1V, a2V, a3V, a4V, a5V, a6V, a7V];
-
-//For Straight Check
-	var holdAV1 =[a1V, a2V, a3V, a4V, a5V];
-	var holdAV2 =[a2V, a3V, a4V, a5V, a6V];
-	var holdAV3 =[a3V, a4V, a5V, a6V, a7V];
-
-//Shift the cards down for 10px if the values are identical.
-
-//Pair
-	if(a1V==a2V){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='One pair!';}
-	else{;}
-
-	if(a2V==a3V){
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='One pair!';}
-	else{;}
-
-	if(a3V==a4V){
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='One pair!';}
-	else{;}
-
-	if(a4V==a5V){
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='One pair!';}
-	else{;}
-
-	if(a5V==a6V){
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='One pair!';}
-	else{;}
-
-	if(a6V==a7V){
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='One pair!';}
-	else{;}
-
-//Two pairs
-	if(a1V==a2V && a3V==a4V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(a1V==a2V && a4V==a5V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(a1V==a2V && a5V==a6V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(a1V==a2V && a6V==a7V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(a4V==a5V && a6V==a7V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(a3V==a4V && a6V==a7V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(a2V==a3V && a6V==a7V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(a2V==a3V && a4V==a5V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(a3V==a4V && a5V==a6V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(a2V==a3V && a5V==a6V){
-	   	document.getElementById('a8').innerHTML ='Two pair!';}
-	else{;}
-
-//Three of a kind
-	if(a1V==a2V && a2V==a3V){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
-	else{;}
-
-	if(a2V==a3V && a3V==a4V){
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
-	else{;}
-
-	if(a3V==a4V && a4V==a5V){
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
-	else{;}
-
-	if(a4V==a5V && a5V==a6V){
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
-	else{;}
-
-	if(a5V==a6V && a6V==a7V){
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Three of a kind!';}
-	else{;}
-
-//Full house
-
-	if(a2V==a3V && a4V==a5V && a5V==a6V){
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-	if(a2V==a3V && a3V==a4V && a5V==a6V){
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-	if(a2V==a3V && a5V==a6V && a6V==a7V){
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-
-	if(a3V==a4V && a5V==a6V && a6V==a7V){
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-	if(a3V==a4V && a4V==a5V && a6V==a7V){
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-	if(a1V==a2V && a5V==a6V && a6V==a7V){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-	if(a1V==a2V && a4V==a5V && a5V==a6V){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-	if(a1V==a2V && a3V==a4V && a4V==a5V){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-	if(a1V==a2V && a2V==a3V && a5V==a6V){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-	if(a1V==a2V && a2V==a3V && a4V==a5V){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-	if(a1V==a2V && a2V==a3V && a6V==a7V){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Full house!';}
-	else{;}
-
-//Four of a kind
-	if(a1V==a2V && a2V==a3V && a3V==a4V){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Four of a kind!';}
-	else{;}
-
-	if(a2V==a3V && a3V==a4V && a4V==a5V){
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Four of a kind!';}
-	else{;}
-
-	if(a3V==a4V && a4V==a5V && a5V==a6V){
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Four of a kind!';}
-	else{;}
-
-	if(a4V==a5V && a5V==a6V && a6V==a7V){
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';
-	   	document.getElementById('a8').innerHTML ='Four of a kind!';}
-	else{;}
-
-//Show red cards (if any)
-	document.getElementById('a1').innerHTML = cards.get(holdA[0]);
-	if(redCard1.includes(holdA[0])){document.getElementById('a1').style.color='red';}
-	else if(redCard2.includes(holdA[0])){document.getElementById('a1').style.color='red';}
-	else{document.getElementById('a1').style.color='black';}
-
-
-	document.getElementById('a2').innerHTML = cards.get(holdA[1]);
-	if(redCard1.includes(holdA[1])){document.getElementById('a2').style.color='red';}
-	else if(redCard2.includes(holdA[1])){document.getElementById('a2').style.color='red';}
-	else{document.getElementById('a2').style.color='black';}
-
-	document.getElementById('a3').innerHTML = cards.get(holdA[2]);
-	if(redCard1.includes(holdA[2])){document.getElementById('a3').style.color='red';}
-	else if(redCard2.includes(holdA[2])){document.getElementById('a3').style.color='red';}
-	else{document.getElementById('a3').style.color='black';}
-
-	document.getElementById('a4').innerHTML = cards.get(holdA[3]);
-	if(redCard1.includes(holdA[3])){document.getElementById('a4').style.color='red';}
-	else if(redCard2.includes(holdA[3])){document.getElementById('a4').style.color='red';}
-	else{document.getElementById('a4').style.color='black';}
-
-	document.getElementById('a5').innerHTML = cards.get(holdA[4]);
-	if(redCard1.includes(holdA[4])){document.getElementById('a5').style.color='red';}
-	else if(redCard2.includes(holdA[4])){document.getElementById('a5').style.color='red';}
-	else{document.getElementById('a5').style.color='black';}
-
-	document.getElementById('a6').innerHTML = cards.get(holdA[5]);
-	if(redCard1.includes(holdA[5])){document.getElementById('a6').style.color='red';}
-	else if(redCard2.includes(holdA[5])){document.getElementById('a6').style.color='red';}
-	else{document.getElementById('a6').style.color='black';}
-
-	document.getElementById('a7').innerHTML = cards.get(holdA[6]);
-	if(redCard1.includes(holdA[6])){document.getElementById('a7').style.color='red';}
-	else if(redCard2.includes(holdA[6])){document.getElementById('a7').style.color='red';}
-	else{document.getElementById('a7').style.color='black';}
-
-	document.getElementById('b1').innerHTML = cards.get(holdB[0]);
-	if(redCard1.includes(holdB[0])){document.getElementById('b1').style.color='red';}
-	else if(redCard2.includes(holdB[0])){document.getElementById('b1').style.color='red';}
-	else{document.getElementById('b1').style.color='black';}
-
-	document.getElementById('b2').innerHTML = cards.get(holdB[1]);
-	if(redCard1.includes(holdB[1])){document.getElementById('b2').style.color='red';}
-	else if(redCard2.includes(holdB[1])){document.getElementById('b2').style.color='red';}
-	else{document.getElementById('b2').style.color='black';}
-
-	document.getElementById('b3').innerHTML = cards.get(holdB[2]);
-	if(redCard1.includes(holdB[2])){document.getElementById('b3').style.color='red';}
-	else if(redCard2.includes(holdB[2])){document.getElementById('b3').style.color='red';}
-	else{document.getElementById('b3').style.color='black';}
-
-	document.getElementById('b4').innerHTML = cards.get(holdB[3]);
-	if(redCard1.includes(holdB[3])){document.getElementById('b4').style.color='red';}
-	else if(redCard2.includes(holdB[3])){document.getElementById('b4').style.color='red';}
-	else{document.getElementById('b4').style.color='black';}
-
-	document.getElementById('b5').innerHTML = cards.get(holdB[4]);
-	if(redCard1.includes(holdB[4])){document.getElementById('b5').style.color='red';}
-	else if(redCard2.includes(holdB[4])){document.getElementById('b5').style.color='red';}
-	else{document.getElementById('b5').style.color='black';}
-
-	document.getElementById('b6').innerHTML = cards.get(holdB[5]);
-	if(redCard1.includes(holdB[5])){document.getElementById('b6').style.color='red';}
-	else if(redCard2.includes(holdB[5])){document.getElementById('b6').style.color='red';}
-	else{document.getElementById('b6').style.color='black';}
-
-	document.getElementById('b7').innerHTML = cards.get(holdB[6]);
-	if(redCard1.includes(holdB[6])){document.getElementById('b7').style.color='red';}
-	else if(redCard2.includes(holdB[6])){document.getElementById('b7').style.color='red';}
-	else{document.getElementById('b7').style.color='black';}
-
-//Straight Check, to see if straight hand is the subset of the hold cards pf player A.
-	let sHanda='';
-        if(checkHand(holdAV, sF1)==true || checkHand(holdAV, sF2)==true ||
-	checkHand(holdAV, sF3)==true || checkHand(holdAV, sF4)==true ||
-	checkHand(holdAV, sF5)==true || checkHand(holdAV, sF6)==true ||
-	checkHand(holdAV, sF7)==true || checkHand(holdAV, sF8)==true ||
-	checkHand(holdAV, sF9)==true || checkHand(holdAV, sF10)==true){
-		document.getElementById('a1').style.margin='0px 0px';
-		document.getElementById('a2').style.margin='0px 0px';
-		document.getElementById('a3').style.margin='0px 0px';
-		document.getElementById('a4').style.margin='0px 0px';
-		document.getElementById('a5').style.margin='0px 0px';
-		document.getElementById('a6').style.margin='0px 0px';
-		document.getElementById('a7').style.margin='0px 0px';
-
-		document.getElementById('a1').style.color='green';
-		document.getElementById('a2').style.color='green';
-		document.getElementById('a3').style.color='green';
-		document.getElementById('a4').style.color='green';
-		document.getElementById('a5').style.color='green';
-		document.getElementById('a6').style.color='green';
-		document.getElementById('a7').style.color='green';
-		document.getElementById('a8').innerHTML='Straight!';
-		sHanda='y';}
-	else{;}
-
-	if(a1V==a2V-1 && a2V==a3V-1 && a3V==a4V-1 && a4V==a5V-1){
-		document.getElementById('a1').style.margin='10px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';}
-	else{;}
-
-	if(a2V==a3V-1 && a3V==a4V-1 && a4V==a5V-1 && a5V==a6V-1){
-		document.getElementById('a1').style.margin='0px 0px';
-		document.getElementById('a2').style.margin='10px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';}
-	else{;}
-
-	if(a3V==a4V-1 && a4V==a5V-1 && a5V==a6V-1 && a6V==a7V-1){
-		document.getElementById('a1').style.margin='0px 0px';
-		document.getElementById('a2').style.margin='0px 0px';
-		document.getElementById('a3').style.margin='10px 0px';
-		document.getElementById('a4').style.margin='10px 0px';
-		document.getElementById('a5').style.margin='10px 0px';
-		document.getElementById('a6').style.margin='10px 0px';
-		document.getElementById('a7').style.margin='10px 0px';}
-	else{;}
-
-//Flush Check, to count the number of cards from any same suit.
-	let fHanda ='';
-	let aFlush = [flush.get(holdA[0]),flush.get(holdA[1]),flush.get(holdA[2]),flush.get(holdA[3]),flush.get(holdA[4]),flush.get(holdA[5]), flush.get(holdA[6])];
-	let aFlushCheckA = aFlush.filter(x => x == 'A').length;
-	let aFlushCheckB = aFlush.filter(x => x == 'B').length;
-	let aFlushCheckC = aFlush.filter(x => x == 'C').length;
-	let aFlushCheckD = aFlush.filter(x => x == 'D').length;
-	if(aFlushCheckA > 4 || aFlushCheckB > 4 || aFlushCheckC > 4  || aFlushCheckD > 4){	
-		document.getElementById('a1').style.margin='0px 0px';
-		document.getElementById('a2').style.margin='0px 0px';
-		document.getElementById('a3').style.margin='0px 0px';
-		document.getElementById('a4').style.margin='0px 0px';
-		document.getElementById('a5').style.margin='0px 0px';
-		document.getElementById('a6').style.margin='0px 0px';
-		document.getElementById('a7').style.margin='0px 0px';
-
-		document.getElementById('a1').style.color='blue';
-		document.getElementById('a2').style.color='blue';
-		document.getElementById('a3').style.color='blue';
-		document.getElementById('a4').style.color='blue';
-		document.getElementById('a5').style.color='blue';
-		document.getElementById('a6').style.color='blue';
-		document.getElementById('a7').style.color='blue';
-		document.getElementById('a8').innerHTML='Flush!';
-		fHanda='y';}
-		else{;}
-
-//Show flush cards
-	if(aFlushCheckA > 4 && a1F=='A'){
-		document.getElementById('a1').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckB > 4 && a1F=='B'){
-		document.getElementById('a1').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckC > 4 && a1F=='C'){
-		document.getElementById('a1').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckD > 4 && a1F=='D'){
-		document.getElementById('a1').style.margin='10px 0px';}
-	else{;}	
-
-	if(aFlushCheckA > 4 && a2F=='A'){
-		document.getElementById('a2').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckB > 4 && a2F=='B'){
-		document.getElementById('a2').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckC > 4 && a2F=='C'){
-		document.getElementById('a2').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckD > 4 && a2F=='D'){
-		document.getElementById('a2').style.margin='10px 0px';}
-	else{;}	
-
-	if(aFlushCheckA > 4 && a3F=='A'){
-		document.getElementById('a3').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckB > 4 && a3F=='B'){
-		document.getElementById('a3').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckC > 4 && a3F=='C'){
-		document.getElementById('a3').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckD > 4 && a3F=='D'){
-		document.getElementById('a3').style.margin='10px 0px';}
-
-	else{;}	
-	if(aFlushCheckA > 4 && a4F=='A'){
-		document.getElementById('a4').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckB > 4 && a4F=='B'){
-		document.getElementById('a4').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckC > 4 && a4F=='C'){
-		document.getElementById('a4').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckD > 4 && a4F=='D'){
-		document.getElementById('a4').style.margin='10px 0px';}
-	else{;}	
-
-	if(aFlushCheckA > 4 && a5F=='A'){
-		document.getElementById('a5').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckB > 4 && a5F=='B'){
-		document.getElementById('a5').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckC > 4 && a5F=='C'){
-		document.getElementById('a5').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckD > 4 && a5F=='D'){
-		document.getElementById('a5').style.margin='10px 0px';}
-	else{;}	
-
-	if(aFlushCheckA > 4 && a6F=='A'){
-		document.getElementById('a6').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckB > 4 && a6F=='B'){
-		document.getElementById('a6').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckC > 4 && a6F=='C'){
-		document.getElementById('a6').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckD > 4 && a6F=='D'){
-		document.getElementById('a6').style.margin='10px 0px';}
-	else{;}	
-
-
-	if(aFlushCheckA > 4 && a7F=='A'){
-		document.getElementById('a7').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckB > 4 && a7F=='B'){
-		document.getElementById('a7').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckC > 4 && a7F=='C'){
-		document.getElementById('a7').style.margin='10px 0px';}
-	else{;}	
-	if(aFlushCheckD > 4 && a7F=='D'){
-		document.getElementById('a7').style.margin='10px 0px';}
-	else{;}	
-
-//Straight Flush Check
-        if(checkHand(holdA, stF1)==true || checkHand(holdA, stF2)==true ||
-		checkHand(holdA, stF1)==true || checkHand(holdA, stF2)==true ||
-		checkHand(holdA, stF3)==true || checkHand(holdA, stF4)==true ||
-		checkHand(holdA, stF5)==true || checkHand(holdA, stF6)==true ||
-		checkHand(holdA, stF7)==true || checkHand(holdA, stF8)==true ||
-		checkHand(holdA, stF9)==true || checkHand(holdA, stF10)==true ||
-		checkHand(holdA, stF11)==true || checkHand(holdA, stF12)==true ||
-		checkHand(holdA, stF13)==true || checkHand(holdA, stF14)==true ||
-		checkHand(holdA, stF15)==true || checkHand(holdA, stF16)==true ||
-		checkHand(holdA, stF17)==true || checkHand(holdA, stF18)==true ||
-		checkHand(holdA, stF19)==true || checkHand(holdA, stF20)==true ||
-		checkHand(holdA, stF21)==true || checkHand(holdA, stF22)==true ||
-		checkHand(holdA, stF23)==true || checkHand(holdA, stF24)==true ||
-		checkHand(holdA, stF25)==true || checkHand(holdA, stF26)==true ||
-		checkHand(holdA, stF27)==true || checkHand(holdA, stF28)==true ||
-		checkHand(holdA, stF29)==true || checkHand(holdA, stF30)==true ||
-		checkHand(holdA, stF31)==true || checkHand(holdA, stF32)==true ||
-		checkHand(holdA, stF33)==true || checkHand(holdA, stF34)==true ||
-		checkHand(holdA, stF35)==true) {
-			document.getElementById('a8').style.color='blue';
-			document.getElementById('a8').innerHTML='Straight flush!!';}
-	else{;}
-
-//Royal flush check
-        if(checkHand(holdA, roF1)==true || checkHand(holdA, roF2)==true ||
-		checkHand(holdA, roF3)==true || checkHand(holdA, roF4)==true) {
-			document.getElementById('a8').style.color='blue';
-			document.getElementById('a8').innerHTML='Royal flush!!!';}
-	else{;}
-
-	
-//High card
-	if(document.getElementById('a8').innerHTML=='' && a1V==1){
-	document.getElementById('a8').innerHTML='High card!';
-	document.getElementById('a1').style.margin='10px 0px';}
-	else{;}
-
-	if(document.getElementById('a8').innerHTML=='' && a1V!==1){
-	document.getElementById('a8').innerHTML='High card!';
-	document.getElementById('a7').style.margin='10px 0px';}
-	else{;}
-
-//Four of a kind color
-	if(document.getElementById('a8').innerHTML=='Four of a kind!'){
-		document.getElementById('a8').style.color='blue';}
-	else{;}
-
-//Full house color
-	if(document.getElementById('a8').innerHTML=='Full house!'){
-		document.getElementById('a8').style.color='blue';}
-	else{;}
-
-//Straight Flush color
-	if(document.getElementById('a8').innerHTML=='Straight Flush!'){
-		document.getElementById('a8').style.color='blue';}
-	else{;}
-
-
-
-// Player B
-//Get the card values
-	var b1V = cardsV.get(holdB[0]);
-	var b2V = cardsV.get(holdB[1]);
-	var b3V = cardsV.get(holdB[2]);
-	var b4V = cardsV.get(holdB[3]);
-	var b5V = cardsV.get(holdB[4]);
-	var b6V = cardsV.get(holdB[5]);
-	var b7V = cardsV.get(holdB[6]);
-
-//Get the card suits
-	var b1F = flush.get(holdB[0]);
-	var b2F = flush.get(holdB[1]);
-	var b3F = flush.get(holdB[2]);
-	var b4F = flush.get(holdB[3]);
-	var b5F = flush.get(holdB[4]);
-	var b6F = flush.get(holdB[5]);
-	var b7F = flush.get(holdB[6]);
-
-//Arrange the cards from A, 2, 3,..., J, Q, K
-	var holdBV =[b1V, b2V, b3V, b4V, b5V, b6V, b7V];
-
-//For Straight Check
-	var holdBV1 =[b1V, b2V, b3V, b4V, b5V];
-	var holdBV2 =[b2V, b3V, b4V, b5V, b6V];
-	var holdBV3 =[b3V, b4V, b5V, b6V, b7V];
-
-//Shift the cards down for 10px if the values are identical.
-
-//Pair
-	if(b1V==b2V){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='One pair!';}
-	else{;}
-
-	if(b2V==b3V){
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='One pair!';}
-	else{;}
-
-	if(b3V==b4V){
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='One pair!';}
-	else{;}
-
-	if(b4V==b5V){
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='One pair!';}
-	else{;}
-
-	if(b5V==b6V){
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='One pair!';}
-	else{;}
-
-	if(b6V==b7V){
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='One pair!';}
-	else{;}
-
-//Two pairs
-	if(b1V==b2V && b3V==b4V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(b1V==b2V && b4V==b5V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(b1V==b2V && b5V==b6V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(b1V==b2V && b6V==b7V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(b4V==b5V && b6V==b7V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(b3V==b4V && b6V==b7V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(b2V==b3V && b6V==b7V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(b2V==b3V && b4V==b5V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(b3V==b4V && b5V==b6V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-	if(b2V==b3V && b5V==b6V){
-	   	document.getElementById('b8').innerHTML ='Two pair!';}
-	else{;}
-
-//Three of a kind
-	if(b1V==b2V && b2V==b3V){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
-	else{;}
-
-	if(b2V==b3V && b3V==b4V){
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
-	else{;}
-
-	if(b3V==b4V && b4V==b5V){
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
-	else{;}
-
-	if(b4V==b5V && b5V==b6V){
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
-	else{;}
-
-	if(b5V==b6V && b6V==b7V){
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Three of a kind!';}
-	else{;}
-
-//Full house
-
-	if(b2V==b3V && b4V==b5V && b5V==b6V){
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-	if(b2V==b3V && b3V==b4V && b5V==b6V){
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-	if(b2V==b3V && b5V==b6V && b6V==b7V){
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-
-	if(b3V==b4V && b5V==b6V && b6V==b7V){
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-	if(b3V==b4V && b4V==b5V && b6V==b7V){
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-	if(b1V==b2V && b5V==b6V && b6V==b7V){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-	if(b1V==b2V && b4V==b5V && b5V==b6V){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-	if(b1V==b2V && b3V==b4V && b4V==b5V){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-	if(b1V==b2V && b2V==b3V && b5V==b6V){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-	if(b1V==b2V && b2V==b3V && b4V==b5V){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-	if(b1V==b2V && b2V==b3V && b6V==b7V){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Full house!';}
-	else{;}
-
-//Four of a kind
-	if(b1V==b2V && b2V==b3V && b3V==b4V){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Four of a kind!';}
-	else{;}
-
-	if(b2V==b3V && b3V==b4V && b4V==b5V){
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Four of a kind!';}
-	else{;}
-
-	if(b3V==b4V && b4V==b5V && b5V==b6V){
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Four of a kind!';}
-	else{;}
-
-	if(b4V==b5V && b5V==b6V && b6V==b7V){
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';
-	   	document.getElementById('b8').innerHTML ='Four of a kind!';}
-	else{;}
-
-//Show red cards (if any)
-	document.getElementById('b1').innerHTML = cards.get(holdB[0]);
-	if(redCard1.includes(holdB[0])){document.getElementById('b1').style.color='red';}
-	else if(redCard2.includes(holdB[0])){document.getElementById('b1').style.color='red';}
-	else{document.getElementById('b1').style.color='black';}
-
-
-	document.getElementById('b2').innerHTML = cards.get(holdB[1]);
-	if(redCard1.includes(holdB[1])){document.getElementById('b2').style.color='red';}
-	else if(redCard2.includes(holdB[1])){document.getElementById('b2').style.color='red';}
-	else{document.getElementById('b2').style.color='black';}
-
-	document.getElementById('b3').innerHTML = cards.get(holdB[2]);
-	if(redCard1.includes(holdB[2])){document.getElementById('b3').style.color='red';}
-	else if(redCard2.includes(holdB[2])){document.getElementById('b3').style.color='red';}
-	else{document.getElementById('b3').style.color='black';}
-
-	document.getElementById('b4').innerHTML = cards.get(holdB[3]);
-	if(redCard1.includes(holdB[3])){document.getElementById('b4').style.color='red';}
-	else if(redCard2.includes(holdB[3])){document.getElementById('b4').style.color='red';}
-	else{document.getElementById('b4').style.color='black';}
-
-	document.getElementById('b5').innerHTML = cards.get(holdB[4]);
-	if(redCard1.includes(holdB[4])){document.getElementById('b5').style.color='red';}
-	else if(redCard2.includes(holdB[4])){document.getElementById('b5').style.color='red';}
-	else{document.getElementById('b5').style.color='black';}
-
-	document.getElementById('b6').innerHTML = cards.get(holdB[5]);
-	if(redCard1.includes(holdB[5])){document.getElementById('b6').style.color='red';}
-	else if(redCard2.includes(holdB[5])){document.getElementById('b6').style.color='red';}
-	else{document.getElementById('b6').style.color='black';}
-
-	document.getElementById('b7').innerHTML = cards.get(holdB[6]);
-	if(redCard1.includes(holdB[6])){document.getElementById('b7').style.color='red';}
-	else if(redCard2.includes(holdB[6])){document.getElementById('b7').style.color='red';}
-	else{document.getElementById('b7').style.color='black';}
-
-	document.getElementById('b1').innerHTML = cards.get(holdB[0]);
-	if(redCard1.includes(holdB[0])){document.getElementById('b1').style.color='red';}
-	else if(redCard2.includes(holdB[0])){document.getElementById('b1').style.color='red';}
-	else{document.getElementById('b1').style.color='black';}
-
-	document.getElementById('b2').innerHTML = cards.get(holdB[1]);
-	if(redCard1.includes(holdB[1])){document.getElementById('b2').style.color='red';}
-	else if(redCard2.includes(holdB[1])){document.getElementById('b2').style.color='red';}
-	else{document.getElementById('b2').style.color='black';}
-
-	document.getElementById('b3').innerHTML = cards.get(holdB[2]);
-	if(redCard1.includes(holdB[2])){document.getElementById('b3').style.color='red';}
-	else if(redCard2.includes(holdB[2])){document.getElementById('b3').style.color='red';}
-	else{document.getElementById('b3').style.color='black';}
-
-	document.getElementById('b4').innerHTML = cards.get(holdB[3]);
-	if(redCard1.includes(holdB[3])){document.getElementById('b4').style.color='red';}
-	else if(redCard2.includes(holdB[3])){document.getElementById('b4').style.color='red';}
-	else{document.getElementById('b4').style.color='black';}
-
-	document.getElementById('b5').innerHTML = cards.get(holdB[4]);
-	if(redCard1.includes(holdB[4])){document.getElementById('b5').style.color='red';}
-	else if(redCard2.includes(holdB[4])){document.getElementById('b5').style.color='red';}
-	else{document.getElementById('b5').style.color='black';}
-
-	document.getElementById('b6').innerHTML = cards.get(holdB[5]);
-	if(redCard1.includes(holdB[5])){document.getElementById('b6').style.color='red';}
-	else if(redCard2.includes(holdB[5])){document.getElementById('b6').style.color='red';}
-	else{document.getElementById('b6').style.color='black';}
-
-	document.getElementById('b7').innerHTML = cards.get(holdB[6]);
-	if(redCard1.includes(holdB[6])){document.getElementById('b7').style.color='red';}
-	else if(redCard2.includes(holdB[6])){document.getElementById('b7').style.color='red';}
-	else{document.getElementById('b7').style.color='black';}
-
-//Straight Check, to see if straight hand is the subset of the hold cards pf player A.
-	let sHandb='';
-        if(checkHand(holdBV, sF1)==true || checkHand(holdBV, sF2)==true ||
-	checkHand(holdBV, sF3)==true || checkHand(holdBV, sF4)==true ||
-	checkHand(holdBV, sF5)==true || checkHand(holdBV, sF6)==true ||
-	checkHand(holdBV, sF7)==true || checkHand(holdBV, sF8)==true ||
-	checkHand(holdBV, sF9)==true || checkHand(holdBV, sF10)==true){
-		document.getElementById('b1').style.margin='0px 0px';
-		document.getElementById('b2').style.margin='0px 0px';
-		document.getElementById('b3').style.margin='0px 0px';
-		document.getElementById('b4').style.margin='0px 0px';
-		document.getElementById('b5').style.margin='0px 0px';
-		document.getElementById('b6').style.margin='0px 0px';
-		document.getElementById('b7').style.margin='0px 0px';
-
-		document.getElementById('b1').style.color='green';
-		document.getElementById('b2').style.color='green';
-		document.getElementById('b3').style.color='green';
-		document.getElementById('b4').style.color='green';
-		document.getElementById('b5').style.color='green';
-		document.getElementById('b6').style.color='green';
-		document.getElementById('b7').style.color='green';
-		document.getElementById('b8').innerHTML='Straight!';
-		sHandb='y';}
-	else{;}
-
-	if(b1V==b2V-1 && b2V==b3V-1 && b3V==b4V-1 && b4V==b5V-1){
-		document.getElementById('b1').style.margin='10px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';}
-	else{;}
-
-	if(b2V==b3V-1 && b3V==b4V-1 && b4V==b5V-1 && b5V==b6V-1){
-		document.getElementById('b1').style.margin='0px 0px';
-		document.getElementById('b2').style.margin='10px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';}
-	else{;}
-
-	if(b3V==b4V-1 && b4V==b5V-1 && b5V==b6V-1 && b6V==b7V-1){
-		document.getElementById('b1').style.margin='0px 0px';
-		document.getElementById('b2').style.margin='0px 0px';
-		document.getElementById('b3').style.margin='10px 0px';
-		document.getElementById('b4').style.margin='10px 0px';
-		document.getElementById('b5').style.margin='10px 0px';
-		document.getElementById('b6').style.margin='10px 0px';
-		document.getElementById('b7').style.margin='10px 0px';}
-	else{;}
-
-//Flush Check, to count the number of cards from any same suit.
-	let fHandb ='';
-	let bFlush = [flush.get(holdB[0]),flush.get(holdB[1]),flush.get(holdB[2]),flush.get(holdB[3]),flush.get(holdB[4]),flush.get(holdB[5]), flush.get(holdB[6])];
-	let bFlushCheckA = bFlush.filter(x => x == 'A').length;
-	let bFlushCheckB = bFlush.filter(x => x == 'B').length;
-	let bFlushCheckC = bFlush.filter(x => x == 'C').length;
-	let bFlushCheckD = bFlush.filter(x => x == 'D').length;
-	if(bFlushCheckA > 4 || bFlushCheckB > 4 || bFlushCheckC > 4  || bFlushCheckD > 4){	
-		document.getElementById('b1').style.margin='0px 0px';
-		document.getElementById('b2').style.margin='0px 0px';
-		document.getElementById('b3').style.margin='0px 0px';
-		document.getElementById('b4').style.margin='0px 0px';
-		document.getElementById('b5').style.margin='0px 0px';
-		document.getElementById('b6').style.margin='0px 0px';
-		document.getElementById('b7').style.margin='0px 0px';
-
-		document.getElementById('b1').style.color='blue';
-		document.getElementById('b2').style.color='blue';
-		document.getElementById('b3').style.color='blue';
-		document.getElementById('b4').style.color='blue';
-		document.getElementById('b5').style.color='blue';
-		document.getElementById('b6').style.color='blue';
-		document.getElementById('b7').style.color='blue';
-		document.getElementById('b8').innerHTML='Flush!';
-		fHandb='y';}
-		else{;}
-
-//Show flush cards
-	if(bFlushCheckA > 4 && b1F=='A'){
-		document.getElementById('b1').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckB > 4 && b1F=='B'){
-		document.getElementById('b1').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckC > 4 && b1F=='C'){
-		document.getElementById('b1').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckD > 4 && b1F=='D'){
-		document.getElementById('b1').style.margin='10px 0px';}
-	else{;}	
-
-	if(bFlushCheckA > 4 && b2F=='A'){
-		document.getElementById('b2').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckB > 4 && b2F=='B'){
-		document.getElementById('b2').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckC > 4 && b2F=='C'){
-		document.getElementById('b2').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckD > 4 && b2F=='D'){
-		document.getElementById('b2').style.margin='10px 0px';}
-	else{;}	
-
-	if(bFlushCheckA > 4 && b3F=='A'){
-		document.getElementById('b3').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckB > 4 && b3F=='B'){
-		document.getElementById('b3').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckC > 4 && b3F=='C'){
-		document.getElementById('b3').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckD > 4 && b3F=='D'){
-		document.getElementById('b3').style.margin='10px 0px';}
-
-	else{;}	
-	if(bFlushCheckA > 4 && b4F=='A'){
-		document.getElementById('b4').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckB > 4 && b4F=='B'){
-		document.getElementById('b4').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckC > 4 && b4F=='C'){
-		document.getElementById('b4').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckD > 4 && b4F=='D'){
-		document.getElementById('b4').style.margin='10px 0px';}
-	else{;}	
-
-	if(bFlushCheckA > 4 && b5F=='A'){
-		document.getElementById('b5').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckB > 4 && b5F=='B'){
-		document.getElementById('b5').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckC > 4 && b5F=='C'){
-		document.getElementById('b5').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckD > 4 && b5F=='D'){
-		document.getElementById('b5').style.margin='10px 0px';}
-	else{;}	
-
-	if(bFlushCheckA > 4 && b6F=='A'){
-		document.getElementById('b6').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckB > 4 && b6F=='B'){
-		document.getElementById('b6').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckC > 4 && b6F=='C'){
-		document.getElementById('b6').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckD > 4 && b6F=='D'){
-		document.getElementById('b6').style.margin='10px 0px';}
-	else{;}	
-
-
-	if(bFlushCheckA > 4 && b7F=='A'){
-		document.getElementById('b7').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckB > 4 && b7F=='B'){
-		document.getElementById('b7').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckC > 4 && b7F=='C'){
-		document.getElementById('b7').style.margin='10px 0px';}
-	else{;}	
-	if(bFlushCheckD > 4 && b7F=='D'){
-		document.getElementById('b7').style.margin='10px 0px';}
-	else{;}	
-
-//Straight Flush Check
-        if(checkHand(holdB, stF1)==true || checkHand(holdB, stF2)==true ||
-		checkHand(holdB, stF1)==true || checkHand(holdB, stF2)==true ||
-		checkHand(holdB, stF3)==true || checkHand(holdB, stF4)==true ||
-		checkHand(holdB, stF5)==true || checkHand(holdB, stF6)==true ||
-		checkHand(holdB, stF7)==true || checkHand(holdB, stF8)==true ||
-		checkHand(holdB, stF9)==true || checkHand(holdB, stF10)==true ||
-		checkHand(holdB, stF11)==true || checkHand(holdB, stF12)==true ||
-		checkHand(holdB, stF13)==true || checkHand(holdB, stF14)==true ||
-		checkHand(holdB, stF15)==true || checkHand(holdB, stF16)==true ||
-		checkHand(holdB, stF17)==true || checkHand(holdB, stF18)==true ||
-		checkHand(holdB, stF19)==true || checkHand(holdB, stF20)==true ||
-		checkHand(holdB, stF21)==true || checkHand(holdB, stF22)==true ||
-		checkHand(holdB, stF23)==true || checkHand(holdB, stF24)==true ||
-		checkHand(holdB, stF25)==true || checkHand(holdB, stF26)==true ||
-		checkHand(holdB, stF27)==true || checkHand(holdB, stF28)==true ||
-		checkHand(holdB, stF29)==true || checkHand(holdB, stF30)==true ||
-		checkHand(holdB, stF31)==true || checkHand(holdB, stF32)==true ||
-		checkHand(holdB, stF33)==true || checkHand(holdB, stF34)==true ||
-		checkHand(holdB, stF35)==true) {
-			document.getElementById('b8').style.color='blue';
-			document.getElementById('b8').innerHTML='Straight flush!!';}
-	else{;}
-
-//Royal flush check
-        if(checkHand(holdB, roF1)==true || checkHand(holdB, roF2)==true ||
-		checkHand(holdB, roF3)==true || checkHand(holdB, roF4)==true) {
-			document.getElementById('b8').style.color='blue';
-			document.getElementById('b8').innerHTML='Royal flush!!!';}
-	else{;}
-
-//High card
-	if(document.getElementById('b8').innerHTML=='' && b1V==1){
-	document.getElementById('b8').innerHTML='High card!';
-	document.getElementById('b1').style.margin='10px 0px';}
-	else{;}
-
-	if(document.getElementById('b8').innerHTML=='' && b1V!==1){
-	document.getElementById('b8').innerHTML='High card!';
-	document.getElementById('b7').style.margin='10px 0px';}
-	else{;}
-
-//Four of a kind color
-	if(document.getElementById('b8').innerHTML=='Four of a kind!'){
-		document.getElementById('b8').style.color='blue';}
-	else{;}
-
-//Full house color
-	if(document.getElementById('b8').innerHTML=='Full house!'){
-		document.getElementById('b8').style.color='blue';}
-	else{;}
-
-//Straight Flush color
-	if(document.getElementById('b8').innerHTML=='Straight Flush!'){
-		document.getElementById('b8').style.color='blue';}
-	else{;}
-
-	var handOfA = document.getElementById('a8').innerHTML;
-	var handOfB = document.getElementById('b8').innerHTML;
-	var winner='';
-	if(handOfA=='Straight flush!!' && handOfB!=='Straight flush!!' && handOfB!=='Royal flush!!!'){
-		document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='Royal flush!!!' && handOfB!=='Royal flush!!!'){
-		document.getElementById('a9').innerHTML='Win';}
-	else if(handOfB=='Royal flush!!!' && handOfA!=='Royal flush!!!'){
-		document.getElementById('b9').innerHTML='Win';}
-	else if(handOfA=='Four of a kind!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!'){
-		document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='Full house!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!'){
-		document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='Flush!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!'){document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='Straight!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!' && handOfB!=='Straight!'){document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='Three of a kind!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!' && handOfB!=='Straight!' && handOfB!=='Three of a kind!'){document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='Two pair!' && handOfB!=='Straight flush!' && handOfB!=='Four of a kind!' && handOfB!=='Full house!' && handOfB!=='Flush!' && handOfB!=='Straight!' && handOfB!=='Three of a kind!' && handOfB!=='Two pair!'){document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='One pair!' && handOfB=='High card!'){document.getElementById('a9').innerHTML='Win';}
-
-	else if(handOfA=='High card!' && handOfB=='High card!' && b1V!==1 && a7V > b7V){document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='High card!' && handOfB=='High card!' && a1V==1 && b1V!==1){document.getElementById('a9').innerHTML='Win';}
-	else if(handOfA=='High card!' && handOfB=='High card!' && a1V==1 && b1V==1){document.getElementById('a9').innerHTML='Check';}
-	else if(handOfA==handOfB){document.getElementById('b9').innerHTML='Check';}
-	else{document.getElementById('b9').innerHTML='Win';}
+  dealt.z5 = currentDeck.pop();
+  renderCard('z5', dealt.z5);
+
+  const holdA = [dealt.c1, dealt.c2, dealt.z1, dealt.z2, dealt.z3, dealt.z4, dealt.z5].sort((a, b) => a - b);
+  const holdB = [dealt.c6, dealt.c7, dealt.z1, dealt.z2, dealt.z3, dealt.z4, dealt.z5].sort((a, b) => a - b);
+
+  const evalA = evaluate7Cards(holdA);
+  const evalB = evaluate7Cards(holdB);
+
+  // หาไพ่ใบสูงสุดในมือของแต่ละฝ่าย (เทียบแต้มแล้วเทียบดอก)
+  const highHoleA = (pokerRank(dealt.c1) > pokerRank(dealt.c2) || (pokerRank(dealt.c1) === pokerRank(dealt.c2) && suitRank(dealt.c1) > suitRank(dealt.c2))) ? dealt.c1 : dealt.c2;
+  const highHoleB = (pokerRank(dealt.c6) > pokerRank(dealt.c7) || (pokerRank(dealt.c6) === pokerRank(dealt.c7) && suitRank(dealt.c6) > suitRank(dealt.c7))) ? dealt.c6 : dealt.c7;
+
+  // หากได้ High card ให้ขยับไพ่ใบสูงสุดในมือลงมาแสดง
+  if (evalA.category === 0) {
+    evalA.highlightIds = [highHoleA];
+  }
+  if (evalB.category === 0) {
+    evalB.highlightIds = [highHoleB];
+  }
+
+  displayPlayerResult('a', holdA, evalA);
+  displayPlayerResult('b', holdB, evalB);
+
+  const winA = document.getElementById('a9');
+  const winB = document.getElementById('b9');
+
+  let comparison = compareHands(evalA, evalB);
+
+  // กรณีได้ High card ทั้งคู่ หรือใช้ไพ่กองกลางชุดเดียวกันจนแต้มและดอกเท่ากัน ให้ตัดสินด้วยไพ่ในมือ
+  if ((evalA.category === 0 && evalB.category === 0) || comparison === 0) {
+    comparison = compareHoleCards([dealt.c1, dealt.c2], [dealt.c6, dealt.c7]);
+  }
+
+  if (comparison > 0) {
+    winA.innerHTML = 'Win';
+    winA.style.background = '#1f1f1f';
+    winA.style.color = '#ffffff';
+  } else {
+    winB.innerHTML = 'Win';
+    winB.style.background = '#1f1f1f';
+    winB.style.color = '#ffffff';
+  }
+
+  setButtons(true, false, false, false);
 }
+
 
 function help() {
-	alert('Royal flush > Straight flush > Four of a kind >  Full house > Flush > Straight > Three of a kind > Two pair > One pair > High card');
+  alert('Royal flush > Straight flush > Four of a kind > Full house > Flush > Straight > Three of a kind > Two pair > One pair > High card');
 }
- 
+
 function reload() {
-	document.getElementById('a9').innerHTML = '';
-	document.getElementById('b9').innerHTML = '';
-	document.getElementById('a8').style.color='black';
-	document.getElementById('b8').style.color='black';
-	document.getElementById('z1').innerHTML = '\u{1F0A0}';
-	document.getElementById('z1').style.color='blue';
-	document.getElementById('z2').innerHTML = '\u{1F0A0}';
-	document.getElementById('z2').style.color='blue';
-	document.getElementById('z3').innerHTML = '\u{1F0A0}';
-	document.getElementById('z3').style.color='blue';
-	document.getElementById('z4').innerHTML = '\u{1F0A0}';
-	document.getElementById('z4').style.color='blue';
-	document.getElementById('z5').innerHTML = '\u{1F0A0}';
-	document.getElementById('z5').style.color='blue';
+  const winA = document.getElementById('a9');
+  const winB = document.getElementById('b9');
+  winA.innerHTML = '';
+  winB.innerHTML = '';
+  winA.style.background = 'transparent';
+  winB.style.background = 'transparent';
 
-	document.getElementById('c1').innerHTML = '\u{1F0A0}';
-	document.getElementById('c1').style.color='blue';
+  document.getElementById('a8').innerHTML = '';
+  document.getElementById('b8').innerHTML = '';
+  document.getElementById('a8').style.color = 'black';
+  document.getElementById('b8').style.color = 'black';
 
-	document.getElementById('c2').innerHTML = '\u{1F0A0}';
-	document.getElementById('c2').style.color='blue';
+  const backCards = ['z1', 'z2', 'z3', 'z4', 'z5', 'c1', 'c2', 'c6', 'c7'];
+  backCards.forEach(id => {
+    const el = document.getElementById(id);
+    el.innerHTML = '\u{1F0A0}';
+    el.style.color = 'blue';
+  });
 
-	document.getElementById('c3').innerHTML = cards.get(0);
-	document.getElementById('c4').innerHTML = cards.get(0);
-	document.getElementById('c5').innerHTML = cards.get(0);
+  const emptySlots = [
+    'c3', 'c4', 'c5', 'c8', 'c9', 'c10',
+    'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7',
+    'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7'
+  ];
+  emptySlots.forEach(id => {
+    const el = document.getElementById(id);
+    el.innerHTML = cards.get(0);
+    el.style.margin = '0px 0px';
+  });
 
-	document.getElementById('c6').innerHTML = '\u{1F0A0}';
-	document.getElementById('c6').style.color='blue';
-
-	document.getElementById('c7').innerHTML = '\u{1F0A0}';
-	document.getElementById('c7').style.color='blue';
-
-	document.getElementById('c8').innerHTML = cards.get(0);
-	document.getElementById('c9').innerHTML = cards.get(0);
-	document.getElementById('c10').innerHTML = cards.get(0);
-
-	document.getElementById('a1').innerHTML = cards.get(0);
-	document.getElementById('a2').innerHTML = cards.get(0);
-	document.getElementById('a3').innerHTML = cards.get(0);
-	document.getElementById('a4').innerHTML = cards.get(0);
-	document.getElementById('a5').innerHTML = cards.get(0);
-	document.getElementById('a6').innerHTML = cards.get(0);
-	document.getElementById('a7').innerHTML = cards.get(0);
-	document.getElementById('a8').innerHTML = '';
-
-	document.getElementById('b1').innerHTML = cards.get(0);
-	document.getElementById('b2').innerHTML = cards.get(0);
-	document.getElementById('b3').innerHTML = cards.get(0);
-	document.getElementById('b4').innerHTML = cards.get(0);
-	document.getElementById('b5').innerHTML = cards.get(0);
-	document.getElementById('b6').innerHTML = cards.get(0);
-	document.getElementById('b7').innerHTML = cards.get(0);
-	document.getElementById('b8').innerHTML = '';
-	
-	document.getElementById('a1').style.margin='0px 0px';
-	document.getElementById('a2').style.margin='0px 0px';
-	document.getElementById('a3').style.margin='0px 0px';
-	document.getElementById('a4').style.margin='0px 0px';
-	document.getElementById('a5').style.margin='0px 0px';
-	document.getElementById('a6').style.margin='0px 0px';
-	document.getElementById('a7').style.margin='0px 0px';
-
-	document.getElementById('b1').style.margin='0px 0px';
-	document.getElementById('b2').style.margin='0px 0px';
-	document.getElementById('b3').style.margin='0px 0px';
-	document.getElementById('b4').style.margin='0px 0px';
-	document.getElementById('b5').style.margin='0px 0px';
-	document.getElementById('b6').style.margin='0px 0px';
-	document.getElementById('b7').style.margin='0px 0px';
-
+  setButtons(true, false, false, false);
 }
+
+window.onload = reload;
